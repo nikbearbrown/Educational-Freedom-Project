@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/ui/primary-button"
 import SecondaryButton from "@/components/ui/secondary-button"
-import { BookOpen, Palette, Music, Fitness, Yoga, Code } from "lucide-react"
+import { BookOpen, Palette, Music, Dumbbell, Code } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
@@ -89,8 +89,24 @@ export default function Home() {
 
             {/* Fitness */}
             <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Fitness, Yoga, className="h-10 w-10" />
+              <div className="mb-4 flex space-x-2">
+                <Dumbbell className="h-10 w-10" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="40"
+                  height="40"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-10 w-10"
+                >
+                  <path d="M12 2a5 5 0 0 0-5 5c0 2 2 4 5 4s5-2 5-4a5 5 0 0 0-5-5z" />
+                  <path d="M20 17.5c0 2.485-4 4.5-8 4.5s-8-2.015-8-4.5S8 13 12 13s8 2.015 8 4.5z" />
+                  <path d="M12 13v9" />
+                </svg>
               </div>
               <h3 className="text-xl font-bold mb-2">FITNESS & WELLNESS</h3>
               <p className="text-muted-foreground mb-4">

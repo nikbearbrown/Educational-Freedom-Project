@@ -52,7 +52,6 @@ export default function Header() {
     { name: "GitHub", href: "https://github.com/nikbearbrown" },
     { name: "YouTube", href: "https://www.youtube.com/@NikBearBrown" },
     { name: "Spotify", href: "https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6" },
-    { name: "Apple Music", href: "https://music.apple.com/us/artist/1779725275" },
   ]
 
   return (

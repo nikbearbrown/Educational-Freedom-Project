@@ -40,12 +40,19 @@ export default function Header() {
   }, [isMenuOpen])
 
   const navigation = [
-    { name: "Fellows", href: "/fellows" },
-    { name: "AI for Good", href: "/ai-for-good" },
-    { name: "Lyrical Literacy", href: "/lyrical-literacy" },
-    { name: "Botspeak", href: "/botspeak" },
-    { name: "About Us", href: "/about" },
-    { name: "Contact Us", href: "/contact" },
+    { name: "Art", href: "/art" },
+    { name: "Blog", href: "/blog" },
+    { name: "Books", href: "/books" },
+    { name: "Classes", href: "/classes" },
+    { name: "Consulting", href: "/consulting" },
+    { name: "Projects", href: "/projects" },
+  ]
+
+  const socialLinks = [
+    { name: "GitHub", href: "https://github.com/nikbearbrown" },
+    { name: "YouTube", href: "https://www.youtube.com/@NikBearBrown" },
+    { name: "Spotify", href: "https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6" },
+    { name: "Apple Music", href: "https://music.apple.com/us/artist/1779725275" },
   ]
 
   return (
@@ -55,8 +62,8 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             {mounted ? (
               <Image
-                src={theme === 'dark' ? '/svg-logos/Humanitarians_white_logo.svg' : '/svg-logos/Humanitarians_black_logo.svg'}
-                alt="HUMANITARIANS AI"
+                src={theme === 'dark' ? '/svg-logos/NikBearBrown_white_logo.svg' : '/svg-logos/NikBearBrown_black_logo.svg'}
+                alt="NikBearBrown.com"
                 width={240}
                 height={53}
                 className="h-12 w-auto"
@@ -83,21 +90,13 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex items-center gap-4">
-            <Link href="https://www.youtube.com/@humanitariansai">
-              <button className={cn(baseButtonStyles, headerButtonStyles)}>
-                Youtube
-              </button>
-            </Link>
-            <Link href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV">
-              <button className={cn(baseButtonStyles, headerButtonStyles)}>
-                Spotify
-              </button>
-            </Link>
-            <Link href="/donate">
-              <button className={cn(baseButtonStyles, headerButtonStyles)}>
-                Donate
-              </button>
-            </Link>
+            {socialLinks.map((link) => (
+              <Link key={link.name} href={link.href} target="_blank" rel="noopener noreferrer">
+                <button className={cn(baseButtonStyles, headerButtonStyles)}>
+                  {link.name}
+                </button>
+              </Link>
+            ))}
           </div>
           <ThemeToggle />
           <button
@@ -133,17 +132,18 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col gap-4 mt-4">
-                <Link href="https://www.youtube.com/@humanitariansai" className="text-base font-medium">
-                  YouTube
-                </Link>
-                <Link href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV" className="text-base font-medium">
-                  Spotify
-                </Link>
-                <Link href="/donate" className="mt-2">
-                  <button className={cn(baseButtonStyles, headerButtonStyles, "w-full")}>
-                    Donate
-                  </button>
-                </Link>
+                {socialLinks.map((link) => (
+                  <Link 
+                    key={link.name}
+                    href={link.href}
+                    className="text-base font-medium"
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
               </div>
             </nav>
           </div>

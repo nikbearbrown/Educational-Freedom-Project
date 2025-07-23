@@ -113,7 +113,7 @@ export default function Footer() {
                     <path d="M12 6v1"/>
                   </svg>
                 </Link>
-                <Link href="mailto:nik@nikbearbrown.com" className="text-sm hover:text-primary transition-colors">
+                <Link href="mailto:bear@bearbrown.co" className="text-sm hover:text-primary transition-colors">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -176,7 +176,7 @@ export default function Footer() {
               <p className="text-sm text-muted-foreground">
                 Have a question or want to collaborate?
                 <br />
-                <a href="mailto:nik@nikbearbrown.com" className="text-primary hover:underline">nik@nikbearbrown.com</a>
+                <a href="mailto:bear@bearbrown.co" className="text-primary hover:underline">bear@bearbrown.co</a>
               </p>
             </div>
           </div>
@@ -198,7 +198,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="mt-8 text-center text-sm text-muted-foreground">
-          &copy; 2024 - {currentYear} NikBearBrown.com. All rights reserved.
+          &copy; 2017 - {currentYear} NikBearBrown.com. All rights reserved.
         </div>
       </div>
     </footer>

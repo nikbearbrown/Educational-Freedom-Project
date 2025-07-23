@@ -11,7 +11,7 @@ import { cn } from "@/lib/utils"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Humanitarians AI",
+  title: "NikBearBrown.com",
   description: "Using AI for social good",
   generator: 'v0.dev'
 }

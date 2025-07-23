@@ -1,4 +1,4 @@
-# Humanitarians AI Website
+# Nik Bear Brown Website
 
 ## Prerequisites
 

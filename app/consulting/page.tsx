@@ -202,6 +202,7 @@ export default function ConsultingPage() {
                   </p>
                 </div>
               </div>
+            </div>
           </section>
 
           {/* Nonprofit Work */}
@@ -225,7 +226,6 @@ export default function ConsultingPage() {
               </p>
             </div>
           </section>
-
 
           {/* Get Started */}
           <section>

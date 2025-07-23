@@ -58,6 +58,7 @@ export default function ConsultingPage() {
                   <li>PhD in Computer Science from UCLA</li>
                   <li>Associate Teaching Professor at Northeastern University</li>
                   <li>Project Lead for AI for Education (AI4ED) initiatives</li>
+                  <li>Affiliate Professor at <a href="https://ai.northeastern.edu/" target="_blank" rel="noopener noreferrer">The Institute for Experiential AI - Northeastern University</a></li>
                   <li>Expert in Machine Learning, Reinforcement Learning, and Prompt Engineering</li>
                   <li>Published researcher in computational biology and AI applications</li>
                   <li>Collaborator with prestigious institutions including Harvard Medical School and the Broad Institute</li>

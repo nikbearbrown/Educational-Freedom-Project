@@ -34,7 +34,7 @@ export default function Home() {
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-md"
                   src="https://www.youtube.com/embed/GN7yQntWJHU?si=gTXWalKvsLDP8nbV"
-                  title="Humanitarians AI Introduction"
+                  title="NikBearBrown.com Introduction"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                 />
@@ -151,7 +151,7 @@ export default function Home() {
               <SecondaryButton href="/contact">
                 VOLUNTEER
               </SecondaryButton>
-              <SecondaryButton href="https://www.youtube.com/@humanitariansai">
+              <SecondaryButton href="https://www.youtube.com/@nikbearbrown">
                 YOUTUBE
               </SecondaryButton>
             </div>

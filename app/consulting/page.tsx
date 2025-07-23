@@ -59,7 +59,6 @@ export default function ConsultingPage() {
                   <li>Associate Teaching Professor at Northeastern University</li>
                   <li>Project Lead for AI for Education (AI4ED) initiatives</li>
                   <li>Expert in Machine Learning, Reinforcement Learning, and Prompt Engineering</li>
-                  <li>Developer of "Kendrick," an innovative songwriting AI with millions of plays</li>
                   <li>Published researcher in computational biology and AI applications</li>
                   <li>Collaborator with prestigious institutions including Harvard Medical School and the Broad Institute</li>
                   <li>Founder of Humanitarians AI, a 501(c)(3) nonprofit organization</li>

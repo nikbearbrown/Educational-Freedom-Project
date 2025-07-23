@@ -202,19 +202,6 @@ export default function ConsultingPage() {
                   </p>
                 </div>
               </div>
-
-              <div className="p-6 border rounded-lg">
-                <h3 className="text-xl font-bold mb-3">AI-Powered Resource Allocation System</h3>
-                <div className="prose prose-lg dark:prose-invert">
-                  <p>
-                    For a humanitarian relief organization, I built a reinforcement learning system that optimized the allocation of limited resources during crisis response. The system analyzed multiple factors to suggest optimal distribution strategies.
-                  </p>
-                  <p>
-                    <strong>Results:</strong> 30% improvement in resource utilization and 15% faster response times in emergency situations.
-                  </p>
-                </div>
-              </div>
-            </div>
           </section>
 
           {/* Nonprofit Work */}
@@ -239,20 +226,6 @@ export default function ConsultingPage() {
             </div>
           </section>
 
-          {/* Testimonials */}
-          <section>
-            <h2 className="text-3xl font-bold mb-6">What My Clients Say</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              <div className="p-6 border rounded-lg">
-                <p className="italic mb-4">"Nik's expertise in AI education transformed how our organization approaches technology. The customized solutions he developed have had a measurable impact on our educational initiatives."</p>
-                <p className="font-semibold">— Education Director, Global Learning Initiative</p>
-              </div>
-              <div className="p-6 border rounded-lg">
-                <p className="italic mb-4">"Nik provided invaluable guidance as we navigated the integration of AI into our humanitarian response systems. His ethical approach and technical expertise were exactly what we needed."</p>
-                <p className="font-semibold">— CTO, International Relief Organization</p>
-              </div>
-            </div>
-          </section>
 
           {/* Get Started */}
           <section>

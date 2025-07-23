@@ -1,6 +1,6 @@
 import PrimaryButton from "@/components/ui/primary-button"
 import SecondaryButton from "@/components/ui/secondary-button"
-import { Book, Code, Music, MessageSquare } from "lucide-react"
+import { BookOpen, Palette, Music, Fitness, Yoga, Code } from "lucide-react"
 import Link from "next/link"
 
 export default function Home() {
@@ -13,19 +13,18 @@ export default function Home() {
             <div className="flex flex-col justify-center space-y-4 lg:col-span-1">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Harnessing AI for social good.
+                  Nik Bear Brown
                 </h1>
                 <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  A 501(c)(3) nonprofit organization dedicated to developing ethical AI solutions that address real-world
-                  challenges in education, healthcare, nonprofits, and the arts.
+                  Educator, artist, musician, and AI innovator dedicated to advancing artificial intelligence for social good.
                 </p>
               </div>
               <div className="flex flex-col gap-2 min-[400px]:flex-row">
                 <PrimaryButton href="/about">
-                  About Us
+                  About Me
                 </PrimaryButton>
                 <SecondaryButton href="/contact">
-                  Contact Us
+                  Contact
                 </SecondaryButton>
               </div>
             </div>
@@ -33,7 +32,7 @@ export default function Home() {
               <div className="relative w-full aspect-video">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-md"
-                  src="https://www.youtube.com/embed/GN7yQntWJHU?si=gTXWalKvsLDP8nbV"
+                  src="https://www.youtube.com/embed/krxIXJ_Damo?si=BOtrn0StTh54ZIrW"
                   title="NikBearBrown.com Introduction"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
@@ -44,115 +43,103 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Partners Section */}
-      {/* <section className="w-full py-12 md:py-24 bg-white dark:bg-gray-800">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-2xl font-bold tracking-tighter md:text-3xl">Companies We Work With</h2>
-            </div>
-          </div>
-          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-8 md:grid-cols-3 lg:grid-cols-6 items-center justify-center py-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-              <div key={i} className="flex items-center justify-center">
-                <div className="h-16 w-16 rounded-full bg-gray-200"></div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* Key Programs Section */}
+      {/* Main Areas Section */}
       <section className="w-full py-12 md:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center justify-center space-y-4 text-center">
             <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">KEY PROGRAMS & INITIATIVES</h2>
+              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">MY WORK & PASSIONS</h2>
               <p className="text-muted-foreground max-w-[600px]">
-                Our flagship programs that combine AI technology with social impact to create meaningful change.
+                Exploring the intersection of technology, creativity, education, and wellness.
               </p>
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
-            {/* Fellows Program */}
+            {/* Teaching & Workshops */}
             <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
               <div className="mb-4">
-                <Book className="h-10 w-10" />
+                <BookOpen className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-bold mb-2">FELLOWS PROGRAM</h3>
+              <h3 className="text-xl font-bold mb-2">CLASSES & WORKSHOPS</h3>
               <p className="text-muted-foreground mb-4">
-                Join our community of AI researchers and developers working on humanitarian projects. Get mentorship, resources, and support to build impactful AI solutions.
+                Teaching AI, machine learning, and programming at Northeastern University. Offering workshops on prompt engineering, generative AI, and deep learning for students and professionals.
               </p>
-              <Link href="/fellows" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Learn more
+              <Link href="/classes" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
+                Explore courses
               </Link>
             </div>
 
-            {/* Lyrical Literacy */}
+            {/* Art & Music */}
             <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
-              <div className="mb-4">
+              <div className="mb-4 flex space-x-2">
+                <Palette className="h-10 w-10" />
                 <Music className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-bold mb-2">LYRICAL LITERACY</h3>
+              <h3 className="text-xl font-bold mb-2">ART & MUSIC</h3>
               <p className="text-muted-foreground mb-4">
-                An innovative program that combines AI with creative writing and music to enhance literacy skills. Using technology to make learning more engaging and accessible.
+                Creator of AI-generated art and traditional drawings. Songwriter with over 100 songs on Spotify, exploring the fusion of technology and creative expression.
               </p>
-              <Link href="/lyrical-literacy" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Learn more
+              <Link href="/art" className="text-sm font-medium underline underline-offset-4 hover:text-foreground mr-4">
+                View artwork
+              </Link>
+              <Link href="https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6" target="_blank" rel="noopener noreferrer" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
+                Listen on Spotify
               </Link>
             </div>
 
-            {/* AI for Good */}
+            {/* Fitness */}
+            <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
+              <div className="mb-4">
+                <Fitness, Yoga, className="h-10 w-10" />
+              </div>
+              <h3 className="text-xl font-bold mb-2">FITNESS & WELLNESS</h3>
+              <p className="text-muted-foreground mb-4">
+                Former wrestler with a passion for CrossFit, yoga, and maintaining a balanced lifestyle. Committed to physical and mental wellness as a foundation for creativity and productivity.
+              </p>
+              <Link href="/blog" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
+                Read my fitness journey
+              </Link>
+            </div>
+
+            {/* Nonprofit */}
             <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
               <div className="mb-4">
                 <Code className="h-10 w-10" />
               </div>
-              <h3 className="text-xl font-bold mb-2">AI FOR GOOD</h3>
+              <h3 className="text-xl font-bold mb-2">HUMANITARIANS AI</h3>
               <p className="text-muted-foreground mb-4">
-                Developing and deploying AI-powered tools for real-world social impact with an emphasis on inclusivity and accessibility.
+                Founder of Humanitarians AI, a 501(c)(3) nonprofit dedicated to developing ethical AI solutions for education, healthcare, and social impact through research and mentorship.
               </p>
-              <Link href="/ai-for-good" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Learn more
-              </Link>
-            </div>
-
-            {/* Botspeak */}
-            <div className="border p-8 rounded-lg bg-white dark:bg-gray-800 dark:border-gray-700 hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <MessageSquare className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">BOTSPEAK</h3>
-              <p className="text-muted-foreground mb-4">
-                Exploring the fascinating world of AI through hands-on projects and in-depth demos—no rules, just curiosity-driven innovation.
-              </p>
-              <Link href="/botspeak" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Learn more
+              <Link href="/projects" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
+                Explore our projects
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Donate Section */}
+      {/* Connect Section */}
       <section className="w-full py-12 md:py-24 bg-gray-100 dark:bg-gray-900">
         <div className="container px-4 md:px-6 mx-auto">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-            <div className="mb-4 text-sm font-medium">JOIN OUR MISSION</div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-6">HELP US USE AI FOR THE GREATER GOOD</h2>
+            <div className="mb-4 text-sm font-medium">CONNECT WITH ME</div>
+            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-6">LET'S COLLABORATE</h2>
             <p className="text-muted-foreground mb-8 max-w-2xl">
-              Your support helps us develop ethical AI solutions that address real-world challenges in education,
-              healthcare, nonprofits, and the arts. Join us in our mission to ensure AI benefits everyone, especially
-              underserved communities.
+              Whether you're interested in AI education, music collaboration, art projects, or nonprofit initiatives, 
+              I'm always open to connecting with like-minded individuals and organizations.
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
-              <PrimaryButton href="/donate">
-                DONATE NOW
+              <PrimaryButton href="/consulting">
+                WORK WITH ME
               </PrimaryButton>
               <SecondaryButton href="/contact">
-                VOLUNTEER
+                GET IN TOUCH
               </SecondaryButton>
-              <SecondaryButton href="https://www.youtube.com/@nikbearbrown">
+              <SecondaryButton href="https://www.youtube.com/@nikbearbrown" target="_blank" rel="noopener noreferrer">
                 YOUTUBE
+              </SecondaryButton>
+              <SecondaryButton href="https://github.com/nikbearbrown" target="_blank" rel="noopener noreferrer">
+                GITHUB
               </SecondaryButton>
             </div>
           </div>

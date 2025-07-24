@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ClassesPage() {
   return (
-    <div className="container px-4 md:px-6 mx-auto py-12 bg-black">
+    <div className="container px-4 md:px-6 mx-auto py-12">
       <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="mb-16">
@@ -35,24 +35,24 @@ export default function ClassesPage() {
         <div className="grid gap-12">
           <section>
             <h2 className="text-3xl font-bold mb-6 text-white">Teaching Philosophy</h2>
-            <div className="prose prose-lg prose-invert">
-              <p className="text-gray-300">
+                          <div className="prose prose-lg">
+              <p className="text-muted-foreground">
                 My teaching approach emphasizes hands-on learning, real-world applications, and the integration of cutting-edge research into the classroom. I believe in fostering an inclusive environment where students can explore complex concepts through project-based learning and collaborative problem-solving.
               </p>
               
-              <div className="bg-gray-900 rounded-lg p-8 my-8 border border-gray-700">
+              <div className="bg-gradient-to-r from-gray-100 to-gray-200 dark:from-gray-800 dark:to-gray-900 rounded-lg p-8 my-8 border border-gray-300 dark:border-gray-700">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center">
+                  <div className="w-12 h-12 bg-gray-500 dark:bg-gray-700 rounded-lg flex items-center justify-center">
                     <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold text-white">Teaching Recognition</h3>
-                    <p className="text-gray-400 text-sm mb-0">Award-winning educational innovation and student engagement</p>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">Teaching Recognition</h3>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm mb-0">Award-winning educational innovation and student engagement</p>
                   </div>
                 </div>
-                <p className="mb-0 text-gray-300">
+                <p className="mb-0 text-muted-foreground">
                   Recipient of the RISE Award 2022 for Computer and Information Sciences, the Fostering Engineering Innovation in Education Award (2021-22), the Dean's Award from the College of Engineering (2024-25), and the Red Hat Academy Director's Award (2020).
                 </p>
               </div>
@@ -60,22 +60,22 @@ export default function ClassesPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-6 text-white">Featured Courses</h2>
+            <h2 className="text-3xl font-bold mb-6">Featured Courses</h2>
             <div className="grid gap-6">
               
-              <div className="border border-gray-700 rounded-lg p-6 bg-gray-900">
+              <div className="border rounded-lg p-6 bg-gray-100 dark:bg-gray-900">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-12 h-12 bg-gray-300 dark:bg-gray-700 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <svg className="w-6 h-6 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014.846 21H9.154a3.374 3.374 0 00-2.548-1.146l-.548-.547z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="text-xl font-bold mb-3 text-white">INFO 7375: Prompt Engineering for Generative AI</h3>
-                    <p className="mb-4 text-gray-300">
+                    <h3 className="text-xl font-bold mb-3">INFO 7375: Prompt Engineering for Generative AI</h3>
+                    <p className="mb-4 text-muted-foreground">
                       A comprehensive exploration of prompt engineering and fine-tuning for Large Language Models (LLMs). Master the art and science of crafting prompts that drive LLMs to create captivating and context-aware content across various domains.
                     </p>
-                    <div className="bg-black rounded-lg p-4 border-l-4 border-gray-600">
+                    <div className="bg-white dark:bg-gray-800 rounded-lg p-4 border-l-4 border-gray-400 dark:border-gray-600">
                       <p className="text-sm mb-2 text-gray-300"><strong>Key Topics:</strong></p>
                       <p className="text-sm text-gray-400">
                         Prompt patterns, LangChain integration, vector databases, fine-tuning techniques, and advanced deployment strategies for generative AI applications.
@@ -178,15 +178,15 @@ export default function ClassesPage() {
           <section>
             <h2 className="text-3xl font-bold mb-6 text-white">Complete Course Listing</h2>
             <div className="grid md:grid-cols-2 gap-6">
-              <div className="border border-gray-700 rounded-lg overflow-hidden">
-                <div className="bg-gray-800 p-4">
-                  <h3 className="text-xl font-bold text-white">Northeastern University</h3>
+              <div className="border rounded-lg overflow-hidden">
+                <div className="bg-gray-300 dark:bg-gray-800 p-4">
+                  <h3 className="text-xl font-bold">Northeastern University</h3>
                 </div>
-                <div className="p-4 bg-gray-900">
+                <div className="p-4 bg-gray-100 dark:bg-gray-900">
                   <ul className="space-y-2">
                     <li className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2"></span>
-                      <span className="text-gray-300">INFO 6205: Program Structure Algorithms*</span>
+                      <span className="w-1.5 h-1.5 bg-gray-500 dark:bg-gray-400 rounded-full mt-2"></span>
+                      <span className="text-gray-800 dark:text-gray-300">INFO 6205: Program Structure Algorithms*</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <span className="w-1.5 h-1.5 bg-gray-400 rounded-full mt-2"></span>
@@ -376,16 +376,16 @@ export default function ClassesPage() {
             <h2 className="text-3xl font-bold mb-6 text-white">Teaching Awards & Recognition</h2>
             <div className="grid gap-4">
               
-              <div className="border border-gray-700 rounded-lg p-4 bg-gray-900">
+              <div className="border rounded-lg p-4 bg-gray-100 dark:bg-gray-900">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 bg-gray-300 dark:bg-gray-700 rounded-full flex items-center justify-center flex-shrink-0">
+                    <svg className="w-5 h-5 text-gray-700 dark:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                     </svg>
                   </div>
                   <div>
-                    <h3 className="font-bold text-white">RISE Award 2022</h3>
-                    <p className="text-sm text-gray-400">Computer and Information Sciences</p>
+                    <h3 className="font-bold">RISE Award 2022</h3>
+                    <p className="text-sm text-muted-foreground">Computer and Information Sciences</p>
                   </div>
                 </div>
               </div>

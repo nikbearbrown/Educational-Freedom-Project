@@ -1,6 +1,3 @@
-Here's the complete React component code for the Courses page, formatted for direct copy and paste:
-
-```jsx
 import type { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
@@ -693,4 +690,3 @@ export default function ClassesPage() {
     </div>
   )
 }
-```

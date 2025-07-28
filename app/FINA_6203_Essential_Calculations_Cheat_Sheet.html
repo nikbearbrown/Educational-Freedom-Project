@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FINA 6203 Essential Calculations Cheat Sheet</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-bg: #f8f9fa;
+            --dark-bg: #2c3e50;
+            --text-color: #333;
+            --light-text: #f8f9fa;
+            --border-color: #ddd;
+            --example-bg: #fffaf0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-bg);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        h1 {
+            margin-bottom: 10px;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 5px;
+        }
+        
+        h3 {
+            color: var(--secondary-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--secondary-color);
+        }
+        
+        .formula-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+        }
+        
+        .formula-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+        
+        .formula-description {
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+        
+        .formula {
+            background-color: #f1f8ff;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .excel {
+            background-color: #e8f5e9;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        
+        .example {
+            background-color: var(--example-bg);
+            padding: 10px;
+            border-radius: 4px;
+            margin-top: 10px;
+            border-left: 3px solid #f39c12;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        th {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+        }
+        
+        tr:nth-child(even) {
+            background-color: var(--light-bg);
+        }
+        
+        .section-nav {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .section-nav ul {
+            list-style-type: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+        
+        .section-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .section-nav a:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        .excel-section {
+            background-color: #e8f5e9;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        
+        .excel-function {
+            margin-bottom: 10px;
+            padding: 5px 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+        
+        .excel-function-name {
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        
+        .excel-syntax {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #f1f8e9;
+            padding: 5px;
+            border-radius: 4px;
+            display: inline-block;
+            margin: 5px 0;
+        }
+        
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 0.9em;
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            .section-nav ul {
+                flex-direction: column;
+            }
+            
+            .section-nav li {
+                margin-bottom: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>FINA 6203 Essential Calculations Cheat Sheet</h1>
+        <p>A comprehensive guide to financial calculations for quantitative finance</p>
+    </header>
+    
+    <nav class="section-nav">
+        <ul>
+            <li><a href="#return-calculations">Return Calculations</a></li>
+            <li><a href="#risk-measures">Risk Measures</a></li>
+            <li><a href="#interest-rates">Interest Rates</a></li>
+            <li><a href="#bond-calculations">Bond Calculations</a></li>
+            <li><a href="#fund-management">Fund Management</a></li>
+            <li><a href="#margin-trading">Margin Trading</a></li>
+            <li><a href="#short-selling">Short Selling</a></li>
+            <li><a href="#options">Options</a></li>
+            <li><a href="#portfolio-management">Portfolio Management</a></li>
+            <li><a href="#excel-functions">Excel Functions</a></li>
+            <li><a href="#key-terms">Key Terms</a></li>
+        </ul>
+    </nav>
+    
+    <section id="return-calculations">
+        <h2>Return Calculations</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Holding Period Return (HPR)</div>
+            <div class="formula-description">Calculates the total return on an investment over a specific period</div>
+            <div><strong>Input:</strong> Beginning price (P₀), Ending price (P₁), Dividends (D₁)</div>
+            <div><strong>Output:</strong> Percentage return</div>
+            <div class="formula"><strong>Equation:</strong> R = (P₁ - P₀ + D₁) / P₀</div>
+            <div class="excel"><strong>Excel:</strong> =(EndPrice-StartPrice+Dividend)/StartPrice</div>
+            <div class="example">
+                <strong>Example:</strong> Stock bought at $50, sold at $55, paid $2 dividend<br>
+                HPR = (55 - 50 + 2) / 50 = 7 / 50 = 0.14 or 14%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Arithmetic Average Return</div>
+            <div class="formula-description">Simple average of periodic returns</div>
+            <div><strong>Input:</strong> Series of returns (R₁, R₂, ..., Rₙ)</div>
+            <div><strong>Output:</strong> Average return</div>
+            <div class="formula"><strong>Equation:</strong> R̄ = (R₁ + R₂ + ... + Rₙ) / n</div>
+            <div class="excel"><strong>Excel:</strong> =AVERAGE(R1:Rn)</div>
+            <div class="example">
+                <strong>Example:</strong> Returns of 10%, 15%, -5%, 8% over 4 years<br>
+                R̄ = (10% + 15% + (-5%) + 8%) / 4 = 28% / 4 = 7%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Geometric Average Return</div>
+            <div class="formula-description">Compound average growth rate that accounts for compounding</div>
+            <div><strong>Input:</strong> Series of returns (R₁, R₂, ..., Rₙ)</div>
+            <div><strong>Output:</strong> Compounded average return</div>
+            <div class="formula"><strong>Equation:</strong> Rg = [(1+R₁) × (1+R₂) × ... × (1+Rₙ)]^(1/n) - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(PRODUCT(1+R1,1+R2,...,1+Rn))^(1/COUNT(R1:Rn))-1</div>
+            <div class="example">
+                <strong>Example:</strong> Returns of 10%, 15%, -5%, 8% over 4 years<br>
+                Rg = [(1.10) × (1.15) × (0.95) × (1.08)]^(1/4) - 1<br>
+                Rg = [1.291]^(1/4) - 1 = 1.066 - 1 = 0.066 or 6.6%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Compound Annual Growth Rate (CAGR)</div>
+            <div class="formula-description">Annualized growth rate over multiple years</div>
+            <div><strong>Input:</strong> Present value (PV), Future value (FV), Number of years (n)</div>
+            <div><strong>Output:</strong> Annual growth rate</div>
+            <div class="formula"><strong>Equation:</strong> CAGR = (FV/PV)^(1/n) - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(FV/PV)^(1/Years)-1 or =RRI(Years,PV,FV)</div>
+            <div class="example">
+                <strong>Example:</strong> Investment grows from $10,000 to $14,802 over 4 years<br>
+                CAGR = ($14,802/$10,000)^(1/4) - 1 = (1.4802)^(1/4) - 1 = 1.1032 - 1 = 0.1032 or 10.32%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Monthly Return from Total Return</div>
+            <div class="formula-description">Converts total return into equivalent monthly return</div>
+            <div><strong>Input:</strong> Total return (R), Number of months (n)</div>
+            <div><strong>Output:</strong> Monthly return</div>
+            <div class="formula"><strong>Equation:</strong> rm = (1+R)^(1/n) - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(1+TotalReturn)^(1/Months)-1</div>
+            <div class="example">
+                <strong>Example:</strong> Total return of 16% over 12 months<br>
+                rm = (1+0.16)^(1/12) - 1 = (1.16)^(1/12) - 1 = 1.0124 - 1 = 0.0124 or 1.24% per month
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Annualized Return</div>
+            <div class="formula-description">Converts shorter period return to annual equivalent</div>
+            <div><strong>Input:</strong> Period return (R), Period length in months (n)</div>
+            <div><strong>Output:</strong> Annual return</div>
+            <div class="formula"><strong>Equation:</strong> ra = (1+R)^(12/n) - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(1+PeriodReturn)^(12/Months)-1</div>
+            <div class="example">
+                <strong>Example:</strong> 3% return over 3 months<br>
+                ra = (1+0.03)^(12/3) - 1 = (1.03)^4 - 1 = 1.1255 - 1 = 0.1255 or 12.55% annually
+            </div>
+        </div>
+    </section>
+    
+    <section id="risk-measures">
+        <h2>Risk Measures</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Standard Deviation</div>
+            <div class="formula-description">Measures volatility/risk of returns</div>
+            <div><strong>Input:</strong> Series of returns (R₁, R₂, ..., Rₙ), Mean return (R̄)</div>
+            <div><strong>Output:</strong> Standard deviation</div>
+            <div class="formula"><strong>Equation:</strong> σ = √[Σ(Ri - R̄)² / (n-1)]</div>
+            <div class="excel"><strong>Excel:</strong> =STDEV.S(R1:Rn)</div>
+            <div class="example">
+                <strong>Example:</strong> Returns of 10%, 15%, -5%, 8% with mean return of 7%<br>
+                σ = √[((0.10-0.07)² + (0.15-0.07)² + (-0.05-0.07)² + (0.08-0.07)²) / (4-1)]<br>
+                σ = √[(0.0009 + 0.0064 + 0.0144 + 0.0001) / 3] = √[0.0218/3] = √0.00727 = 0.0853 or 8.53%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Risk Premium</div>
+            <div class="formula-description">Additional return expected for bearing risk</div>
+            <div><strong>Input:</strong> Expected return on asset, Risk-free rate</div>
+            <div><strong>Output:</strong> Risk premium</div>
+            <div class="formula"><strong>Equation:</strong> RP = Expected Return - Risk-Free Rate</div>
+            <div class="excel"><strong>Excel:</strong> =ExpectedReturn-RiskFreeRate</div>
+            <div class="example">
+                <strong>Example:</strong> Stock with expected return of 11%, risk-free rate of 3%<br>
+                RP = 11% - 3% = 8%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Excess Return</div>
+            <div class="formula-description">Actual return above risk-free rate</div>
+            <div><strong>Input:</strong> Asset return, Risk-free rate</div>
+            <div><strong>Output:</strong> Excess return</div>
+            <div class="formula"><strong>Equation:</strong> ER = Asset Return - Risk-Free Rate</div>
+            <div class="excel"><strong>Excel:</strong> =AssetReturn-RiskFreeRate</div>
+            <div class="example">
+                <strong>Example:</strong> Stock returned 9.5%, risk-free rate was 2.5%<br>
+                ER = 9.5% - 2.5% = 7%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Probability of Loss (Normal Distribution)</div>
+            <div class="formula-description">Probability of negative return assuming normal distribution</div>
+            <div><strong>Input:</strong> Expected return (μ), Standard deviation (σ)</div>
+            <div><strong>Output:</strong> Probability</div>
+            <div class="formula"><strong>Equation:</strong> Uses Z-score: Z = (0 - μ) / σ then finds P(Z < calculated Z)</div>
+            <div class="excel"><strong>Excel:</strong> =NORM.DIST(0,ExpectedReturn,StandardDeviation,TRUE)</div>
+            <div class="example">
+                <strong>Example:</strong> Stock with expected return of 8% and standard deviation of 20%<br>
+                Z = (0 - 0.08) / 0.20 = -0.4<br>
+                P(Z < -0.4) = 0.3446 or 34.46% probability of loss
+            </div>
+        </div>
+    </section>
+    
+    <section id="interest-rates">
+        <h2>Interest Rate Calculations</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Effective Annual Rate (EAR)</div>
+            <div class="formula-description">True annual rate accounting for compounding</div>
+            <div><strong>Input:</strong> Annual percentage rate (APR), Compounding frequency (m)</div>
+            <div><strong>Output:</strong> Effective annual rate</div>
+            <div class="formula"><strong>Equation:</strong> EAR = (1 + APR/m)^m - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(1+APR/m)^m-1</div>
+            <div class="example">
+                <strong>Example:</strong> APR of 6% compounded quarterly<br>
+                EAR = (1 + 0.06/4)^4 - 1 = (1 + 0.015)^4 - 1 = (1.015)^4 - 1 = 1.0614 - 1 = 0.0614 or 6.14%
+            </div>
+        </div>
+        
+        <div class="card">
+            <h3>EAR with Specific Compounding:</h3>
+            <ul>
+                <li><strong>Annual:</strong> =(1+APR/1)^1-1 or simply =APR</li>
+                <li><strong>Semiannual:</strong> =(1+APR/2)^2-1</li>
+                <li><strong>Quarterly:</strong> =(1+APR/4)^4-1</li>
+                <li><strong>Monthly:</strong> =(1+APR/12)^12-1</li>
+                <li><strong>Weekly:</strong> =(1+APR/52)^52-1</li>
+                <li><strong>Daily:</strong> =(1+APR/365)^365-1</li>
+                <li><strong>Continuous:</strong> =EXP(APR)-1</li>
+            </ul>
+            <div class="example" style="margin-top: 10px;">
+                <strong>Example:</strong> APR of 5% with different compounding frequencies<br>
+                - Annual: (1+0.05/1)^1-1 = 5.00%<br>
+                - Quarterly: (1+0.05/4)^4-1 = 5.09%<br>
+                - Monthly: (1+0.05/12)^12-1 = 5.12%<br>
+                - Continuous: e^0.05-1 = 5.13%
+            </div>
+        </div>
+    </section>
+    
+    <section id="bond-calculations">
+        <h2>Bond Calculations</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Bond Price (Basic)</div>
+            <div class="formula-description">Calculates present value of bond cash flows</div>
+            <div><strong>Input:</strong> Coupon rate (c), Face value (F), Yield to maturity (r), Periods (n)</div>
+            <div><strong>Output:</strong> Bond price</div>
+            <div class="formula"><strong>Equation:</strong> Price = Σ[C/(1+r)^t] + [F/(1+r)^n]</div>
+            <div class="excel"><strong>Excel:</strong> =PV(yield,periods,-coupon*face_value,face_value)</div>
+            <div class="example">
+                <strong>Example:</strong> $1,000 bond with 6% annual coupon, 5 years to maturity, YTM of 5%<br>
+                C = $60 per year, F = $1,000, r = 5%, n = 5<br>
+                Price = $60/(1.05)¹ + $60/(1.05)² + $60/(1.05)³ + $60/(1.05)⁴ + $60/(1.05)⁵ + $1,000/(1.05)⁵<br>
+                Price = $57.14 + $54.42 + $51.83 + $49.36 + $47.01 + $783.53 = $1,043.29
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Bond Price (Semiannual Payments)</div>
+            <div class="formula-description">Bond price with semiannual compounding</div>
+            <div><strong>Input:</strong> Annual coupon rate (c), Face value (F), Annual YTM (r), Years to maturity (n)</div>
+            <div><strong>Output:</strong> Bond price</div>
+            <div class="formula"><strong>Equation:</strong> Price = Σ[C/2/(1+r/2)^t] + [F/(1+r/2)^(2n)]</div>
+            <div class="excel"><strong>Excel:</strong> =PV(yield/2,years*2,-coupon*face_value/2,face_value)</div>
+            <div class="example">
+                <strong>Example:</strong> $1,000 bond with 6% annual coupon (3% semiannual), 5 years to maturity, YTM of 5%<br>
+                C/2 = $30 per period, F = $1,000, r/2 = 2.5%, 2n = 10 periods<br>
+                Price = $30/(1.025)¹ + $30/(1.025)² + ... + $30/(1.025)¹⁰ + $1,000/(1.025)¹⁰<br>
+                Price = $29.27 + $28.56 + ... + $23.53 + $784.38 = $1,044.32
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Current Yield</div>
+            <div class="formula-description">Annual coupon payment relative to current price</div>
+            <div><strong>Input:</strong> Annual coupon payment, Current bond price</div>
+            <div><strong>Output:</strong> Current yield percentage</div>
+            <div class="formula"><strong>Equation:</strong> Current Yield = Annual Coupon Payment / Current Price</div>
+            <div class="excel"><strong>Excel:</strong> =AnnualCoupon/CurrentPrice</div>
+            <div class="example">
+                <strong>Example:</strong> Bond with $80 annual coupon trading at $950<br>
+                Current Yield = $80 / $950 = 0.0842 or 8.42%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Accrued Interest</div>
+            <div class="formula-description">Interest earned but not yet paid</div>
+            <div><strong>Input:</strong> Coupon payment, Days since last payment, Days in period</div>
+            <div><strong>Output:</strong> Accrued interest amount</div>
+            <div class="formula"><strong>Equation:</strong> AI = Coupon × (Days since last payment / Days in period)</div>
+            <div class="excel"><strong>Excel:</strong> =Coupon*(DaysSincePayment/DaysInPeriod)</div>
+            <div class="example">
+                <strong>Example:</strong> Bond with $50 semiannual coupon, 60 days since last payment, 182 days in period<br>
+                AI = $50 × (60 / 182) = $50 × 0.3297 = $16.49
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Invoice Price</div>
+            <div class="formula-description">Total price including accrued interest</div>
+            <div><strong>Input:</strong> Clean price, Accrued interest</div>
+            <div><strong>Output:</strong> Invoice price</div>
+            <div class="formula"><strong>Equation:</strong> Invoice Price = Clean Price + Accrued Interest</div>
+            <div class="excel"><strong>Excel:</strong> =CleanPrice+AccruedInterest</div>
+            <div class="example">
+                <strong>Example:</strong> Bond with clean price of $1,025 and accrued interest of $16.49<br>
+                Invoice Price = $1,025 + $16.49 = $1,041.49
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Zero-Coupon Bond Value</div>
+            <div class="formula-description">Present value of a zero-coupon bond</div>
+            <div><strong>Input:</strong> Face value, Yield to maturity (YTM), Years to maturity</div>
+            <div><strong>Output:</strong> Bond value</div>
+            <div class="formula"><strong>Equation:</strong> Value = Face Value / (1 + YTM)^Years</div>
+            <div class="excel"><strong>Excel:</strong> =FaceValue/(1+YTM)^Years</div>
+            <div class="example">
+                <strong>Example:</strong> $1,000 zero-coupon bond, 6% YTM, 10 years to maturity<br>
+                Value = $1,000 / (1 + 0.06)^10 = $1,000 / 1.7908 = $558.39
+            </div>
+        </div>
+    </section>
+    
+    <section id="fund-management">
+        <h2>Fund Management</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Net Asset Value (NAV)</div>
+            <div class="formula-description">Per-share value of a fund</div>
+            <div><strong>Input:</strong> Total assets, Total liabilities, Number of shares outstanding</div>
+            <div><strong>Output:</strong> NAV per share</div>
+            <div class="formula"><strong>Equation:</strong> NAV = (Total Assets - Total Liabilities) / Shares Outstanding</div>
+            <div class="excel"><strong>Excel:</strong> =(TotalAssets-Liabilities)/SharesOutstanding</div>
+            <div class="example">
+                <strong>Example:</strong> Fund with $250 million in assets, $10 million in liabilities, 12 million shares outstanding<br>
+                NAV = ($250,000,000 - $10,000,000) / 12,000,000 = $240,000,000 / 12,000,000 = $20 per share
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Front-End Load</div>
+            <div class="formula-description">Sales charge when purchasing fund shares</div>
+            <div><strong>Input:</strong> Offering price, NAV</div>
+            <div><strong>Output:</strong> Load percentage</div>
+            <div class="formula"><strong>Equation:</strong> Load = (Offering Price - NAV) / Offering Price</div>
+            <div class="excel"><strong>Excel:</strong> =(OfferingPrice-NAV)/OfferingPrice</div>
+            <div class="example">
+                <strong>Example:</strong> Fund with NAV of $18.50 and offering price of $20.00<br>
+                Load = ($20.00 - $18.50) / $20.00 = $1.50 / $20.00 = 0.075 or 7.5%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Portfolio Turnover</div>
+            <div class="formula-description">Measure of trading activity in a fund</div>
+            <div><strong>Input:</strong> Purchases, Sales, Average portfolio value</div>
+            <div><strong>Output:</strong> Turnover ratio</div>
+            <div class="formula"><strong>Equation:</strong> Turnover = Min(Purchases, Sales) / Average Portfolio Value</div>
+            <div class="excel"><strong>Excel:</strong> =MIN(Purchases,Sales)/AveragePortfolioValue</div>
+            <div class="example">
+                <strong>Example:</strong> Fund with $120 million in purchases, $100 million in sales, average portfolio value of $500 million<br>
+                Turnover = Min($120M, $100M) / $500M = $100M / $500M = 0.20 or 20%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Net Return with Expenses</div>
+            <div class="formula-description">Return after accounting for fund expenses</div>
+            <div><strong>Input:</strong> Gross return, Expense ratio, Other fees (e.g., 12b-1)</div>
+            <div><strong>Output:</strong> Net return</div>
+            <div class="formula"><strong>Equation:</strong> Net Return = Gross Return - Expense Ratio - Other Fees</div>
+            <div class="excel"><strong>Excel:</strong> =GrossReturn-ExpenseRatio-OtherFees</div>
+            <div class="example">
+                <strong>Example:</strong> Fund with gross return of 12%, expense ratio of 1.2%, 12b-1 fee of 0.25%<br>
+                Net Return = 12% - 1.2% - 0.25% = 10.55%
+            </div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Holding Period Return with Fees</div>
+            <div class="formula-description">Multi-year return accounting for all fees</div>
+            <div><strong>Input:</strong> Front-end load, Annual return (r), Expenses, Years</div>
+            <div><strong>Output:</strong> Net holding period return</div>
+            <div class="formula"><strong>Equation:</strong> Net HPR = (1 - Front Load) × [(1 + r) × (1 - Expenses)]^Years - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(1-FrontLoad)*((1+r)*(1-Expenses))^Years-1</div>
+            <div class="example">
+                <strong>Example:</strong> Fund with 5% front-end load, 10% annual gross return, 1.5% expenses, 5-year holding period<br>
+                Net HPR = (1 - 0.05) × [(1 + 0.10) × (1 - 0.015)]^5 - 1<br>
+                Net HPR = 0.95 × [1.10 × 0.985]^5 - 1 = 0.95 × [1.0835]^5 - 1 = 0.95 × 1.4951 - 1 = 1.4203 - 1 = 0.4203 or 42.03%
+            </div>
+        </div>
+    </section>
+    
+    <section id="margin-trading">
+        <h2>Margin Trading</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Initial Margin Requirement</div>
+            <div class="formula-description">Minimum percentage of funds investor must provide</div>
+            <div class="formula"><strong>Equation:</strong> Initial Margin = (Investor's Deposit / Total Purchase Value) × 100%</div>
+            <div class="excel"><strong>Excel:</strong> =Deposit/(SharePrice*NumberOfShares)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Borrowed Amount</div>
+            <div class="formula-description">Amount financed by broker</div>
+            <div class="formula"><strong>Equation:</strong> Borrowed = Total Purchase Value × (1 - Initial Margin)</div>
+            <div class="excel"><strong>Excel:</strong> =TotalValue*(1-InitialMargin)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Current Margin Percentage</div>
+            <div class="formula-description">Current equity as percentage of position value</div>
+            <div class="formula"><strong>Equation:</strong> Margin % = (Current Market Value - Loan) / Current Market Value</div>
+            <div class="excel"><strong>Excel:</strong> =(CurrentPrice*Shares-LoanAmount)/(CurrentPrice*Shares)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Margin Call Price</div>
+            <div class="formula-description">Price that triggers a margin call</div>
+            <div class="formula"><strong>Equation:</strong> Price = Loan / [Shares × (1 - Maintenance Margin)]</div>
+            <div class="excel"><strong>Excel:</strong> =LoanAmount/(Shares*(1-MaintenanceMargin))</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Effective Annual Return on Margin</div>
+            <div class="formula-description">Annualized return on margin investment</div>
+            <div class="formula"><strong>Equation:</strong> Annual Return = [(Final Equity / Initial Equity)^(12/months)] - 1</div>
+            <div class="excel"><strong>Excel:</strong> =((FinalEquity/InitialEquity)^(12/Months))-1</div>
+        </div>
+    </section>
+    
+    <section id="short-selling">
+        <h2>Short Selling</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Initial Margin for Short Sale</div>
+            <div class="formula-description">Funds required to initiate short position</div>
+            <div class="formula"><strong>Equation:</strong> Required Margin = Share Price × Number of Shares × Initial Margin Rate</div>
+            <div class="excel"><strong>Excel:</strong> =SharePrice*NumberOfShares*InitialMarginRate</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Short Position Margin Percentage</div>
+            <div class="formula-description">Current equity percentage in short position</div>
+            <div class="formula"><strong>Equation:</strong> Margin % = (Initial Margin - (Current Price - Initial Price) × Shares) / (Current Price × Shares)</div>
+            <div class="excel"><strong>Excel:</strong> =(InitialMargin-(CurrentPrice-InitialPrice)*Shares)/(CurrentPrice*Shares)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Short Sale Return</div>
+            <div class="formula-description">Return on short sale</div>
+            <div class="formula"><strong>Equation:</strong> Return = ((Initial Price - Ending Price) × Shares) / Initial Margin</div>
+            <div class="excel"><strong>Excel:</strong> =((InitialPrice-EndingPrice)*Shares)/InitialMargin</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Short Sale Margin Call Price</div>
+            <div class="formula-description">Price that triggers a short margin call</div>
+            <div class="formula"><strong>Equation:</strong> Solve for P: (Initial Margin - (P - Initial Price) × Shares) / (P × Shares) = Maintenance Margin</div>
+            <div class="excel"><strong>Excel:</strong> Complex formula, often easier to use solver</div>
+        </div>
+    </section>
+    
+    <section id="options">
+        <h2>Options</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Call Option Payoff</div>
+            <div class="formula-description">Payoff at expiration for call option</div>
+            <div class="formula"><strong>Equation:</strong> Payoff = Max(Stock Price - Strike Price, 0)</div>
+            <div class="excel"><strong>Excel:</strong> =MAX(StockPrice-StrikePrice,0)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Put Option Payoff</div>
+            <div class="formula-description">Payoff at expiration for put option</div>
+            <div class="formula"><strong>Equation:</strong> Payoff = Max(Strike Price - Stock Price, 0)</div>
+            <div class="excel"><strong>Excel:</strong> =MAX(StrikePrice-StockPrice,0)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Call Option Profit</div>
+            <div class="formula-description">Profit at expiration for call option buyer</div>
+            <div class="formula"><strong>Equation:</strong> Profit = Max(Stock Price - Strike Price, 0) - Premium</div>
+            <div class="excel"><strong>Excel:</strong> =MAX(StockPrice-StrikePrice,0)-Premium</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Put Option Profit</div>
+            <div class="formula-description">Profit at expiration for put option buyer</div>
+            <div class="formula"><strong>Equation:</strong> Profit = Max(Strike Price - Stock Price, 0) - Premium</div>
+            <div class="excel"><strong>Excel:</strong> =MAX(StrikePrice-StockPrice,0)-Premium</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Short Call Profit</div>
+            <div class="formula-description">Profit at expiration for call option seller</div>
+            <div class="formula"><strong>Equation:</strong> Profit = Premium - Max(Stock Price - Strike Price, 0)</div>
+            <div class="excel"><strong>Excel:</strong> =Premium-MAX(StockPrice-StrikePrice,0)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Short Put Profit</div>
+            <div class="formula-description">Profit at expiration for put option seller</div>
+            <div class="formula"><strong>Equation:</strong> Profit = Premium - Max(Strike Price - Stock Price, 0)</div>
+            <div class="excel"><strong>Excel:</strong> =Premium-MAX(StrikePrice-StockPrice,0)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Covered Call Profit</div>
+            <div class="formula-description">Profit for combined stock and short call position</div>
+            <div class="formula"><strong>Equation:</strong> Profit = (Min(Current Stock Price, Strike Price) - Initial Stock Price) + Premium</div>
+            <div class="excel"><strong>Excel:</strong> =(MIN(StockPrice,StrikePrice)-InitialStockPrice)+Premium</div>
+        </div>
+    </section>
+    
+    <section id="portfolio-management">
+        <h2>Portfolio Management</h2>
+        
+        <div class="formula-card">
+            <div class="formula-title">Portfolio Return</div>
+            <div class="formula-description">Weighted average return of portfolio components</div>
+            <div class="formula"><strong>Equation:</strong> Rp = w₁R₁ + w₂R₂ + ... + wₙRₙ</div>
+            <div class="excel"><strong>Excel:</strong> =SUMPRODUCT(Weights,Returns)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Portfolio Rebalancing Return</div>
+            <div class="formula-description">Return when portfolio is rebalanced to original weights</div>
+            <div class="formula"><strong>Equation:</strong> Same as portfolio return, but weights are reset periodically</div>
+            <div class="excel"><strong>Excel:</strong> =SUMPRODUCT(OriginalWeights,PeriodReturns)</div>
+        </div>
+        
+        <div class="formula-card">
+            <div class="formula-title">Total Portfolio Return (Without Rebalancing)</div>
+            <div class="formula-description">Calculates total return when weights drift with performance</div>
+            <div class="formula"><strong>Equation:</strong> Total Return = (Sum of Final Values / Initial Investment) - 1</div>
+            <div class="excel"><strong>Excel:</strong> =(SUM(FinalValues)/InitialInvestment)-1</div>
+        </div>
+    </section>
+    
+    <section id="excel-functions" class="excel-section">
+        <h2>Excel Financial Functions</h2>
+        
+        <div class="excel-function">
+            <div class="excel-function-name">Present Value</div>
+            <div class="excel-syntax">=PV(rate, nper, pmt, [fv], [type])</div>
+            <div>Calculates present value of an investment</div>
+        </div>
+        
+        <div class="excel-function">
+            <div class="excel-function-name">Future Value</div>
+            <div class="excel-syntax">=FV(rate, nper, pmt, [pv], [type])</div>
+            <div>Calculates future value of an investment</div>
+        </div>
+        
+        <div class="excel-function">
+            <div class="excel-function-name">Net Present Value</div>
+            <div class="excel-syntax">=NPV(rate, value1, [value2], ...)</div>
+            <div>Calculates net present value of a series of cash flows</div>
+        </div>
+        
+        <div class="excel-function">
+            <div class="excel-function-name">Internal Rate of Return</div>
+            <div class="excel-syntax">=IRR(values, [guess])</div>
+            <div>Calculates internal rate of return for a series of cash flows</div>
+        </div>
+        
+        <div class="excel-function">
+            <div class="excel-function-name">Yield</div>
+            <div class="excel-syntax">=YIELD(settlement, maturity, rate, pr, redemption, frequency, [basis])</div>
+            <div>Calculates bond yield to maturity</div>
+        </div>
+    </section>
+    
+    <section id="key-terms">
+        <h2>Key Financial Terms</h2>
+        
+        <div class="card">
+            <h3>Financial Assets & Securities</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Financial Assets</strong></td>
+                    <td>Claims on future cash flows; includes stocks, bonds, and derivatives (not physical/real assets like machines)</td>
+                </tr>
+                <tr>
+                    <td><strong>Real Assets</strong></td>
+                    <td>Tangible assets like equipment, real estate, or physical goods</td>
+                </tr>
+                <tr>
+                    <td><strong>Intangible Assets</strong></td>
+                    <td>Non-physical assets that lack physical substance (patents, trademarks, etc.)</td>
+                </tr>
+                <tr>
+                    <td><strong>Primary Market</strong></td>
+                    <td>Market where new securities are issued and sold to investors for the first time</td>
+                </tr>
+                <tr>
+                    <td><strong>Secondary Market</strong></td>
+                    <td>Market where existing securities are bought and sold among investors</td>
+                </tr>
+                <tr>
+                    <td><strong>IPO</strong></td>
+                    <td>Initial Public Offering: First-time sale of stock by a company to the public</td>
+                </tr>
+                <tr>
+                    <td><strong>SEO</strong></td>
+                    <td>Seasoned Equity Offering: Additional share issuance by a company that is already publicly traded</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h3>Investment Companies & Funds</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Investment Company</strong></td>
+                    <td>Company that invests money raised from investors in a variety of securities</td>
+                </tr>
+                <tr>
+                    <td><strong>Mutual Fund</strong></td>
+                    <td>Open-end investment company that pools investors' money to invest in securities</td>
+                </tr>
+                <tr>
+                    <td><strong>Closed-End Fund</strong></td>
+                    <td>Investment company that issues a fixed number of shares; doesn't redeem/issue new shares; price can differ from NAV</td>
+                </tr>
+                <tr>
+                    <td><strong>Open-End Fund</strong></td>
+                    <td>Investment company that stands ready to issue and redeem shares at NAV</td>
+                </tr>
+                <tr>
+                    <td><strong>Net Asset Value (NAV)</strong></td>
+                    <td>(Total assets - Liabilities) ÷ Number of shares outstanding</td>
+                </tr>
+                <tr>
+                    <td><strong>Front-End Load</strong></td>
+                    <td>Sales charge paid when purchasing fund shares</td>
+                </tr>
+                <tr>
+                    <td><strong>12b-1 Fee</strong></td>
+                    <td>Annual marketing/distribution fee charged by some mutual funds</td>
+                </tr>
+                <tr>
+                    <td><strong>Expense Ratio</strong></td>
+                    <td>Annual fee charged by funds to cover operating expenses, expressed as percentage of assets</td>
+                </tr>
+                <tr>
+                    <td><strong>Portfolio Turnover</strong></td>
+                    <td>Measure of trading activity: Min(Purchases, Sales) ÷ Average portfolio value</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h3>Risk & Return Concepts</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Risk-Return Tradeoff</strong></td>
+                    <td>Higher risk investments typically offer higher potential returns</td>
+                </tr>
+                <tr>
+                    <td><strong>Risk Premium</strong></td>
+                    <td>Difference between expected return on a risky asset and the risk-free rate; compensation for bearing risk</td>
+                </tr>
+                <tr>
+                    <td><strong>Excess Return</strong></td>
+                    <td>Actual return on an asset minus the risk-free rate</td>
+                </tr>
+                <tr>
+                    <td><strong>Arithmetic Average Return</strong></td>
+                    <td>Simple average of periodic returns: (R₁ + R₂ + ... + Rₙ) ÷ n</td>
+                </tr>
+                <tr>
+                    <td><strong>Geometric Average Return</strong></td>
+                    <td>Compound average growth rate: [(1+R₁) × (1+R₂) × ... × (1+Rₙ)]^(1/n) - 1</td>
+                </tr>
+                <tr>
+                    <td><strong>Standard Deviation</strong></td>
+                    <td>Measure of volatility/risk; square root of variance</td>
+                </tr>
+                <tr>
+                    <td><strong>Holding Period Return (HPR)</strong></td>
+                    <td>Total return over investment period: (P₁ - P₀ + D₁) ÷ P₀</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h3>Interest Rates & Time Value</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Annual Percentage Rate (APR)</strong></td>
+                    <td>Quoted annual interest rate without accounting for compounding</td>
+                </tr>
+                <tr>
+                    <td><strong>Effective Annual Rate (EAR)</strong></td>
+                    <td>Annual rate that accounts for compounding: (1 + APR/m)^m - 1</td>
+                </tr>
+                <tr>
+                    <td><strong>Zero-Coupon Bond</strong></td>
+                    <td>Bond issued at a discount that makes no regular interest payments</td>
+                </tr>
+                <tr>
+                    <td><strong>Discount Bond</strong></td>
+                    <td>Bond trading at a price below its par value</td>
+                </tr>
+                <tr>
+                    <td><strong>Par Value/Face Value</strong></td>
+                    <td>Amount to be repaid at a bond's maturity</td>
+                </tr>
+                <tr>
+                    <td><strong>Callable Bond</strong></td>
+                    <td>Bond that can be repurchased by the issuer before maturity</td>
+                </tr>
+                <tr>
+                    <td><strong>Coupon Rate</strong></td>
+                    <td>Annual interest rate paid by a bond based on its face value</td>
+                </tr>
+                <tr>
+                    <td><strong>Yield to Maturity (YTM)</strong></td>
+                    <td>Internal rate of return on a bond held to maturity</td>
+                </tr>
+                <tr>
+                    <td><strong>Current Yield</strong></td>
+                    <td>Annual coupon payment ÷ Current market price</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h3>Trading Mechanisms</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Market Order</strong></td>
+                    <td>Order to buy/sell immediately at the current market price</td>
+                </tr>
+                <tr>
+                    <td><strong>Limit Order</strong></td>
+                    <td>Order to buy/sell at a specified price or better (execution uncertainty, price certainty)</td>
+                </tr>
+                <tr>
+                    <td><strong>Buying on Margin</strong></td>
+                    <td>Purchasing securities using both investor funds and funds borrowed from a broker</td>
+                </tr>
+                <tr>
+                    <td><strong>Initial Margin</strong></td>
+                    <td>Minimum percentage of purchase price investor must deposit (set by Federal Reserve)</td>
+                </tr>
+                <tr>
+                    <td><strong>Maintenance Margin</strong></td>
+                    <td>Minimum percentage of equity that must be maintained in a margin account</td>
+                </tr>
+                <tr>
+                    <td><strong>Margin Call</strong></td>
+                    <td>Broker's demand for additional funds when account falls below maintenance margin</td>
+                </tr>
+                <tr>
+                    <td><strong>Short Selling</strong></td>
+                    <td>Sale of borrowed securities with the expectation of buying them back at a lower price</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="card">
+            <h3>Derivatives</h3>
+            <table>
+                <tr>
+                    <th>Term</th>
+                    <th>Definition</th>
+                </tr>
+                <tr>
+                    <td><strong>Derivative</strong></td>
+                    <td>Security whose value is derived from the value of an underlying asset</td>
+                </tr>
+                <tr>
+                    <td><strong>Call Option</strong></td>
+                    <td>Right (not obligation) to buy the underlying asset at the strike price</td>
+                </tr>
+                <tr>
+                    <td><strong>Put Option</strong></td>
+                    <td>Right (not obligation) to sell the underlying asset at the strike price</td>
+                </tr>
+                <tr>
+                    <td><strong>Strike/Exercise Price</strong></td>
+                    <td>Price at which option holder can buy/sell the underlying asset</td>
+                </tr>
+                <tr>
+                    <td><strong>European Option</strong></td>
+                    <td>Option that can only be exercised at expiration</td>
+                </tr>
+                <tr>
+                    <td><strong>American Option</strong></td>
+                    <td>Option that can be exercised any time up to and including expiration</td>
+                </tr>
+                <tr>
+                    <td><strong>In-the-Money</strong></td>
+                    <td>Call: Strike < Market price; Put: Strike > Market price</td>
+                </tr>
+                <tr>
+                    <td><strong>At-the-Money</strong></td>
+                    <td>Strike price equals market price</td>
+                </tr>
+                <tr>
+                    <td><strong>Out-of-the-Money</strong></td>
+                    <td>Call: Strike > Market price; Put: Strike < Market price</td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    
+    <footer>
+        <p>FINA 6203 Essential Calculations Cheat Sheet | Created for Finance Students</p>
+        <p>© 2025 | All financial formulas and equations compiled for educational purposes</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.section-nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 70,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Make the navigation sticky after scrolling past header
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('.section-nav');
+            const header = document.querySelector('header');
+            
+            if (window.scrollY >= header.offsetHeight) {
+                nav.style.position = 'fixed';
+                nav.style.top = '0';
+                nav.style.width = 'calc(100% - 40px)';
+                nav.style.maxWidth = '1160px';
+            } else {
+                nav.style.position = 'sticky';
+            }
+        });
+    </script>
+</body>
+</html>

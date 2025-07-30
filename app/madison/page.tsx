@@ -36,15 +36,6 @@ export default function MadisonPage() {
          <section>
            <h2 className="text-3xl font-bold mb-6">What Madison Fellows Do?</h2>
            <div className="prose prose-lg dark:prose-invert max-w-none">
-             <div className="mb-8">
-               <Image 
-                 src="/png/rl_agentic.png" 
-                 alt="Reinforcement Learning for Agentic AI diagram" 
-                 width={1536} 
-                 height={1888} 
-                 className="w-full h-auto rounded-lg my-6"
-               />
-             </div>
              
              <p>
                Madison Fellows initially build <a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">n8n</a> components that do something useful related to branding, marketing or advertising. These components are designed to take actions, check compliance, gather data or generate media, all while working with branding, marketing or advertising experts to create effective workflows.

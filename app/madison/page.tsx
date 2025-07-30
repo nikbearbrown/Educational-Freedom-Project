@@ -49,11 +49,27 @@ export default function MadisonPage() {
              <p>
                Madison Fellows initially build <a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">n8n</a> components that do something useful related to branding, marketing or advertising. These components are designed to take actions, check compliance, gather data or generate media, all while working with branding, marketing or advertising experts to create effective workflows.
              </p>
-             
+                          <div className="mb-8">
+               <Image 
+                 src="/png/n8n.png" 
+                 alt="n8n workflow" 
+                 width={1536} 
+                 height={449} 
+                 className="w-full h-auto rounded-lg my-6"
+               />
+             </div>
              <p>
                Once a single component is built, a fellow can continue to improve it, build another tool or work on the orchestration layer which extends traditional reinforcement learning theory to learning with agentic workflows (see figure). This includes adapting bandits, tabular q-learning and policy gradients to agentic workflows.
              </p>
-             
+                          <div className="mb-8">
+               <Image 
+                 src="/png/rl_agentic.png" 
+                 alt="Reinforcement Learning for Agentic AI diagram" 
+                 width={1536} 
+                 height={1888} 
+                 className="w-full h-auto rounded-lg my-6"
+               />
+             </div>
              <h3 className="text-xl font-bold mt-8 mb-4">The Five Agent Layers</h3>
              
              <p>

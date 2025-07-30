@@ -34,14 +34,24 @@ export default function MadisonPage() {
        {/* Main Content */}
        <div className="grid gap-12">
          <section>
-           <h2 className="text-3xl font-bold mb-6">About the Framework</h2>
+           <h2 className="text-3xl font-bold mb-6">What Madison Fellows Do?</h2>
            <div className="prose prose-lg dark:prose-invert max-w-none">
+             <div className="mb-8">
+               <Image 
+                 src="/png/rl_agentic.png" 
+                 alt="Reinforcement Learning for Agentic AI diagram" 
+                 width={1536} 
+                 height={1888} 
+                 className="w-full h-auto rounded-lg my-6"
+               />
+             </div>
+             
              <p>
-               Madison (informally known as "Mads and Madison") is an open-source, agent-based AI marketing intelligence framework that integrates specialized AI agents to deliver comprehensive marketing solutions. The framework maps projects to agent layers, details core technologies, and outlines implementation strategies for data-driven marketing.
+               Madison Fellows initially build <a href="https://n8n.io/" target="_blank" rel="noopener noreferrer">n8n</a> components that do something useful related to branding, marketing or advertising. These components are designed to take actions, check compliance, gather data or generate media, all while working with branding, marketing or advertising experts to create effective workflows.
              </p>
              
              <p>
-               This experimental project emphasizes collaborative learning and innovation, allowing marketers to build tailored solutions for branding, customer experience, content creation, and market research through an integrated agent ecosystem.
+               Once a single component is built, a fellow can continue to improve it, build another tool or work on the orchestration layer which extends traditional reinforcement learning theory to learning with agentic workflows (see figure). This includes adapting bandits, tabular q-learning and policy gradients to agentic workflows.
              </p>
              
              <h3 className="text-xl font-bold mt-8 mb-4">The Five Agent Layers</h3>
@@ -82,32 +92,42 @@ export default function MadisonPage() {
                </div>
              </div>
              
-             <h3 className="text-xl font-bold mt-8 mb-4">Core Technologies</h3>
+             <h3 className="text-xl font-bold mt-8 mb-4">Potential Agentic Tools for Madison Fellows</h3>
              
              <div className="grid md:grid-cols-2 gap-4 mt-4">
                <div className="p-4 border rounded-lg">
-                 <h4 className="font-bold mb-2">Language Models & NLP</h4>
-                 <p className="text-sm text-muted-foreground">GPT-4o, LLaMA, BERT, Grok 3 for brand voice personalization, content generation, and conversational AI.</p>
+                 <h4 className="font-bold mb-2">Brand Voice Analyzer</h4>
+                 <p className="text-sm text-muted-foreground">A tool that analyzes content across channels to ensure consistent brand voice and suggests improvements using NLP models.</p>
                </div>
                
                <div className="p-4 border rounded-lg">
-                 <h4 className="font-bold mb-2">Data Analysis</h4>
-                 <p className="text-sm text-muted-foreground">PCA, Clustering, Regression, Factor Analysis for survey analysis, segmentation, and preference modeling.</p>
+                 <h4 className="font-bold mb-2">Market Sentiment Tracker</h4>
+                 <p className="text-sm text-muted-foreground">An agent that monitors social media and news sources to track brand sentiment and identify emerging trends or issues.</p>
                </div>
                
                <div className="p-4 border rounded-lg">
-                 <h4 className="font-bold mb-2">Multi-Armed Bandit Systems</h4>
-                 <p className="text-sm text-muted-foreground">Thompson Sampling, UCB, Contextual Bandits for continuous optimization and dynamic allocation.</p>
+                 <h4 className="font-bold mb-2">Content Optimization Engine</h4>
+                 <p className="text-sm text-muted-foreground">A tool that uses multi-armed bandit algorithms to test and optimize content variations across different platforms.</p>
                </div>
                
                <div className="p-4 border rounded-lg">
-                 <h4 className="font-bold mb-2">Knowledge Graph Systems</h4>
-                 <p className="text-sm text-muted-foreground">Neo4j, RDF, SPARQL for brand perception tracking and market analysis integration.</p>
+                 <h4 className="font-bold mb-2">Synthetic Customer Journey Simulator</h4>
+                 <p className="text-sm text-muted-foreground">An agent that creates and tests synthetic customer profiles to identify friction points in marketing funnels.</p>
+               </div>
+               
+               <div className="p-4 border rounded-lg">
+                 <h4 className="font-bold mb-2">Compliance Verification Tool</h4>
+                 <p className="text-sm text-muted-foreground">A tool that reviews marketing materials for regulatory compliance across different jurisdictions and industries.</p>
+               </div>
+               
+               <div className="p-4 border rounded-lg">
+                 <h4 className="font-bold mb-2">Visual Asset Generator</h4>
+                 <p className="text-sm text-muted-foreground">An agent that creates on-brand visual content based on marketing briefs and campaign requirements.</p>
                </div>
              </div>
              
              <p className="mt-8">
-               The Madison orchestration layer ensures seamless coordination between agents, resolving conflicts, allocating resources dynamically, and enabling continuous learning from performance metrics.
+               These tools are just starting points. Madison Fellows are encouraged to explore and develop innovative solutions that address real-world marketing and branding challenges while advancing the capabilities of the Madison framework.
              </p>
              
              <div className="mt-8 flex flex-col md:flex-row gap-4 items-start">
@@ -125,6 +145,20 @@ export default function MadisonPage() {
                </a>
                
                <a 
+                 href="https://www.humanitarians.ai/madison" 
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 className="flex items-center gap-2 text-primary hover:underline"
+               >
+                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                   <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                   <line x1="3" y1="9" x2="21" y2="9"></line>
+                   <line x1="9" y1="21" x2="9" y2="9"></line>
+                 </svg>
+                 Madison Webpage
+               </a>
+               
+               <a 
                  href="https://youtube.com/playlist?list=PLgOGgHS58rB-2XzQOaQbBGUk30ABMig51&si=L8wvKwPE_F37cgiD"
                  target="_blank"
                  rel="noopener noreferrer"
@@ -136,80 +170,6 @@ export default function MadisonPage() {
                  </svg>
                  YouTube: Madison Playlist
                </a>
-               
-               <a 
-                 href="mailto:info@humanitarians.ai"
-                 className="flex items-center gap-2 text-primary hover:underline"
-               >
-                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-                   <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-                   <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-                 </svg>
-                 Email: info@humanitarians.ai
-               </a>
-             </div>
-           </div>
-         </section>
-
-         <section>
-           <h2 className="text-3xl font-bold mb-6">Key Projects</h2>
-           <div className="grid md:grid-cols-2 gap-8">
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Brand Voice Personalization</h3>
-               <p className="text-muted-foreground mb-4">
-                 Ensures consistent brand communication across all touchpoints through AI-powered voice analysis and parameter-efficient fine-tuning.
-               </p>
-             </div>
-             
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Multi-Armed Bandit Optimization</h3>
-               <p className="text-muted-foreground mb-4">
-                 Optimizes content and campaigns through continuous experimentation using Thompson sampling and contextual bandits.
-               </p>
-             </div>
-             
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">AI Concierge Systems</h3>
-               <p className="text-muted-foreground mb-4">
-                 Deploys digital assistants for personalized customer experiences with conversational AI and journey mapping.
-               </p>
-             </div>
-             
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">MarketMind Research</h3>
-               <p className="text-muted-foreground mb-4">
-                 Conducts comprehensive secondary research on markets, competitors, and trends through systematic intelligence gathering.
-               </p>
-             </div>
-           </div>
-         </section>
-
-         <section>
-           <h2 className="text-3xl font-bold mb-6">Implementation Features</h2>
-           <div className="grid md:grid-cols-2 gap-8">
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Agent Orchestration</h3>
-               <p className="text-muted-foreground">
-                 Coordinates all agents through cross-project validation, dynamic resource allocation, and pattern recognition across the marketing ecosystem.
-               </p>
-             </div>
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Open Source Framework</h3>
-               <p className="text-muted-foreground">
-                 Transparent, collaborative development model that enables customization and integration with existing marketing technology stacks.
-               </p>
-             </div>
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Real-Time Intelligence</h3>
-               <p className="text-muted-foreground">
-                 Continuous monitoring of market dynamics, social sentiment, and competitive landscapes with automated report generation.
-               </p>
-             </div>
-             <div className="p-6 border rounded-lg">
-               <h3 className="text-xl font-bold mb-3">Scalable Architecture</h3>
-               <p className="text-muted-foreground">
-                 Supports cloud, on-premises, or hybrid deployment with API-based integration and human-in-the-loop validation.
-               </p>
              </div>
            </div>
          </section>
@@ -223,6 +183,9 @@ export default function MadisonPage() {
              <PrimaryButton href="https://github.com/Humanitariansai/Madison">
                Madison GitHub
              </PrimaryButton>
+             <SecondaryButton href="https://www.humanitarians.ai/madison">
+               Madison Website
+             </SecondaryButton>
              <SecondaryButton href="https://youtube.com/playlist?list=PLgOGgHS58rB-2XzQOaQbBGUk30ABMig51&si=L8wvKwPE_F37cgiD">
                Madison YouTube
              </SecondaryButton>

@@ -19,15 +19,15 @@ export default function MycroftPage() {
          <p className="text-xl text-muted-foreground mb-8">
            An open-source educational experiment in AI-powered investment intelligence. Using AI to invest in AI: Building and learning together.
          </p>
-         <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8 bg-slate-100 dark:bg-slate-800 flex items-center justify-center">
-           {/* Placeholder for YouTube embed or main image */}
-           <div className="text-center p-8">
-             <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mx-auto mb-4 text-primary">
-               <path d="M2.5 17a24.12 24.12 0 0 1 0-10 2 2 0 0 1 1.4-1.4 49.56 49.56 0 0 1 16.2 0A2 2 0 0 1 21.5 7a24.12 24.12 0 0 1 0 10 2 2 0 0 1-1.4 1.4 49.55 49.55 0 0 1-16.2 0A2 2 0 0 1 2.5 17"></path>
-               <path d="m10 15 5-3-5-3z"></path>
-             </svg>
-             <p className="text-sm text-muted-foreground">Mycroft Framework Introduction</p>
-           </div>
+         <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8">
+           <iframe
+             className="absolute top-0 left-0 w-full h-full"
+             src="https://www.youtube.com/embed/1H0hsBU_foA?si=Tzx6XN_mBqR69m9P"
+             title="YouTube video player"
+             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+             referrerPolicy="strict-origin-when-cross-origin"
+             allowFullScreen
+           />
          </div>
        </div>
 

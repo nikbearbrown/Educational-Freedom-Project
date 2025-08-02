@@ -1,18 +1,28 @@
 "use client"
 
 import Link from "next/link"
-import Image from "next/image"
 import { useTheme } from "next-themes"
 import { useEffect, useState } from "react"
 
 export default function Muzak() {
   const { theme } = useTheme()
   const [mounted, setMounted] = useState(false)
+  const [isLoaded, setIsLoaded] = useState(false)
 
   // Avoid hydration mismatch by only rendering after mount
   useEffect(() => {
     setMounted(true)
+    
+    // Set a timeout to mark component as loaded even if other operations fail
+    const timeout = setTimeout(() => {
+      setIsLoaded(true)
+    }, 3000);
+    
+    return () => clearTimeout(timeout);
   }, [])
+
+  // Don't render anything server-side or until mounted
+  if (!mounted) return null;
 
   return (
     <section className="w-full border-t bg-background">
@@ -21,24 +31,7 @@ export default function Muzak() {
           {/* Music Info Section */}
           <div className="md:col-span-3">
             <div className="max-w-sm">
-              {mounted ? (
-                <div className="w-48 h-48 rounded-lg overflow-hidden relative">
-                  <iframe 
-                    style={{borderRadius: '12px'}} 
-                    src={`https://open.spotify.com/embed/artist/0hSpFCJodAYMP2cWK72zI6?utm_source=generator&theme=${theme === 'dark' ? '0' : '1'}`}
-                    width="100%" 
-                    height="100%" 
-                    frameBorder="0" 
-                    allowFullScreen 
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                    loading="lazy"
-                    className="absolute inset-0"
-                  />
-                </div>
-              ) : (
-                <div className="w-48 h-48 bg-muted animate-pulse rounded-lg" />
-              )}
-              <h2 className="mt-4 text-xl font-semibold">Nik Bear Brown</h2>
+              <h2 className="text-xl font-semibold">Nik Bear Brown</h2>
               <p className="mt-2 text-sm text-muted-foreground">
                 Songwriter, Poet, Digital Artist
               </p>

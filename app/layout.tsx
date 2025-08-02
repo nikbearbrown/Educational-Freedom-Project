@@ -3,7 +3,7 @@ import type { ReactNode } from "react"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Inter } from "next/font/google"
 import Header from "@/components/Header/Header"
-import Muzak from "@/components/Muzak" // Import the Muzak component
+import Muzak from "@/components/Muzak/Muzak" // Updated import path
 import Footer from "@/components/Footer/Footer"
 import { Analytics } from '@vercel/analytics/react'
 import "./globals.css"

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   description: "Exploring the fascinating world of AI through hands-on projects and in-depth demos",
 }
 
-export default function BasePage() {
+export default function OpenAIPage() {
   return (
     <div className="container px-4 md:px-6 mx-auto py-12">
       <div className="max-w-4xl mx-auto">

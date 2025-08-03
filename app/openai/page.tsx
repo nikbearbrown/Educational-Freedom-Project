@@ -118,8 +118,7 @@ export default function OpenAIPage() {
               <p>Technical skills must be paired with ethical judgment.</p>
             </div>
           </section>
-
-   {/* START OF EDUCATIONAL AI PROJECTS SECTION */}       
+{/* START OF EDUCATIONAL AI PROJECTS SECTION */}
 <section>
   <h2 className="text-3xl font-bold mb-6">Educational AI Projects</h2>
   <div className="prose prose-lg dark:prose-invert">
@@ -127,118 +126,150 @@ export default function OpenAIPage() {
       I'll be covering some of the many projects I lead and contribute to at Northeastern University's College of Engineering, Humanitarians AI, and AI Skunkworks. While I'll provide brief overviews here, detailed information, implementation guides, and source code can be found on our websites, YouTube channels, and GitHub repositories linked below.
     </p>
     
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">1. AI Tutorials & Tools</h3>
-      <p className="text-muted-foreground">
-        Hands-on how-tos and walkthroughs for AI tools like ChatGPT, Midjourney, Runway, and more—built for creatives, nonprofits, and curious minds new to the field.
-      </p>
-      <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">View Tutorials →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">2. Animation Tests & Visual Experiments</h3>
-      <p className="text-muted-foreground">
-        A peek behind the curtain—explore our generative art tests, motion studies, and creative experiments using AI animation tools. From rough cuts to visual R&D.
-      </p>
-      <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">View Experiments →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">3. Bellman: Reinforcement Learning for Agentic AI</h3>
-      <p className="text-muted-foreground">
-        A project applying reinforcement learning theory to agentic AI systems, exploring how these techniques can enhance autonomous decision-making and adaptive behaviors in educational and other AI applications.
-      </p>
-      <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">4. BotSpeak: AI Literacy & Fluency</h3>
-      <p className="text-muted-foreground">
-        Designed for everyone, from beginners to builders—BotSpeak breaks down what AI is, how it works, and how to use it. Start here to build your AI fluency and confidence.
-      </p>
-      <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">BotSpeak Series →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">5. Code for a Cause</h3>
-      <p className="text-muted-foreground">
-        A collaborative initiative where Humanitarians AI partners with various organizations and volunteers to build real-world AI applications with social impact. Projects span education, research, community development, and other nonprofit sectors, embodying the "Learn AI by Doing AI" philosophy.
-      </p>
-      <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">6. Dayhoff: AI for Computational Biology & Public Health</h3>
-      <p className="text-muted-foreground">
-        A modular, agent-based framework that applies AI to biological and health sciences. Named after Margaret Belle Dayhoff, this system helps researchers unlock patterns in bioinformatics, epidemiology, and public health. Includes The RAMAN Effect project, which combines AI with Surface-Enhanced Raman Spectroscopy to detect pathogens and pollutants in wastewater with high precision.
-      </p>
-      <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">7. Dewey: AI for Education</h3>
-      <p className="text-muted-foreground">
-        An open-source educational framework built to revolutionize how we learn and teach. Dewey uses specialized AI agents to create interactive, personalized learning across disciplines—rooted in the philosophy of John Dewey. Includes several key projects:
-      </p>
-      <ul className="list-disc pl-6 mt-2 space-y-1">
-        <li>Medhavi: Intelligent AI books that adapt content to individual learners</li>
-        <li>"AI Teaching Revolution" series: Professor Nik Brown's collaboration with OpenAI sharing strategies and tools for AI in classrooms</li>
-        <li>Educational video production focused on AI literacy and learning</li>
-      </ul>
-      <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">Dewey Project Videos →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">8. Humanitarians AI: Project Highlights</h3>
-      <p className="text-muted-foreground">
-        A curated showcase of our most impactful and inspiring videos across all Humanitarians AI projects. Start here to see the mission in action.
-      </p>
-      <a href="https://www.youtube.com/@humanitariansai" className="text-primary hover:underline">View Highlights →</a>
-    </div>
-    
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">9. Lyrical Literacy: Learning Through Song</h3>
-      <p className="text-muted-foreground">
-        A groundbreaking project using generative AI and music to teach kids to read and help people learn new languages. Sing along with AI to unlock literacy for all ages.
-      </p>
-      <div className="flex gap-4">
-        <a href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV" className="text-primary hover:underline">Spotify →</a>
-        <a href="https://music.apple.com/us/artist/humanitarians-ai/1781414009" className="text-primary hover:underline">Apple Music →</a>
+    {/* AGENTIC AI */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">Agentic AI</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Bellman: Reinforcement Learning for Agentic AI</h3>
+        <p className="text-muted-foreground">
+          A project applying reinforcement learning theory to agentic AI systems, exploring how these techniques can enhance autonomous decision-making and adaptive behaviors in educational and other AI applications.
+        </p>
+        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+      </div>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Dayhoff: AI for Computational Biology & Public Health</h3>
+        <p className="text-muted-foreground">
+          A modular, agent-based framework that applies AI to biological and health sciences. Named after Margaret Belle Dayhoff, this system helps researchers unlock patterns in bioinformatics, epidemiology, and public health. Includes The RAMAN Effect project, which combines AI with Surface-Enhanced Raman Spectroscopy to detect pathogens and pollutants in wastewater with high precision.
+        </p>
+        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+      </div>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Madison: AI for Branding & Marketing</h3>
+        <p className="text-muted-foreground">
+          Where creativity meets computation. Madison explores how nonprofits and creatives can use AI to develop compelling brands, campaigns, and stories with impact.
+        </p>
+        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+      </div>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Mycroft: AI for Finance</h3>
+        <p className="text-muted-foreground">
+          AI tools and innovations that promote economic access, financial literacy, and data-driven decision-making. Part of Humanitarians AI's mission to make financial systems more inclusive.
+        </p>
+        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
       </div>
     </div>
     
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">10. Madison: AI for Branding & Marketing</h3>
-      <p className="text-muted-foreground">
-        Where creativity meets computation. Madison explores how nonprofits and creatives can use AI to develop compelling brands, campaigns, and stories with impact.
-      </p>
-      <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+    {/* AI FLUENCY */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">AI Fluency</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">BotSpeak: AI Literacy & Fluency</h3>
+        <p className="text-muted-foreground">
+          Designed for everyone, from beginners to builders—BotSpeak breaks down what AI is, how it works, and how to use it. Start here to build your AI fluency and confidence.
+        </p>
+        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">BotSpeak Series →</a>
+      </div>
     </div>
     
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">11. Mycroft: AI for Finance</h3>
-      <p className="text-muted-foreground">
-        AI tools and innovations that promote economic access, financial literacy, and data-driven decision-making. Part of Humanitarians AI's mission to make financial systems more inclusive.
-      </p>
-      <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+    {/* AI FOR EDUCATION */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">AI for Education</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Dewey: AI for Education</h3>
+        <p className="text-muted-foreground">
+          An open-source educational framework built to revolutionize how we learn and teach. Dewey uses specialized AI agents to create interactive, personalized learning across disciplines—rooted in the philosophy of John Dewey. Includes several key projects:
+        </p>
+        <ul className="list-disc pl-6 mt-2 space-y-1">
+          <li>Medhavi: Intelligent AI books that adapt content to individual learners</li>
+          <li>"AI Teaching Revolution" series: Professor Nik Brown's collaboration with OpenAI sharing strategies and tools for AI in classrooms</li>
+          <li>Educational video production focused on AI literacy and learning</li>
+        </ul>
+        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">Dewey Project Videos →</a>
+      </div>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Lyrical Literacy: Learning Through Song</h3>
+        <p className="text-muted-foreground">
+          A groundbreaking project using generative AI and music to teach kids to read and help people learn new languages. Sing along with AI to unlock literacy for all ages.
+        </p>
+        <div className="flex gap-4">
+          <a href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV" className="text-primary hover:underline">Spotify →</a>
+          <a href="https://music.apple.com/us/artist/humanitarians-ai/1781414009" className="text-primary hover:underline">Apple Music →</a>
+        </div>
+      </div>
     </div>
     
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">12. Popper: AI Validation & Computational Skepticism</h3>
-      <p className="text-muted-foreground">
-        Named after Karl Popper, this project embraces the scientific method by challenging AI systems to prove themselves. It offers tools and methods to evaluate, verify, and stress-test AI models through rigorous evidence-based reasoning.
-      </p>
-      <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+    {/* AI FOR GOOD */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">AI for Good</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Code for a Cause</h3>
+        <p className="text-muted-foreground">
+          A collaborative initiative where Humanitarians AI partners with various organizations and volunteers to build real-world AI applications with social impact. Projects span education, research, community development, and other nonprofit sectors, embodying the "Learn AI by Doing AI" philosophy.
+        </p>
+        <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
+      </div>
+    </div>
+
+          <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Humanitarians AI: Project Highlights</h3>
+        <p className="text-muted-foreground">
+          A curated showcase of our most impactful and inspiring videos across all Humanitarians AI projects. Start here to see the mission in action.
+        </p>
+        <a href="https://www.youtube.com/@humanitariansai" className="text-primary hover:underline">View Highlights →</a>
+      </div>
+    
+    {/* COMPUTATIONAL SKEPTICISM */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">Computational Skepticism</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Popper: AI Validation & Computational Skepticism</h3>
+        <p className="text-muted-foreground">
+          Named after Karl Popper, this project embraces the scientific method by challenging AI systems to prove themselves. It offers tools and methods to evaluate, verify, and stress-test AI models through rigorous evidence-based reasoning.
+        </p>
+        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+      </div>
     </div>
     
-    <div className="mt-6">
-      <h3 className="text-xl font-bold mb-4">13. Talks, Classes, Workshops & Events</h3>
-      <p className="text-muted-foreground">
-        Guest lectures, workshops, student showcases, and community events from Humanitarians AI and its collaborators, including sessions from Northeastern University.
-      </p>
-      <a href="https://www.youtube.com/@nikbearbrown" className="text-primary hover:underline">View Talks →</a>
+    {/* NERD LIFE */}
+    <div className="mt-10">
+      <h2 className="text-2xl font-bold mb-6">Nerd Life</h2>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">AI Tutorials & Tools</h3>
+        <p className="text-muted-foreground">
+          Hands-on how-tos and walkthroughs for AI tools like ChatGPT, Midjourney, Runway, and more—built for creatives, nonprofits, and curious minds new to the field.
+        </p>
+        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">View Tutorials →</a>
+      </div>
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Animation Tests & Visual Experiments</h3>
+        <p className="text-muted-foreground">
+          A peek behind the curtain—explore our generative art tests, motion studies, and creative experiments using AI animation tools. From rough cuts to visual R&D.
+        </p>
+        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">View Experiments →</a>
+      </div>
+      
+      
+      <div className="mt-6">
+        <h3 className="text-xl font-bold mb-4">Talks, Classes, Workshops & Events</h3>
+        <p className="text-muted-foreground">
+          Guest lectures, workshops, student showcases, and community events from Humanitarians AI and its collaborators, including sessions from Northeastern University.
+        </p>
+        <a href="https://www.youtube.com/@nikbearbrown" className="text-primary hover:underline">View Talks →</a>
+      </div>
     </div>
     
+    {/* CONNECT SECTION */}
     <div className="mt-8 p-6 bg-muted rounded-lg">
       <h3 className="text-xl font-bold mb-4">Connect With Our Work</h3>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -267,9 +298,7 @@ export default function OpenAIPage() {
     </div>
   </div>
 </section>
-
-          {/* END OF EDUCATIONAL AI PROJECTS SECTION */}
-          
+{/* END OF EDUCATIONAL AI PROJECTS SECTION */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Courses Taught</h2>
             <div className="prose prose-lg dark:prose-invert">

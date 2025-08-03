@@ -399,9 +399,17 @@ export default function OpenAIPage() {
       </div>
     </div>
 
-    {/* RESEARCH */}
+{/* RESEARCH */}
 <div className="mt-10">
   <h2 className="text-2xl font-bold mb-6">Research</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Publications</h3>
+    <p className="text-muted-foreground">
+      Our students and Fellows write books and research articles on a wide range of topics in AI and machine learning. These publications explore cutting-edge concepts, methodologies, and applications across various domains, contributing to the advancement of AI knowledge and practice.
+    </p>
+    <a href="https://www.humanitarians.ai/publications" className="text-primary hover:underline">View Publications →</a>
+  </div>
   
   <div className="mt-6">
     <h3 className="text-xl font-bold mb-4">Cognitive Type Project: AI Typography</h3>

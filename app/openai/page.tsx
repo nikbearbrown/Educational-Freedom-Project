@@ -46,6 +46,45 @@ export default function OpenAIPage() {
             </div>
           </section>
 
+ {/* START OF OPENAI ACADEMY SECTION */}
+<section className="mt-12">
+  <h2 className="text-3xl font-bold mb-6">OpenAI Academy: Professors Teaching with AI</h2>
+  <div className="prose prose-lg dark:prose-invert">
+    <p className="text-xl text-muted-foreground mb-8">
+      As a contributor to the OpenAI Academy series, I focus on practical applications of AI in higher education. Below is an overview of my approach to integrating AI tools that enhance both teaching and learning experiences.
+    </p>
+    
+    <div className="mt-8">
+      <h3 className="text-2xl font-bold mb-4">What We Teach</h3>
+      <p>
+        My courses focus on experiential learning where students actively build AI systems while learning the theoretical foundations. This "Learn AI by Doing AI" approach ensures students develop practical skills alongside conceptual understanding. We cover prompt engineering, custom GPT development, ethical AI implementation, and responsible AI integration across various domains.
+      </p>
+    </div>
+    
+    <div className="mt-8">
+      <h3 className="text-2xl font-bold mb-4">What We Built</h3>
+      <p>
+        We've developed a comprehensive suite of educational tools including custom GPTs for specific disciplines, interactive assignments that leverage AI capabilities, assessment tools that provide personalized feedback, and workflows that blend AI assistance with traditional learning methods. These resources are designed to be adaptable across different educational contexts.
+      </p>
+    </div>
+    
+    <div className="mt-8">
+      <h3 className="text-2xl font-bold mb-4">How We Built It</h3>
+      <p>
+        This page links to Github repositories and YouTube videos on the Humanitarians AI and Nik Bear Brown channels that cover the technical details of implementation. For each project, we provide step-by-step guides, code examples, and best practices. If you need help building anything covered here, reach out to info@humanitarians.ai for assistance and collaboration opportunities.
+      </p>
+    </div>
+    
+    <div className="mt-8">
+      <h3 className="text-2xl font-bold mb-4">What The Impact Was</h3>
+      <p>
+        In the video series, I'll cover the measurable impacts of these AI teaching methods, including effects on student engagement, learning outcomes, time efficiency, and professional skill development. I'll share real-world examples from my courses at Northeastern University and provide insights into how these approaches can be adapted for different educational contexts.
+      </p>
+    </div>
+  </div>
+</section>
+{/* END OF OPENAI ACADEMY SECTION */}         
+
           <section>
             <h2 className="text-3xl font-bold mb-6">Teaching Philosophy: Learning by Doing</h2>
             <div className="prose prose-lg dark:prose-invert">

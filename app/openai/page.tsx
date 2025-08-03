@@ -561,23 +561,46 @@ export default function OpenAIPage() {
             </div>
           </section>
 
-          <section>
-            <h2 className="text-3xl font-bold mb-6">Leadership in AI Education Initiatives</h2>
-            <div className="grid gap-6">
-              <div className="p-6 border rounded-lg">
-                <h3 className="text-xl font-bold mb-3">Humanitarians AI Incorporated</h3>
-                <p className="text-muted-foreground">
-                  As founder of this nonprofit organization, I lead the development of AI-driven educational resources focused on social impact and ethical application of technology.
-                </p>
-              </div>
-              <div className="p-6 border rounded-lg">
-                <h3 className="text-xl font-bold mb-3">AI Skunkworks</h3>
-                <p className="text-muted-foreground">
-                  As an active mentor in AI Skunkworks, I guide students in developing innovative AI-based projects and fostering industry collaborations.
-                </p>
-              </div>
-            </div>
-          </section>
+{/* START OF AI EDUCATION INITIATIVES SECTION */}
+<section>
+  <h2 className="text-3xl font-bold mb-6">AI Education Initiatives</h2>
+  <div className="grid gap-8">
+    <div className="p-6 border rounded-lg">
+      <h3 className="text-xl font-bold mb-4">Humanitarians AI Incorporated</h3>
+      <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/GN7yQntWJHU?si=3Zr_6e0L4dhIZ1nC"
+          title="Humanitarians AI Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+      <p className="text-muted-foreground">
+        As founder of this nonprofit organization, I lead the development of AI-driven educational resources focused on social impact and ethical application of technology.
+      </p>
+    </div>
+    
+    <div className="p-6 border rounded-lg">
+      <h3 className="text-xl font-bold mb-4">AI Skunkworks</h3>
+      <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-6">
+        <iframe
+          className="absolute top-0 left-0 w-full h-full"
+          src="https://www.youtube.com/embed/WKW12dO9NOc?si=ySG3X4c0tt7adJgV"
+          title="AI Skunkworks Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+      <p className="text-muted-foreground">
+        As an active mentor in AI Skunkworks, I guide students in developing innovative AI-based projects and fostering industry collaborations.
+      </p>
+    </div>
+  </div>
+</section>
+{/* END OF AI EDUCATION INITIATIVES SECTION */}
 
           <section>
             <h2 className="text-3xl font-bold mb-6">Recognition for Educational Innovation</h2>

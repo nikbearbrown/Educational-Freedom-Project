@@ -15,7 +15,7 @@ export default function OpenAIPage() {
       <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nik Bear Brown - Educational Ai</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nik Bear Brown - Educational AI</h1>
           <p className="text-xl text-muted-foreground mb-8">
             Associate Teaching Professor at Northeastern University with expertise in AI, machine learning, and computational biology, dedicated to developing ethical AI solutions and preparing the next generation of AI engineers.
           </p>
@@ -91,6 +91,14 @@ export default function OpenAIPage() {
                   Humanitarians AI on YouTube
                 </a>
               </div>
+              <div className="flex items-center gap-2 not-prose mt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5 text-primary">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                </svg>
+                <a href="https://github.com/Humanitariansai/" className="text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                  GitHub: @humanitariansai
+                </a>
+              </div>
               
               <h3 className="text-xl font-bold mt-6 mb-3">Core Principles</h3>
               
@@ -151,22 +159,104 @@ export default function OpenAIPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-6">Featured Courses</h2>
-            <div className="grid gap-4">
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold">INFO 7375: ST: AI Engineering Apps - Prompt Engineering and GenAI</h3>
+            <h2 className="text-3xl font-bold mb-6">Courses Taught</h2>
+            <div className="prose prose-lg dark:prose-invert">
+              <h3 className="text-xl font-bold mt-6 mb-3">Northeastern University</h3>
+              <div className="grid gap-3 not-prose">
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 6205: Program Structure Algorithms</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CSYE 7270: Building Virtual Environments</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 6105: Data Science Engineering Methods</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 7390: Advances in Data Sciences and Architecture</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CSYE 7370: Deep Reinforcement Learning Game Engineering</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">DAMG 6210: Data Management and Database Design</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 7375: ST: AI Engineering Apps - Prompt Engineering and GenAI</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CSYE 7374: Special Topics: Computational Skepticism</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 6210: Data Management and Database Design</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CSYE 7245: Big Data Systems Integration Analytics</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">DA 5030: Intro Data Mining/Machine Learning</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 3540: Game Programming</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 4300: Computer Graphics</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 4850: Building Game Engines</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 5850: Advanced Building Game Engines</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">DS 6020: Collect/Store/Retrieve Data</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">DS 6030: Intro Data Mining/Machine Learning</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 4800: Algorithms Data</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">ENGR-0201: Organizing Academic Success - AI for Personalized Learning with Claude</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">INFO 7375: Branding and AI</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CSYE 7374/INFO 7374: Research Methods in Artificial Intelligence</h4>
+                </div>
               </div>
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold">CSYE 7370: Deep Reinforcement Learning Game Engineering</h3>
+              
+              <h3 className="text-xl font-bold mt-6 mb-3">University of California, Los Angeles (UCLA)</h3>
+              <div className="grid gap-3 not-prose">
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 31: Programming in C++</h4>
+                </div>
               </div>
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold">CSYE 7270: Building Virtual Environments</h3>
+              
+              <h3 className="text-xl font-bold mt-6 mb-3">Santa Monica College</h3>
+              <div className="grid gap-3 not-prose">
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">CS 52: Programming in C++</h4>
+                </div>
               </div>
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold">INFO 6105: Data Science Engineering Methods</h3>
+              
+              <h3 className="text-xl font-bold mt-6 mb-3">Arts Institutes</h3>
+              <div className="grid gap-3 not-prose">
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">Programming in C++</h4>
+                </div>
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">Game Programming</h4>
+                </div>
               </div>
-              <div className="p-4 border rounded-lg">
-                <h3 className="font-bold">CSYE 7374: Special Topics: Computational Skepticism</h3>
+              
+              <h3 className="text-xl font-bold mt-6 mb-3">LA Film School</h3>
+              <div className="grid gap-3 not-prose">
+                <div className="p-3 border rounded-lg">
+                  <h4 className="font-bold">Game Programming</h4>
+                </div>
               </div>
             </div>
           </section>
@@ -311,12 +401,12 @@ export default function OpenAIPage() {
                     </svg>
                     YouTube: @humanitariansai
                   </a>
-      <a href="https://github.com/Humanitariansai/" className="flex items-center gap-2 text-primary hover:underline" target="_blank" rel="noopener noreferrer">
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
-    <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-  </svg>
-  GitHub: @humanitariansai
-</a>            
+                  <a href="https://github.com/Humanitariansai/" className="flex items-center gap-2 text-primary hover:underline" target="_blank" rel="noopener noreferrer">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+                      <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+                    </svg>
+                    GitHub: @humanitariansai
+                  </a>            
                   <a href="https://www.linkedin.com/company/105696953/" className="flex items-center gap-2 text-primary hover:underline" target="_blank" rel="noopener noreferrer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
                       <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>

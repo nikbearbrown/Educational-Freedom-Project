@@ -284,6 +284,27 @@ export default function OpenAIPage() {
         <a href="https://www.youtube.com/@nikbearbrown" className="text-primary hover:underline">View Talks →</a>
       </div>
     </div>
+
+    {/* RESEARCH */}
+<div className="mt-10">
+  <h2 className="text-2xl font-bold mb-6">Research</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Cognitive Type Project: AI Typography</h3>
+    <p className="text-muted-foreground">
+      Revolutionizing typeface design with AI-driven models that create smarter, more accessible fonts. Our "Text to Type" foundational models optimize readability for various needs—boosting ad engagement, enhancing children's reading experiences, supporting dyslexic readers, and analyzing typography's cognitive impact through AI and eye-tracking.
+    </p>
+    <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Synthetic Personas</h3>
+    <p className="text-muted-foreground">
+      A collaboration with Alderman+Ward developing AI tools that create data-driven synthetic personas for survey methodologists. By integrating Big Five personality traits and demographic data, we help improve survey question testing and response quality while reducing research costs and resources needed for effective user testing.
+    </p>
+    <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
+  </div>
+</div>
     
     {/* CONNECT SECTION */}
     <div className="mt-8 p-6 bg-muted rounded-lg">

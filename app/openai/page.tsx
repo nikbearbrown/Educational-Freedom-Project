@@ -163,18 +163,79 @@ export default function OpenAIPage() {
       </div>
     </div>
     
-    {/* AI FLUENCY */}
-    <div className="mt-10">
-      <h2 className="text-2xl font-bold mb-6">AI Fluency</h2>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">BotSpeak: AI Literacy & Fluency</h3>
-        <p className="text-muted-foreground">
-          Designed for everyone, from beginners to builders—BotSpeak breaks down what AI is, how it works, and how to use it. Start here to build your AI fluency and confidence.
-        </p>
-        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">BotSpeak Series →</a>
+{/* AI FLUENCY */}
+<div className="mt-10">
+  <h2 className="text-2xl font-bold mb-6">AI Fluency</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">BotSpeak: AI Literacy & Fluency</h3>
+    <p className="text-muted-foreground">
+      A comprehensive framework designed for everyone, from beginners to builders, that transforms you from an AI tourist into a fluent native. BotSpeak breaks down what AI is, how it works, and how to use it effectively through nine essential pillars.
+    </p>
+    
+    <h4 className="font-bold mt-5 mb-3">The Nine Pillars of BotSpeak</h4>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">1. Strategic Delegation</h5>
+        <p className="text-sm text-muted-foreground">Thoughtfully distributing tasks between human and AI based on comparative strengths.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">2. Effective Communication</h5>
+        <p className="text-sm text-muted-foreground">Crafting precise prompts with clear intent and context for optimal AI response.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">3. Critical Evaluation</h5>
+        <p className="text-sm text-muted-foreground">Systematically assessing AI outputs for accuracy and bias through multiple sources.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">4. Technical Understanding</h5>
+        <p className="text-sm text-muted-foreground">Applying appropriate prompt patterns and understanding model behavior.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">5. Ethical Reasoning</h5>
+        <p className="text-sm text-muted-foreground">Maintaining accountability and managing privacy boundaries in AI collaboration.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">6. Stochastic Reasoning</h5>
+        <p className="text-sm text-muted-foreground">Understanding the probabilistic nature of AI outputs and embracing variability.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">7. Learning by Doing</h5>
+        <p className="text-sm text-muted-foreground">Building intuition through deliberate practice and systematic analysis.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">8. Rapid Prototyping</h5>
+        <p className="text-sm text-muted-foreground">Accelerating ideation through quick cycles of AI-assisted generation and refinement.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">9. Theoretical Foundations</h5>
+        <p className="text-sm text-muted-foreground">Understanding the science behind AI systems and their fundamental epistemological boundaries.</p>
       </div>
     </div>
+    
+    <h4 className="font-bold mt-5 mb-3">Three Modes of Interaction</h4>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">Automation</h5>
+        <p className="text-sm text-muted-foreground">AI performs specific tasks based on explicit human instructions.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">Augmentation</h5>
+        <p className="text-sm text-muted-foreground">Humans and AI collaborate as thinking partners, each contributing unique strengths.</p>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h5 className="font-bold text-sm">Agency</h5>
+        <p className="text-sm text-muted-foreground">AI works independently within parameters established by humans.</p>
+      </div>
+    </div>
+    
+    <p className="text-muted-foreground mt-5">
+      While AI technology evolves rapidly, the core challenges of human-AI collaboration remain consistent. BotSpeak provides lasting cognitive tools rather than temporary techniques, helping you develop skills for a future where human-AI collaboration becomes the new literacy.
+    </p>
+    
+    <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline mt-3 inline-block">BotSpeak Series →</a>
+  </div>
+</div>
     
 {/* AI FOR EDUCATION */}
 <div className="mt-10">

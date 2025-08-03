@@ -206,25 +206,41 @@ export default function OpenAIPage() {
     </div>
     
     {/* AI FOR GOOD */}
-    <div className="mt-10">
-      <h2 className="text-2xl font-bold mb-6">AI for Good</h2>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Code for a Cause</h3>
-        <p className="text-muted-foreground">
-          A collaborative initiative where Humanitarians AI partners with various organizations and volunteers to build real-world AI applications with social impact. Projects span education, research, community development, and other nonprofit sectors, embodying the "Learn AI by Doing AI" philosophy.
-        </p>
-        <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
-      </div>
-    </div>
-
-          <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Humanitarians AI: Project Highlights</h3>
-        <p className="text-muted-foreground">
-          A curated showcase of our most impactful and inspiring videos across all Humanitarians AI projects. Start here to see the mission in action.
-        </p>
-        <a href="https://www.youtube.com/@humanitariansai" className="text-primary hover:underline">View Highlights →</a>
-      </div>
+<div className="mt-10">
+  <h2 className="text-2xl font-bold mb-6">AI for Good</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Code for a Cause</h3>
+    <p className="text-muted-foreground">
+      A collaborative initiative where Humanitarians AI partners with organizations and volunteers to build AI applications with social impact across education, research, and community development.
+    </p>
+    <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Northeastern x Humanitarians AI</h3>
+    <p className="text-muted-foreground">
+      A collaborative lab where Northeastern University students and Humanitarians AI build real-world applications with social impact. Learn AI by doing AI—across education, research, and community development.
+    </p>
+    <a href="https://www.humanitarians.ai/" className="text-primary hover:underline">Learn More →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">PredictaBio: Protein Synthesis with AI</h3>
+    <p className="text-muted-foreground">
+      AI-powered platform creating "recipes" for novel proteins with specific properties. This accelerates discovery and enables design of proteins for applications in biotechnology, healthcare, and sustainability.
+    </p>
+    <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">The RAMAN Effect: AI for Wastewater Epidemiology</h3>
+    <p className="text-muted-foreground">
+      A platform combining AI and spectroscopy to detect public health threats through wastewater. RAMAN uses spectral analysis to identify pathogens and pollutants with high precision—advancing global epidemiology.
+    </p>
+    <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
+  </div>
+</div>
     
     {/* COMPUTATIONAL SKEPTICISM */}
     <div className="mt-10">

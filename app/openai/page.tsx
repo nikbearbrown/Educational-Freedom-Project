@@ -176,34 +176,87 @@ export default function OpenAIPage() {
       </div>
     </div>
     
-    {/* AI FOR EDUCATION */}
-    <div className="mt-10">
-      <h2 className="text-2xl font-bold mb-6">AI for Education</h2>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Dewey: AI for Education</h3>
-        <p className="text-muted-foreground">
-          An open-source educational framework built to revolutionize how we learn and teach. Dewey uses specialized AI agents to create interactive, personalized learning across disciplines—rooted in the philosophy of John Dewey. Includes several key projects:
-        </p>
-        <ul className="list-disc pl-6 mt-2 space-y-1">
-          <li>Medhavi: Intelligent AI books that adapt content to individual learners</li>
-          <li>"AI Teaching Revolution" series: Professor Nik Brown's collaboration with OpenAI sharing strategies and tools for AI in classrooms</li>
-          <li>Educational video production focused on AI literacy and learning</li>
-        </ul>
-        <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">Dewey Project Videos →</a>
+{/* AI FOR EDUCATION */}
+<div className="mt-10">
+  <h2 className="text-2xl font-bold mb-6">AI for Education</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Dewey: AI for Education</h3>
+    <p className="text-muted-foreground">
+      An open-source educational framework built to revolutionize how we learn and teach. Dewey uses specialized AI agents to create interactive, personalized learning across disciplines—rooted in the philosophy of John Dewey. Includes several key projects:
+    </p>
+    <ul className="list-disc pl-6 mt-2 space-y-1">
+      <li>Medhavi: Intelligent AI books that adapt content to individual learners</li>
+      <li>"AI Teaching Revolution" series: Professor Nik Brown's collaboration with OpenAI sharing strategies and tools for AI in classrooms</li>
+      <li>Educational video production focused on AI literacy and learning</li>
+    </ul>
+    <a href="https://www.youtube.com/@humanitariansai/playlists" className="text-primary hover:underline">Dewey Project Videos →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Educational AI Chatbots</h3>
+    <p className="text-muted-foreground">
+      Custom-built educational assistants designed to enhance learning in specific disciplines:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Ada: Calculus Bot</h4>
+        <p className="text-sm text-muted-foreground mb-2">Step-by-step guidance for calculus using scaffolding techniques and Socratic questioning.</p>
+        <a href="https://chatgpt.com/g/g-JMkUy05pG-ada-calculus-bot" className="text-primary hover:underline text-sm">Try Ada →</a>
       </div>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Lyrical Literacy: Learning Through Song</h3>
-        <p className="text-muted-foreground">
-          A groundbreaking project using generative AI and music to teach kids to read and help people learn new languages. Sing along with AI to unlock literacy for all ages.
-        </p>
-        <div className="flex gap-4">
-          <a href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV" className="text-primary hover:underline">Spotify →</a>
-          <a href="https://music.apple.com/us/artist/humanitarians-ai/1781414009" className="text-primary hover:underline">Apple Music →</a>
-        </div>
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Newton: Physics Bot</h4>
+        <p className="text-sm text-muted-foreground mb-2">Interactive physics tutor with dynamic graphs and simulations for visualization.</p>
+        <a href="https://chatgpt.com/g/g-0CmbbdGsA-newton-the-physics-bot" className="text-primary hover:underline text-sm">Try Newton →</a>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Grace: Algorithms Bot</h4>
+        <p className="text-sm text-muted-foreground mb-2">Algorithm visualizations and simulations to help understand complex concepts.</p>
+        <a href="https://chatgpt.com/g/g-MFbqFw55p-grace-6205-the-info-6205-algorithms-tutor" className="text-primary hover:underline text-sm">Try Grace →</a>
       </div>
     </div>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Lyrical Literacy: Learning Through Song</h3>
+    <p className="text-muted-foreground">
+      A groundbreaking project using generative AI and music to teach kids to read and help people learn new languages. Sing along with AI to unlock literacy for all ages.
+    </p>
+    <div className="flex gap-4">
+      <a href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV" className="text-primary hover:underline">Spotify →</a>
+      <a href="https://music.apple.com/us/artist/humanitarians-ai/1781414009" className="text-primary hover:underline">Apple Music →</a>
+    </div>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Professional Tools</h3>
+    <p className="text-muted-foreground">
+      AI assistants designed to enhance professional skills and academic work:
+    </p>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-3">
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Synthetic Personas</h4>
+        <p className="text-sm text-muted-foreground mb-2">Data-driven personas for survey research, UX testing, and behavioral modeling.</p>
+        <a href="https://chatgpt.com/g/g-67a80d375e1c819186b960f5e60f9b9d-synthetic-personas" className="text-primary hover:underline text-sm">Try Synthetic Personas →</a>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Ogilvy</h4>
+        <p className="text-sm text-muted-foreground mb-2">Persuasive copywriting coach inspired by advertising legend David Ogilvy.</p>
+        <a href="https://chatgpt.com/g/g-67576653c23c81919b0d7182fdfdc59e-ogilvy" className="text-primary hover:underline text-sm">Try Ogilvy →</a>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">One-Minute Pitch</h4>
+        <p className="text-sm text-muted-foreground mb-2">Create concise, impactful business pitches structured for your audience.</p>
+        <a href="https://chatgpt.com/g/g-6763ad8feba08191bf5008cbf39aaf9a-crafting-the-perfect-one-minute-pitch" className="text-primary hover:underline text-sm">Try One-Minute Pitch →</a>
+      </div>
+      <div className="p-4 border rounded-lg">
+        <h4 className="font-bold">Sagan | GSE Writing Bot</h4>
+        <p className="text-sm text-muted-foreground mb-2">Advanced research paper editor for academic structure and methodology feedback.</p>
+        <a href="https://chatgpt.com/g/g-k8GQo2VXh-sagan-gse-writing-bot" className="text-primary hover:underline text-sm">Try Sagan →</a>
+      </div>
+    </div>
+  </div>
+</div>
     
     {/* AI FOR GOOD */}
 <div className="mt-10">

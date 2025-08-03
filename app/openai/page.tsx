@@ -15,7 +15,7 @@ export default function OpenAIPage() {
       <div className="max-w-4xl mx-auto">
         {/* Hero Section */}
         <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nik Bear Brown Educational Ai Resources using OpenAI</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Nik Bear Brown - Educational Ai</h1>
           <p className="text-xl text-muted-foreground mb-8">
             Associate Teaching Professor at Northeastern University with expertise in AI, machine learning, and computational biology, dedicated to developing ethical AI solutions and preparing the next generation of AI engineers.
           </p>

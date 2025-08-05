@@ -165,42 +165,55 @@ export default function OpenAIPage() {
       I'll be covering some of the many projects I lead and contribute to at Northeastern University's College of Engineering, Humanitarians AI, and AI Skunkworks. While I'll provide brief overviews here, detailed information, implementation guides, and source code can be found on our websites, YouTube channels, and GitHub repositories linked below.
     </p>
     
-    {/* AGENTIC AI */}
+ {/* AGENTIC AI */}
     <div className="mt-10">
-      <h2 className="text-2xl font-bold mb-6">Agentic AI</h2>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Bellman: Reinforcement Learning for Agentic AI</h3>
-        <p className="text-muted-foreground">
-          A project applying reinforcement learning theory to agentic AI systems, exploring how these techniques can enhance autonomous decision-making and adaptive behaviors in educational and other AI applications.
-        </p>
-        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-      </div>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Dayhoff: AI for Computational Biology & Public Health</h3>
-        <p className="text-muted-foreground">
-          A modular, agent-based framework that applies AI to biological and health sciences. Named after Margaret Belle Dayhoff, this system helps researchers unlock patterns in bioinformatics, epidemiology, and public health. Includes The RAMAN Effect project, which combines AI with Surface-Enhanced Raman Spectroscopy to detect pathogens and pollutants in wastewater with high precision.
-        </p>
-        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-      </div>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Madison: AI for Branding & Marketing</h3>
-        <p className="text-muted-foreground">
-          Where creativity meets computation. Madison explores how nonprofits and creatives can use AI to develop compelling brands, campaigns, and stories with impact.
-        </p>
-        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-      </div>
-      
-      <div className="mt-6">
-        <h3 className="text-xl font-bold mb-4">Mycroft: AI for Finance</h3>
-        <p className="text-muted-foreground">
-          AI tools and innovations that promote economic access, financial literacy, and data-driven decision-making. Part of Humanitarians AI's mission to make financial systems more inclusive.
-        </p>
-        <a href="https://github.com/Humanitariansai" className="text-primary hover:underline">GitHub Repository →</a>
-      </div>
-    </div>
+  <h2 className="text-2xl font-bold mb-6">Agentic AI</h2>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Bellman: Reinforcement Learning for Agentic AI</h3>
+    <p className="text-muted-foreground">
+      A project applying reinforcement learning theory to agentic AI systems, exploring how these techniques can enhance autonomous decision-making and adaptive behaviors in educational and other AI applications.
+    </p>
+    <a href="https://github.com/Humanitariansai/Bellman" className="text-primary hover:underline">GitHub Repository →</a>
+    <a href="https://www.humanitarians.ai/bellman" className="text-primary hover:underline ml-4">Project Page →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Dayhoff: AI for Computational Biology & Public Health</h3>
+    <p className="text-muted-foreground">
+      A modular, agent-based framework that applies AI to biological and health sciences. Named after Margaret Belle Dayhoff, this system helps researchers unlock patterns in bioinformatics, epidemiology, and public health. Includes The RAMAN Effect project, which combines AI with Surface-Enhanced Raman Spectroscopy to detect pathogens and pollutants in wastewater with high precision.
+    </p>
+    <a href="https://github.com/Humanitariansai/Dayhoff" className="text-primary hover:underline">GitHub Repository →</a>
+    <a href="https://www.humanitarians.ai/dayhoff" className="text-primary hover:underline ml-4">Project Page →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Madison: AI for Branding & Marketing</h3>
+    <p className="text-muted-foreground">
+      Where creativity meets computation. Madison explores how nonprofits and creatives can use AI to develop compelling brands, campaigns, and stories with impact.
+    </p>
+    <a href="https://github.com/Humanitariansai/Madison" className="text-primary hover:underline">GitHub Repository →</a>
+    <a href="https://www.humanitarians.ai/madison" className="text-primary hover:underline ml-4">Project Page →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Mycroft: AI for Finance</h3>
+    <p className="text-muted-foreground">
+      AI tools and innovations that promote economic access, financial literacy, and data-driven decision-making. Part of Humanitarians AI's mission to make financial systems more inclusive.
+    </p>
+    <a href="https://github.com/Humanitariansai/Mycroft" className="text-primary hover:underline">GitHub Repository →</a>
+    <a href="https://www.humanitarians.ai/mycroft" className="text-primary hover:underline ml-4">Project Page →</a>
+  </div>
+  
+  <div className="mt-6">
+    <h3 className="text-xl font-bold mb-4">Popper: AI for Epistemology & Scientific Method</h3>
+    <p className="text-muted-foreground">
+      A project focused on using AI to improve scientific reasoning, hypothesis testing, and evidence evaluation. Named after philosopher of science Karl Popper.
+    </p>
+    <a href="https://github.com/Humanitariansai/Popper" className="text-primary hover:underline">GitHub Repository →</a>
+    <a href="https://www.humanitarians.ai/popper" className="text-primary hover:underline ml-4">Project Page →</a>
+  </div>
+</div>
     
 {/* AI FLUENCY */}
 <div className="mt-10">

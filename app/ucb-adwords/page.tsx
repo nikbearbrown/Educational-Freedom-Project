@@ -181,7 +181,7 @@ export default function UCBPage() {
           </section>
 
           <section>
-            <h2 className="text-3xl font-bold mb-6">Case Study: UCB in Action</h2>
+            <h2 className="text-3xl font-bold mb-6">Case Study 1: UCB for Multiple Keywords</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p>To illustrate the effectiveness of this approach, consider the following example from a nonprofit using Google Ad Grants:</p>
               
@@ -222,6 +222,85 @@ export default function UCBPage() {
               
               <p>
                 Notice how Keyword B, despite having a lower observed CTR than Keyword C, is kept due to its limited data. This illustrates the algorithm's ability to balance exploration and exploitation, giving promising but data-limited keywords a chance to prove themselves.
+              </p>
+            </div>
+          </section>
+          
+          <section>
+            <h2 className="text-3xl font-bold mb-6">Case Study 2: Keyword Evolution Over Time</h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p>
+                This second case study follows a single keyword over time, showing how the UCB approach allows a keyword to prove itself as more data is collected.
+              </p>
+              
+              <div className="flex flex-col md:flex-row mt-8 mb-6 gap-8">
+                <div className="flex-1 border-t-4 border-primary pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 1: Initial Assessment</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 3.0%</li>
+                      <li>Impressions: 30</li>
+                      <li>Total account impressions: 5,000</li>
+                      <li>Upper Bound CTR (c=2): 3.0% + 2×√(ln(5,000)/30) = 3.0% + 2×0.63 = 4.26%</li>
+                      <li className="font-bold">Decision: Keep temporarily (Below target but wide CI)</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+                
+                <div className="flex-1 border-t-4 border-primary pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 7: Progress Check</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 3.5%</li>
+                      <li>Impressions: 120</li>
+                      <li>Total account impressions: 8,000</li>
+                      <li>Upper Bound CTR (c=2): 3.5% + 2×√(ln(8,000)/120) = 3.5% + 2×0.32 = 4.14%</li>
+                      <li className="font-bold">Decision: Still below target, but improving with narrower CI</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+                
+                <div className="flex-1 border-t-4 border-green-500 pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 14: Final Assessment</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 4.8%</li>
+                      <li>Impressions: 300</li>
+                      <li>Total account impressions: 12,000</li>
+                      <li>Upper Bound CTR (c=2): 4.8% + 2×√(ln(12,000)/300) = 4.8% + 2×0.20 = 5.20%</li>
+                      <li className="font-bold text-green-500">Decision: KEEP (5.20% &gt; 5%)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-muted/30 p-6 rounded-lg my-8">
+                <h3 className="text-xl font-bold mb-4">Key Insights from Keyword Evolution:</h3>
+                <ul className="space-y-2">
+                  <li>The keyword started with a CTR of just 3.0%, well below the 5% target</li>
+                  <li>Despite underperforming initially, the wide confidence interval (due to limited data) prevented premature removal</li>
+                  <li>As more impressions accumulated, the confidence interval naturally narrowed</li>
+                  <li>The keyword's performance improved over time, eventually exceeding the 5% threshold when including the confidence bound</li>
+                  <li>Traditional methods using fixed thresholds would have removed this keyword early, missing out on its eventual success</li>
+                </ul>
+              </div>
+              
+              <p>
+                This case study demonstrates how the UCB approach allows potentially valuable keywords to prove themselves over time, rather than being judged too harshly on initial performance with limited data. The confidence interval narrows naturally as more data is collected, creating a fair evaluation system that balances patience with performance standards.
               </p>
             </div>
           </section>

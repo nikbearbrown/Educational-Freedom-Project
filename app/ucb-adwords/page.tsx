@@ -305,6 +305,86 @@ export default function UCBPage() {
             </div>
           </section>
 
+
+          <section>
+  <h2 className="text-3xl font-bold mb-6">Case Study 3: When Promising Keywords Fail to Deliver</h2>
+  <div className="prose prose-lg dark:prose-invert max-w-none">
+    <p>
+      Not all keywords with initial promise will succeed. This third case study demonstrates how the UCB approach also effectively identifies keywords that should be removed despite early positive signals.
+    </p>
+    
+    <div className="flex flex-col md:flex-row mt-8 mb-6 gap-8">
+      <div className="flex-1 border-t-4 border-green-500 pt-2">
+        <h3 className="text-xl font-bold mb-4">Day 1: Initial Assessment</h3>
+        <div className="p-6 bg-muted/50 rounded-lg">
+          <ul className="text-muted-foreground space-y-2">
+            <li>Observed CTR: 6.2%</li>
+            <li>Impressions: 32</li>
+            <li>Total account impressions: 5,000</li>
+            <li>Upper Bound CTR (c=2): 6.2% + 2×√(ln(5,000)/32) = 6.2% + 2×0.61 = 7.42%</li>
+            <li className="font-bold text-green-500">Decision: KEEP (7.42% &gt; 5%)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div className="flex items-center justify-center text-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </div>
+      
+      <div className="flex-1 border-t-4 border-green-500 pt-2">
+        <h3 className="text-xl font-bold mb-4">Day 7: Progress Check</h3>
+        <div className="p-6 bg-muted/50 rounded-lg">
+          <ul className="text-muted-foreground space-y-2">
+            <li>Observed CTR: 5.1%</li>
+            <li>Impressions: 140</li>
+            <li>Total account impressions: 8,000</li>
+            <li>Upper Bound CTR (c=2): 5.1% + 2×√(ln(8,000)/140) = 5.1% + 2×0.30 = 5.70%</li>
+            <li className="font-bold text-green-500">Decision: KEEP (5.70% &gt; 5%)</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div className="flex items-center justify-center text-primary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+          <path d="M5 12h14"></path>
+          <path d="m12 5 7 7-7 7"></path>
+        </svg>
+      </div>
+      
+      <div className="flex-1 border-t-4 border-red-500 pt-2">
+        <h3 className="text-xl font-bold mb-4">Day 14: Final Assessment</h3>
+        <div className="p-6 bg-muted/50 rounded-lg">
+          <ul className="text-muted-foreground space-y-2">
+            <li>Observed CTR: 4.2%</li>
+            <li>Impressions: 380</li>
+            <li>Total account impressions: 12,000</li>
+            <li>Upper Bound CTR (c=2): 4.2% + 2×√(ln(12,000)/380) = 4.2% + 2×0.18 = 4.56%</li>
+            <li className="font-bold text-red-500">Decision: REMOVE (4.56% &lt; 5%)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div className="bg-muted/30 p-6 rounded-lg my-8">
+      <h3 className="text-xl font-bold mb-4">Key Insights from Keyword Decline:</h3>
+      <ul className="space-y-2">
+        <li>The keyword started strong with a 6.2% CTR, well above the 5% target</li>
+        <li>By day 7, performance had declined but was still above threshold when including the confidence bound</li>
+        <li>As more impressions accumulated, the confidence interval narrowed significantly</li>
+        <li>The continuing performance decline coupled with the narrower confidence interval led to a final decision to remove</li>
+        <li>This demonstrates how the UCB approach protects against maintaining keywords that show initial promise but fail to maintain performance at scale</li>
+      </ul>
+    </div>
+    
+    <p>
+      This case study illustrates another key benefit of the UCB approach: it prevents overcommitment to keywords that show early promise but cannot sustain performance over time. As more data is collected and the confidence interval narrows, statistical evidence reveals the keyword's true performance level. A purely performance-based approach might have kept this keyword indefinitely based on its early success, while an approach using arbitrary thresholds might have removed it prematurely or kept it too long.
+    </p>
+  </div>
+</section>
+
           <section>
             <h2 className="text-3xl font-bold mb-6">Advantages Over Traditional Methods</h2>
             <div className="grid md:grid-cols-2 gap-8">

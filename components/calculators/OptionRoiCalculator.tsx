@@ -1,3 +1,4 @@
+// File: components/calculators/OptionRoiCalculator.tsx
 "use client"
 
 import { useEffect, useState } from "react"
@@ -9,6 +10,7 @@ export default function OptionRoiCalculator() {
   const [successMessage, setSuccessMessage] = useState('')
   const [results, setResults] = useState<Array<ResultRow>>([])
   const [csvOutput, setCsvOutput] = useState('')
+  const [sharePrice, setSharePrice] = useState<number | null>(null)
 
   // Define the result data structure
   interface ResultRow {
@@ -18,11 +20,36 @@ export default function OptionRoiCalculator() {
     profit: number
     roi: number
     breakEven: number
+    intrinsicValue: number
+    timeValue: number
   }
 
   useEffect(() => {
     setIsCalculatorLoaded(true)
   }, [])
+
+  const extractSharePrice = (data: string): number | null => {
+    // Look for patterns like "Share price: $344.45" or similar
+    const sharePriceRegex = /Share price: \$(\d+(\.\d+)?)/i;
+    const match = data.match(sharePriceRegex);
+    
+    if (match && match[1]) {
+      return parseFloat(match[1]);
+    }
+    
+    // Alternative approach: Look for lines that may contain the share price
+    const lines = data.trim().split('\n');
+    for (const line of lines) {
+      if (line.includes('Share price:')) {
+        const priceMatch = line.match(/\$(\d+(\.\d+)?)/);
+        if (priceMatch && priceMatch[1]) {
+          return parseFloat(priceMatch[1]);
+        }
+      }
+    }
+    
+    return null;
+  }
 
   const calculateROI = () => {
     // Clear any previous messages
@@ -40,68 +67,147 @@ export default function OptionRoiCalculator() {
     }
     
     try {
-      const options = parseOptionsData(data)
+      // Try to extract share price from the data
+      const extractedSharePrice = extractSharePrice(data);
+      setSharePrice(extractedSharePrice);
+      
+      // Parse options data
+      const options = parseOptionsData(data);
       if (options.length === 0) {
         setErrorMessage('Could not parse options data. Please check format.')
         return
       }
       
-      const calculatedResults = calculateOptionROI(options, targetPrice, isCall)
-      displayResults(calculatedResults)
+      // Calculate ROI for each option
+      const calculatedResults = calculateOptionROI(options, targetPrice, isCall, extractedSharePrice);
+      displayResults(calculatedResults);
       
       // Switch to results tab
-      setActiveTab('ResultsTab')
+      setActiveTab('ResultsTab');
       
       // Show success message
-      setSuccessMessage(`Calculated ROI for ${options.length} options with target price of $${targetPrice.toFixed(2)}`)
+      let successMsg = `Calculated ROI for ${options.length} options with target price of ${targetPrice.toFixed(2)}`;
+      if (extractedSharePrice) {
+        successMsg += ` (Current share price: ${extractedSharePrice.toFixed(2)})`;
+      }
+      setSuccessMessage(successMsg);
       
       // Hide success message after 5 seconds
       setTimeout(() => {
-        setSuccessMessage('')
-      }, 5000)
+        setSuccessMessage('');
+      }, 5000);
       
     } catch (error) {
-      setErrorMessage(`Error processing data: ${error instanceof Error ? error.message : 'Unknown error'}`)
-      console.error(error)
+      setErrorMessage(`Error processing data: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      console.error(error);
     }
   }
 
   const parseOptionsData = (data: string) => {
-    const lines = data.trim().split('\n')
-    const options = []
+    const lines = data.trim().split('\n');
+    const options = [];
     
-    // Each option has 6 lines of data
-    for (let i = 0; i < lines.length; i += 6) {
-      if (i + 5 < lines.length) {
-        const strike = parseFloat(lines[i].replace('$', ''))
-        const price = parseFloat(lines[i + 5].replace('$', ''))
-        
-        if (!isNaN(strike) && !isNaN(price)) {
-          options.push({
-            strike,
-            price
-          })
+    let inOptionData = false;
+    let strikePrice: number | null = null;
+    let optionPrice: number | null = null;
+    
+    // Pattern for strike price and option price
+    const strikePricePattern = /^\s*\$(\d+(\.\d+)?)\s*$/;
+    const optionPricePattern = /\$(\d+(\.\d+)?)\s*$/;
+    
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+      
+      // Skip empty lines
+      if (!line) continue;
+      
+      // Check if this line contains a strike price (typically bold and starts with $)
+      const strikeMatch = line.match(strikePricePattern);
+      if (strikeMatch) {
+        strikePrice = parseFloat(strikeMatch[1]);
+        inOptionData = true;
+        continue;
+      }
+      
+      // If we're in option data and have a strike price, look for the option price
+      if (inOptionData && strikePrice !== null) {
+        // Try to find option price at the end of a line
+        const priceMatch = line.match(optionPricePattern);
+        if (priceMatch) {
+          optionPrice = parseFloat(priceMatch[1]);
+          
+          // Add this option to our list
+          if (optionPrice !== null && !isNaN(optionPrice)) {
+            options.push({
+              strike: strikePrice,
+              price: optionPrice
+            });
+            
+            // Reset for next option
+            inOptionData = false;
+            strikePrice = null;
+            optionPrice = null;
+          }
         }
       }
     }
     
-    return options
+    // If we couldn't parse any options with the smarter approach, fall back to the original method
+    if (options.length === 0) {
+      // Each option has 6 lines of data
+      for (let i = 0; i < lines.length; i += 6) {
+        if (i + 5 < lines.length) {
+          const strike = parseFloat(lines[i].replace('
+, ''));
+          const price = parseFloat(lines[i + 5].replace('
+, ''));
+          
+          if (!isNaN(strike) && !isNaN(price)) {
+            options.push({
+              strike,
+              price
+            });
+          }
+        }
+      }
+    }
+    
+    return options;
   }
 
-  const calculateOptionROI = (options: Array<{strike: number, price: number}>, targetPrice: number, isCall: boolean) => {
+  const calculateOptionROI = (
+    options: Array<{strike: number, price: number}>, 
+    targetPrice: number, 
+    isCall: boolean,
+    currentSharePrice: number | null
+  ) => {
     return options.map(option => {
-      let potentialValue: number
+      let potentialValue: number;
+      let intrinsicValue: number = 0;
       
       if (isCall) {
         // Call option: max(0, targetPrice - strike)
-        potentialValue = Math.max(0, targetPrice - option.strike)
+        potentialValue = Math.max(0, targetPrice - option.strike);
+        
+        // Calculate intrinsic value if we know the current share price
+        if (currentSharePrice !== null) {
+          intrinsicValue = Math.max(0, currentSharePrice - option.strike);
+        }
       } else {
         // Put option: max(0, strike - targetPrice)
-        potentialValue = Math.max(0, option.strike - targetPrice)
+        potentialValue = Math.max(0, option.strike - targetPrice);
+        
+        // Calculate intrinsic value if we know the current share price
+        if (currentSharePrice !== null) {
+          intrinsicValue = Math.max(0, option.strike - currentSharePrice);
+        }
       }
       
-      const profit = potentialValue - option.price
-      const roi = profit / option.price * 100
+      const profit = potentialValue - option.price;
+      const roi = profit / option.price * 100;
+      
+      // Calculate time value (option price - intrinsic value)
+      const timeValue = option.price - intrinsicValue;
       
       return {
         strike: option.strike,
@@ -109,39 +215,41 @@ export default function OptionRoiCalculator() {
         potentialValue,
         profit,
         roi,
-        breakEven: isCall ? option.strike + option.price : option.strike - option.price
-      }
-    }).sort((a, b) => b.roi - a.roi) // Sort by ROI descending
+        breakEven: isCall ? option.strike + option.price : option.strike - option.price,
+        intrinsicValue,
+        timeValue
+      };
+    }).sort((a, b) => b.roi - a.roi); // Sort by ROI descending
   }
 
   const displayResults = (results: Array<ResultRow>) => {
     // Save results to state
-    setResults(results)
+    setResults(results);
     
     // Create CSV header
-    let csv = 'Strike,Current Price,Potential Value,Profit,ROI %,Break Even\n'
+    let csv = 'Strike,Current Price,Intrinsic Value,Time Value,Potential Value,Profit,ROI %,Break Even\n';
     
     // Add data rows
     results.forEach(result => {
-      csv += `$${result.strike.toFixed(2)},$${result.currentPrice.toFixed(2)},$${result.potentialValue.toFixed(2)},$${result.profit.toFixed(2)},${result.roi.toFixed(2)}%,$${result.breakEven.toFixed(2)}\n`
-    })
+      csv += `${result.strike.toFixed(2)},${result.currentPrice.toFixed(2)},${result.intrinsicValue.toFixed(2)},${result.timeValue.toFixed(2)},${result.potentialValue.toFixed(2)},${result.profit.toFixed(2)},${result.roi.toFixed(2)}%,${result.breakEven.toFixed(2)}\n`;
+    });
     
     // Set CSV output
-    setCsvOutput(csv)
+    setCsvOutput(csv);
   }
 
   const copyToClipboard = () => {
-    const textArea = document.getElementById('csvOutput') as HTMLTextAreaElement
-    textArea.select()
-    document.execCommand('copy')
+    const textArea = document.getElementById('csvOutput') as HTMLTextAreaElement;
+    textArea.select();
+    document.execCommand('copy');
     
     // Visual feedback
-    setSuccessMessage('CSV copied to clipboard!')
+    setSuccessMessage('CSV copied to clipboard!');
     
     // Hide message after 3 seconds
     setTimeout(() => {
-      setSuccessMessage('')
-    }, 3000)
+      setSuccessMessage('');
+    }, 3000);
   }
 
   return (
@@ -186,58 +294,35 @@ export default function OptionRoiCalculator() {
       {/* Input Tab */}
       {activeTab === 'InputTab' && (
         <div className="space-y-6">
+          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800">
+            <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Quick Start with Robinhood</h4>
+            <ol className="text-sm text-blue-700 dark:text-blue-300 list-decimal pl-5 space-y-1">
+              <li>Open Robinhood and navigate to the stock you want to analyze</li>
+              <li>Tap "Trade Options" and select either "Call" or "Put"</li>
+              <li>Select an expiration date</li>
+              <li>Copy the entire options chain section (including the "Share price: $XX.XX" line)</li>
+              <li>Paste below, enter your target price, and click "Calculate ROI"</li>
+            </ol>
+          </div>
+          
           <div>
             <label htmlFor="optionDataInput" className="block font-medium mb-1">
               Options Data:
             </label>
             <p className="text-sm text-muted-foreground mb-2">
-              Paste your option chain data in the format shown below
+              Paste your option chain data from Robinhood or another broker (include "Share price: $XX.XX" if possible)
             </p>
             <textarea 
               id="optionDataInput" 
               className="w-full min-h-[200px] p-3 border rounded-md font-mono bg-background"
-              defaultValue={`$345
-$329.07
--4.38%
-0.00%
-$0.00
-$13.50
-$340
-$327.80
--4.75%
--37.53%
--$7.33
-$12.25
-$337.5
-$326.47
--5.13%
-0.00%
-$0.00
-$11.10
-$335
-$325.07
--5.54%
--39.56%
--$6.50
-$10.00
-$332.5
-$323.60
--5.97%
-0.00%
-$0.00
-$8.95
-$330
-$322.05
--6.42%
--41.76%
--$5.70
-$8.00
-$327.5
-$320.40
--6.90%
-0.00%
-$0.00
-$7.15`}
+              defaultValue={`Share price: $344.45
+
+Strike price    Breakeven    To breakeven    % Change    Change    Ask Price
+$90            —            —               —           —         —
+$80            $79.99       -76.78%         0.00%       $0.00     $0.01
+$70            $69.99       -79.68%         0.00%       $0.00     $0.01
+$60            $59.99       -82.58%         0.00%       $0.00     $0.01
+$50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
             />
           </div>
           
@@ -251,7 +336,7 @@ $7.15`}
               className="w-full sm:w-48 p-3 border rounded-md bg-background" 
               min="0" 
               step="0.01" 
-              defaultValue="350"
+              defaultValue="300"
             />
           </div>
           
@@ -263,7 +348,6 @@ $7.15`}
                   type="radio" 
                   name="optionType" 
                   id="callOption" 
-                  defaultChecked
                   className="mr-2" 
                 />
                 Call Options
@@ -273,6 +357,7 @@ $7.15`}
                   type="radio" 
                   name="optionType" 
                   id="putOption" 
+                  defaultChecked
                   className="mr-2" 
                 />
                 Put Options
@@ -294,6 +379,31 @@ $7.15`}
       {/* Results Tab */}
       {activeTab === 'ResultsTab' && (
         <div className="space-y-6">
+          <div className="bg-muted p-4 rounded-lg">
+            <h3 className="text-xl font-bold mb-2">Calculation Parameters</h3>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <p className="text-sm text-muted-foreground">Current Share Price:</p>
+                <p className="font-bold text-xl">${sharePrice ? sharePrice.toFixed(2) : 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Target Share Price:</p>
+                <p className="font-bold text-xl">${(document.getElementById('targetPriceInput') as HTMLInputElement)?.value || 'N/A'}</p>
+              </div>
+              <div>
+                <p className="text-sm text-muted-foreground">Option Type:</p>
+                <p className="font-bold">{(document.getElementById('callOption') as HTMLInputElement)?.checked ? 'Call Options' : 'Put Options'}</p>
+              </div>
+            </div>
+            {sharePrice && (
+              <p className="mt-4 text-sm text-muted-foreground">
+                {sharePrice && parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value) < sharePrice ? 
+                  `Target price is ${((sharePrice - parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value)) / sharePrice * 100).toFixed(2)}% below current price` : 
+                  `Target price is ${((parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value) - sharePrice) / sharePrice * 100).toFixed(2)}% above current price`}
+              </p>
+            )}
+          </div>
+          
           <div>
             <h3 className="text-xl font-bold mb-4">Best Options by ROI</h3>
             {results.length > 0 ? (
@@ -302,8 +412,10 @@ $7.15`}
                   <thead>
                     <tr className="bg-muted">
                       <th className="p-3 text-left border-b">Strike</th>
-                      <th className="p-3 text-right border-b">Current Price</th>
-                      <th className="p-3 text-right border-b">Potential Value</th>
+                      <th className="p-3 text-right border-b">Option Price</th>
+                      <th className="p-3 text-right border-b">Intrinsic Value</th>
+                      <th className="p-3 text-right border-b">Time Value</th>
+                      <th className="p-3 text-right border-b">Target Value</th>
                       <th className="p-3 text-right border-b">Profit</th>
                       <th className="p-3 text-right border-b">ROI %</th>
                       <th className="p-3 text-right border-b">Break Even</th>
@@ -320,6 +432,8 @@ $7.15`}
                       >
                         <td className="p-3 border-b">${result.strike.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.currentPrice.toFixed(2)}</td>
+                        <td className="p-3 text-right border-b">${result.intrinsicValue.toFixed(2)}</td>
+                        <td className="p-3 text-right border-b">${result.timeValue.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.potentialValue.toFixed(2)}</td>
                         <td className={`p-3 text-right border-b ${result.profit >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                           ${result.profit.toFixed(2)}
@@ -337,6 +451,19 @@ $7.15`}
               <p className="text-muted-foreground">No results to display. Calculate ROI first.</p>
             )}
           </div>
+          
+          {results.length > 0 && (
+            <div className="bg-green-50 dark:bg-green-900/10 p-4 rounded-lg border border-green-100 dark:border-green-800">
+              <h4 className="font-bold text-green-700 dark:text-green-300 mb-2">Recommendation</h4>
+              <p className="text-green-700 dark:text-green-300">
+                {results.length > 0 && (
+                  <>
+                    The <span className="font-bold">${results[0].strike.toFixed(2)} strike price option</span> at <span className="font-bold">${results[0].currentPrice.toFixed(2)}</span> offers the best potential ROI of <span className="font-bold">{results[0].roi.toFixed(2)}%</span> if the stock reaches your target price of ${(document.getElementById('targetPriceInput') as HTMLInputElement)?.value}.
+                  </>
+                )}
+              </p>
+            </div>
+          )}
           
           <div>
             <h3 className="text-xl font-bold mb-4">CSV Output</h3>
@@ -367,7 +494,7 @@ $7.15`}
             <h3 className="text-xl font-bold mb-4">How to Use This Calculator</h3>
             <ol className="list-decimal pl-5 space-y-2">
               <li>
-                <strong>Paste Your Options Data:</strong> Copy and paste your option chain data in the format shown in the example.
+                <strong>Paste Your Options Data:</strong> Copy and paste your option chain data from Robinhood or another broker. Include the current share price if possible (format: "Share price: $XX.XX").
               </li>
               <li>
                 <strong>Enter Your Target Price:</strong> Input the price you believe the underlying asset will reach.
@@ -394,16 +521,22 @@ $7.15`}
                 <strong>Strike:</strong> The strike price of the option.
               </li>
               <li>
-                <strong>Current Price:</strong> The current price of the option.
+                <strong>Option Price:</strong> The current price (premium) of the option.
               </li>
               <li>
-                <strong>Potential Value:</strong> The intrinsic value of the option if the underlying reaches your target price.
+                <strong>Intrinsic Value:</strong> The value if exercised immediately (for calls: max(0, share price - strike); for puts: max(0, strike - share price)).
               </li>
               <li>
-                <strong>Profit:</strong> The potential gain (Potential Value - Current Price).
+                <strong>Time Value:</strong> The portion of the option price beyond intrinsic value (option price - intrinsic value).
               </li>
               <li>
-                <strong>ROI %:</strong> Return on investment as a percentage (Profit / Current Price × 100).
+                <strong>Target Value:</strong> The intrinsic value if the underlying reaches your target price.
+              </li>
+              <li>
+                <strong>Profit:</strong> The potential gain (Target Value - Option Price).
+              </li>
+              <li>
+                <strong>ROI %:</strong> Return on investment as a percentage (Profit / Option Price × 100).
               </li>
               <li>
                 <strong>Break Even:</strong> The price the underlying needs to reach for the option to break even.
@@ -412,19 +545,25 @@ $7.15`}
           </div>
           
           <div>
-            <h3 className="text-xl font-bold mb-4">Data Format</h3>
-            <p className="mb-2">The calculator expects data in the following format (each option has 6 lines):</p>
+            <h3 className="text-xl font-bold mb-4">Robinhood Data Format</h3>
+            <p className="mb-2">To get the best results from Robinhood:</p>
+            <ol className="list-decimal pl-5 space-y-1 mb-4">
+              <li>Open the Robinhood app and navigate to the stock you want to analyze</li>
+              <li>Tap on "Trade" and then "Trade Options"</li>
+              <li>Select either "Call" or "Put" options</li>
+              <li>Choose an expiration date</li>
+              <li>Copy the entire options chain including the share price at the top</li>
+            </ol>
+            <p className="mb-2">The calculator is designed to automatically detect data in this format:</p>
             <pre className="bg-muted p-4 rounded-md font-mono text-sm">
-{`$345      (Strike price)
-$329.07   (Stock price)
--4.38%    (% change)
-0.00%     (Unknown)
-$0.00     (Unknown)
-$13.50    (Option price)`}
+{`Share price: $344.45
+
+Strike price    Breakeven    To breakeven    % Change    Change    Ask Price
+$90            —            —               —           —         —
+$80            $79.99       -76.78%         0.00%       $0.00     $0.01
+$70            $69.99       -79.68%         0.00%       $0.00     $0.01
+...`}
             </pre>
-            <p className="mt-2 text-muted-foreground">
-              Only the strike price (1st line) and option price (6th line) are used in calculations.
-            </p>
           </div>
         </div>
       )}

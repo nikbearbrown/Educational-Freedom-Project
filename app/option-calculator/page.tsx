@@ -1,10 +1,10 @@
-import type { Metadata } from "next"
-import OptionRoiCalculator from "@/components/calculators/OptionRoiCalculator"
+// app/option-calculator/page.tsx
+import OptionRoiCalculator from "@/components/calculators/OptionRoiCalculator";
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Option ROI Calculator - Humanitarians AI",
   description: "Find the best strike price for your target price prediction with our Options ROI Calculator.",
-}
+};
 
 export default function OptionCalculatorPage() {
   return (
@@ -21,15 +21,15 @@ export default function OptionCalculatorPage() {
         {/* Introduction */}
         <div className="prose prose-lg dark:prose-invert mb-12 max-w-3xl mx-auto">
           <p>
-            Our Option ROI Calculator helps investors compare different option strike prices to find the best potential return on investment for a specific price target. Simply enter your option chain data, specify your target price, and instantly see which options offer the most efficient exposure.
+            This calculator helps investors find the most efficient options for a specific price target. Just paste your option chain data, enter your target price, and see which options offer the best ROI.
           </p>
           <p>
-            This tool is especially useful for:
+            Ideal for:
           </p>
           <ul>
-            <li>Comparing multiple strike prices across an option chain</li>
-            <li>Finding the most capital-efficient way to express a directional view</li>
-            <li>Identifying options with the best risk/reward profile for your price target</li>
+            <li>Comparing multiple strike prices</li>
+            <li>Finding capital-efficient trading opportunities</li>
+            <li>Identifying the best risk/reward options</li>
           </ul>
         </div>
 
@@ -47,33 +47,33 @@ export default function OptionCalculatorPage() {
             <div className="p-6 border rounded-lg">
               <h3 className="text-xl font-bold mb-2">What does ROI mean in options trading?</h3>
               <p className="text-muted-foreground">
-                ROI (Return on Investment) in options trading represents the percentage gain or loss on your initial investment. It's calculated by dividing the profit (or loss) by the initial cost of the option, then multiplying by 100 to get a percentage.
+                ROI (Return on Investment) represents the percentage gain or loss on your initial investment. It's calculated by dividing the profit by the option cost, then multiplying by 100.
               </p>
             </div>
             
             <div className="p-6 border rounded-lg">
               <h3 className="text-xl font-bold mb-2">How does the calculator determine the best option?</h3>
               <p className="text-muted-foreground">
-                The calculator ranks options by their potential ROI based on your target price. The highest ROI option (highlighted in green) represents the most efficient use of capital if the underlying asset reaches your target price before expiration.
+                The calculator ranks options by their potential ROI based on your target price. The highest ROI option (highlighted in green) represents the most efficient use of capital.
               </p>
             </div>
             
             <div className="p-6 border rounded-lg">
-              <h3 className="text-xl font-bold mb-2">Does this calculator consider the Greeks or implied volatility?</h3>
+              <h3 className="text-xl font-bold mb-2">Does this calculator consider the Greeks?</h3>
               <p className="text-muted-foreground">
-                No, this calculator performs a simple intrinsic value calculation based on your target price. It doesn't account for time value, implied volatility, or other factors that affect option pricing. It's designed for quick comparisons rather than detailed option pricing.
+                No, this calculator performs a simple intrinsic value calculation based on your target price. It doesn't account for time value, implied volatility, or other factors.
               </p>
             </div>
             
             <div className="p-6 border rounded-lg">
-              <h3 className="text-xl font-bold mb-2">Where can I find option chain data to use with this calculator?</h3>
+              <h3 className="text-xl font-bold mb-2">Where can I find option chain data?</h3>
               <p className="text-muted-foreground">
-                Option chain data can be obtained from most brokerage platforms (like Robinhood, E*TRADE, TD Ameritrade) or financial websites (like Yahoo Finance). Copy the data in the format shown in the Help tab of the calculator.
+                Option chain data can be obtained from brokerage platforms like Robinhood, E*TRADE, or TD Ameritrade. Copy the data in the format shown in the Help tab.
               </p>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

@@ -1,35 +1,30 @@
-// File: components/calculators/OptionRoiCalculator.tsx
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
+
+interface ResultRow {
+  strike: number;
+  currentPrice: number;
+  potentialValue: number;
+  profit: number;
+  roi: number;
+  breakEven: number;
+  intrinsicValue: number;
+  timeValue: number;
+}
 
 export default function OptionRoiCalculator() {
-  const [activeTab, setActiveTab] = useState('InputTab')
-  const [isCalculatorLoaded, setIsCalculatorLoaded] = useState(false)
-  const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSuccessMessage] = useState('')
-  const [results, setResults] = useState<Array<ResultRow>>([])
-  const [csvOutput, setCsvOutput] = useState('')
-  const [sharePrice, setSharePrice] = useState<number | null>(null)
+  const [activeTab, setActiveTab] = useState("InputTab");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [results, setResults] = useState<ResultRow[]>([]);
+  const [csvOutput, setCsvOutput] = useState("");
+  const [sharePrice, setSharePrice] = useState<number | null>(null);
+  const [targetPrice, setTargetPrice] = useState(300);
+  const [isCallOption, setIsCallOption] = useState(false);
 
-  // Define the result data structure
-  interface ResultRow {
-    strike: number
-    currentPrice: number
-    potentialValue: number
-    profit: number
-    roi: number
-    breakEven: number
-    intrinsicValue: number
-    timeValue: number
-  }
-
-  useEffect(() => {
-    setIsCalculatorLoaded(true)
-  }, [])
-
-  const extractSharePrice = (data: string): number | null => {
-    // Look for patterns like "Share price: $344.45" or similar
+  // Extract share price from the input data
+  function extractSharePrice(data: string): number | null {
     const sharePriceRegex = /Share price: \$(\d+(\.\d+)?)/i;
     const match = data.match(sharePriceRegex);
     
@@ -37,10 +32,9 @@ export default function OptionRoiCalculator() {
       return parseFloat(match[1]);
     }
     
-    // Alternative approach: Look for lines that may contain the share price
-    const lines = data.trim().split('\n');
+    const lines = data.trim().split("\n");
     for (const line of lines) {
-      if (line.includes('Share price:')) {
+      if (line.includes("Share price:")) {
         const priceMatch = line.match(/\$(\d+(\.\d+)?)/);
         if (priceMatch && priceMatch[1]) {
           return parseFloat(priceMatch[1]);
@@ -51,116 +45,41 @@ export default function OptionRoiCalculator() {
     return null;
   }
 
-  const calculateROI = () => {
-    // Clear any previous messages
-    setErrorMessage('')
-    setSuccessMessage('')
-    
-    // Get form values
-    const data = (document.getElementById('optionDataInput') as HTMLTextAreaElement).value
-    const targetPrice = parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement).value)
-    const isCall = (document.getElementById('callOption') as HTMLInputElement).checked
-    
-    if (isNaN(targetPrice) || targetPrice <= 0) {
-      setErrorMessage('Please enter a valid target price.')
-      return
-    }
-    
-    try {
-      // Try to extract share price from the data
-      const extractedSharePrice = extractSharePrice(data);
-      setSharePrice(extractedSharePrice);
-      
-      // Parse options data
-      const options = parseOptionsData(data);
-      if (options.length === 0) {
-        setErrorMessage('Could not parse options data. Please check format.')
-        return
-      }
-      
-      // Calculate ROI for each option
-      const calculatedResults = calculateOptionROI(options, targetPrice, isCall, extractedSharePrice);
-      displayResults(calculatedResults);
-      
-      // Switch to results tab
-      setActiveTab('ResultsTab');
-      
-      // Show success message
-      let successMsg = `Calculated ROI for ${options.length} options with target price of ${targetPrice.toFixed(2)}`;
-      if (extractedSharePrice) {
-        successMsg += ` (Current share price: ${extractedSharePrice.toFixed(2)})`;
-      }
-      setSuccessMessage(successMsg);
-      
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        setSuccessMessage('');
-      }, 5000);
-      
-    } catch (error) {
-      setErrorMessage(`Error processing data: ${error instanceof Error ? error.message : 'Unknown error'}`);
-      console.error(error);
-    }
-  }
-
-  const parseOptionsData = (data: string) => {
-    const lines = data.trim().split('\n');
+  // Parse option data from input text
+  function parseOptionsData(data: string) {
+    const lines = data.trim().split("\n");
     const options = [];
-    
-    let inOptionData = false;
-    let strikePrice: number | null = null;
-    let optionPrice: number | null = null;
-    
-    // Pattern for strike price and option price
-    const strikePricePattern = /^\s*\$(\d+(\.\d+)?)\s*$/;
-    const optionPricePattern = /\$(\d+(\.\d+)?)\s*$/;
     
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i].trim();
-      
-      // Skip empty lines
       if (!line) continue;
       
-      // Check if this line contains a strike price (typically bold and starts with $)
-      const strikeMatch = line.match(strikePricePattern);
-      if (strikeMatch) {
-        strikePrice = parseFloat(strikeMatch[1]);
-        inOptionData = true;
-        continue;
-      }
-      
-      // If we're in option data and have a strike price, look for the option price
-      if (inOptionData && strikePrice !== null) {
-        // Try to find option price at the end of a line
-        const priceMatch = line.match(optionPricePattern);
-        if (priceMatch) {
-          optionPrice = parseFloat(priceMatch[1]);
+      // Try to find strike price at beginning of line
+      const strikeMatch = line.match(/^\$(\d+(\.\d+)?)/);
+      if (strikeMatch && strikeMatch[1]) {
+        const strike = parseFloat(strikeMatch[1]);
+        
+        // Try to find option price at end of line
+        const priceMatch = line.match(/\$(\d+(\.\d+)?)$/);
+        if (priceMatch && priceMatch[1]) {
+          const price = parseFloat(priceMatch[1]);
           
-          // Add this option to our list
-          if (optionPrice !== null && !isNaN(optionPrice)) {
+          if (!isNaN(strike) && !isNaN(price)) {
             options.push({
-              strike: strikePrice,
-              price: optionPrice
+              strike,
+              price
             });
-            
-            // Reset for next option
-            inOptionData = false;
-            strikePrice = null;
-            optionPrice = null;
           }
         }
       }
     }
     
-    // If we couldn't parse any options with the smarter approach, fall back to the original method
+    // Fallback to original method if no options found
     if (options.length === 0) {
-      // Each option has 6 lines of data
       for (let i = 0; i < lines.length; i += 6) {
         if (i + 5 < lines.length) {
-          const strike = parseFloat(lines[i].replace('
-, ''));
-          const price = parseFloat(lines[i + 5].replace('
-, ''));
+          const strike = parseFloat(lines[i].replace("$", ""));
+          const price = parseFloat(lines[i + 5].replace("$", ""));
           
           if (!isNaN(strike) && !isNaN(price)) {
             options.push({
@@ -175,38 +94,31 @@ export default function OptionRoiCalculator() {
     return options;
   }
 
-  const calculateOptionROI = (
+  // Calculate ROI for options
+  function calculateOptionROI(
     options: Array<{strike: number, price: number}>, 
     targetPrice: number, 
     isCall: boolean,
     currentSharePrice: number | null
-  ) => {
+  ) {
     return options.map(option => {
-      let potentialValue: number;
-      let intrinsicValue: number = 0;
+      let potentialValue = 0;
+      let intrinsicValue = 0;
       
       if (isCall) {
-        // Call option: max(0, targetPrice - strike)
         potentialValue = Math.max(0, targetPrice - option.strike);
-        
-        // Calculate intrinsic value if we know the current share price
         if (currentSharePrice !== null) {
           intrinsicValue = Math.max(0, currentSharePrice - option.strike);
         }
       } else {
-        // Put option: max(0, strike - targetPrice)
         potentialValue = Math.max(0, option.strike - targetPrice);
-        
-        // Calculate intrinsic value if we know the current share price
         if (currentSharePrice !== null) {
           intrinsicValue = Math.max(0, option.strike - currentSharePrice);
         }
       }
       
       const profit = potentialValue - option.price;
-      const roi = profit / option.price * 100;
-      
-      // Calculate time value (option price - intrinsic value)
+      const roi = option.price > 0 ? (profit / option.price * 100) : 0;
       const timeValue = option.price - intrinsicValue;
       
       return {
@@ -219,66 +131,123 @@ export default function OptionRoiCalculator() {
         intrinsicValue,
         timeValue
       };
-    }).sort((a, b) => b.roi - a.roi); // Sort by ROI descending
+    }).sort((a, b) => b.roi - a.roi);
   }
 
-  const displayResults = (results: Array<ResultRow>) => {
-    // Save results to state
+  // Format results as CSV
+  function displayResults(results: ResultRow[]) {
     setResults(results);
     
-    // Create CSV header
-    let csv = 'Strike,Current Price,Intrinsic Value,Time Value,Potential Value,Profit,ROI %,Break Even\n';
+    let csv = "Strike,Current Price,Intrinsic Value,Time Value,Potential Value,Profit,ROI %,Break Even\n";
     
-    // Add data rows
     results.forEach(result => {
-      csv += `${result.strike.toFixed(2)},${result.currentPrice.toFixed(2)},${result.intrinsicValue.toFixed(2)},${result.timeValue.toFixed(2)},${result.potentialValue.toFixed(2)},${result.profit.toFixed(2)},${result.roi.toFixed(2)}%,${result.breakEven.toFixed(2)}\n`;
+      csv += `$${result.strike.toFixed(2)},$${result.currentPrice.toFixed(2)},$${result.intrinsicValue.toFixed(2)},$${result.timeValue.toFixed(2)},$${result.potentialValue.toFixed(2)},$${result.profit.toFixed(2)},${result.roi.toFixed(2)}%,$${result.breakEven.toFixed(2)}\n`;
     });
     
-    // Set CSV output
     setCsvOutput(csv);
   }
 
-  const copyToClipboard = () => {
-    const textArea = document.getElementById('csvOutput') as HTMLTextAreaElement;
-    textArea.select();
-    document.execCommand('copy');
+  // Copy CSV to clipboard
+  function copyToClipboard() {
+    const textArea = document.getElementById("csvOutput") as HTMLTextAreaElement;
+    if (textArea) {
+      textArea.select();
+      document.execCommand("copy");
+      
+      setSuccessMessage("CSV copied to clipboard!");
+      
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 3000);
+    }
+  }
+
+  // Main calculation function
+  function calculateROI() {
+    setErrorMessage("");
+    setSuccessMessage("");
     
-    // Visual feedback
-    setSuccessMessage('CSV copied to clipboard!');
+    // Get form values safely
+    const dataElement = document.getElementById("optionDataInput") as HTMLTextAreaElement;
+    const targetElement = document.getElementById("targetPriceInput") as HTMLInputElement;
+    const callElement = document.getElementById("callOption") as HTMLInputElement;
     
-    // Hide message after 3 seconds
-    setTimeout(() => {
-      setSuccessMessage('');
-    }, 3000);
+    if (!dataElement || !targetElement) {
+      setErrorMessage("Could not find input elements.");
+      return;
+    }
+    
+    const data = dataElement.value || "";
+    const targetValue = parseFloat(targetElement.value || "0");
+    const isCall = callElement?.checked || false;
+    
+    // Update state
+    setTargetPrice(targetValue);
+    setIsCallOption(isCall);
+    
+    if (isNaN(targetValue) || targetValue <= 0) {
+      setErrorMessage("Please enter a valid target price.");
+      return;
+    }
+    
+    try {
+      const extractedSharePrice = extractSharePrice(data);
+      setSharePrice(extractedSharePrice);
+      
+      const options = parseOptionsData(data);
+      if (options.length === 0) {
+        setErrorMessage("Could not parse options data. Please check format.");
+        return;
+      }
+      
+      const calculatedResults = calculateOptionROI(options, targetValue, isCall, extractedSharePrice);
+      displayResults(calculatedResults);
+      
+      setActiveTab("ResultsTab");
+      
+      let successMsg = `Calculated ROI for ${options.length} options with target price of $${targetValue.toFixed(2)}`;
+      if (extractedSharePrice) {
+        successMsg += ` (Current share price: $${extractedSharePrice.toFixed(2)})`;
+      }
+      setSuccessMessage(successMsg);
+      
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 5000);
+      
+    } catch (error) {
+      setErrorMessage(`Error processing data: ${error instanceof Error ? error.message : "Unknown error"}`);
+      console.error(error);
+    }
   }
 
   return (
     <div className="border rounded-lg p-6 bg-background">
-      {/* Tabs */}
+      {/* Tab Navigation */}
       <div className="mb-6 border-b">
         <div className="flex">
           <button 
-            onClick={() => setActiveTab('InputTab')}
-            className={`px-4 py-2 font-medium ${activeTab === 'InputTab' ? 'border-b-2 border-primary text-foreground' : 'text-muted-foreground'}`}
+            onClick={() => setActiveTab("InputTab")}
+            className={`px-4 py-2 font-medium ${activeTab === "InputTab" ? "border-b-2 border-primary text-foreground" : "text-muted-foreground"}`}
           >
             Input Data
           </button>
           <button 
-            onClick={() => setActiveTab('ResultsTab')}
-            className={`px-4 py-2 font-medium ${activeTab === 'ResultsTab' ? 'border-b-2 border-primary text-foreground' : 'text-muted-foreground'}`}
+            onClick={() => setActiveTab("ResultsTab")}
+            className={`px-4 py-2 font-medium ${activeTab === "ResultsTab" ? "border-b-2 border-primary text-foreground" : "text-muted-foreground"}`}
           >
             Results
           </button>
           <button 
-            onClick={() => setActiveTab('HelpTab')}
-            className={`px-4 py-2 font-medium ${activeTab === 'HelpTab' ? 'border-b-2 border-primary text-foreground' : 'text-muted-foreground'}`}
+            onClick={() => setActiveTab("HelpTab")}
+            className={`px-4 py-2 font-medium ${activeTab === "HelpTab" ? "border-b-2 border-primary text-foreground" : "text-muted-foreground"}`}
           >
             Help
           </button>
         </div>
       </div>
       
-      {/* Error/Success Alerts */}
+      {/* Messages */}
       {errorMessage && (
         <div className="bg-destructive/10 text-destructive p-4 rounded-md mb-6">
           {errorMessage}
@@ -292,7 +261,7 @@ export default function OptionRoiCalculator() {
       )}
       
       {/* Input Tab */}
-      {activeTab === 'InputTab' && (
+      {activeTab === "InputTab" && (
         <div className="space-y-6">
           <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800">
             <h4 className="font-bold text-blue-700 dark:text-blue-300 mb-2">Quick Start with Robinhood</h4>
@@ -310,7 +279,7 @@ export default function OptionRoiCalculator() {
               Options Data:
             </label>
             <p className="text-sm text-muted-foreground mb-2">
-              Paste your option chain data from Robinhood or another broker (include "Share price: $XX.XX" if possible)
+              Paste your option chain data from Robinhood or another broker
             </p>
             <textarea 
               id="optionDataInput" 
@@ -377,29 +346,29 @@ $50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
       )}
       
       {/* Results Tab */}
-      {activeTab === 'ResultsTab' && (
+      {activeTab === "ResultsTab" && (
         <div className="space-y-6">
           <div className="bg-muted p-4 rounded-lg">
             <h3 className="text-xl font-bold mb-2">Calculation Parameters</h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div>
                 <p className="text-sm text-muted-foreground">Current Share Price:</p>
-                <p className="font-bold text-xl">${sharePrice ? sharePrice.toFixed(2) : 'N/A'}</p>
+                <p className="font-bold text-xl">${sharePrice ? sharePrice.toFixed(2) : "N/A"}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Target Share Price:</p>
-                <p className="font-bold text-xl">${(document.getElementById('targetPriceInput') as HTMLInputElement)?.value || 'N/A'}</p>
+                <p className="font-bold text-xl">${targetPrice.toFixed(2)}</p>
               </div>
               <div>
                 <p className="text-sm text-muted-foreground">Option Type:</p>
-                <p className="font-bold">{(document.getElementById('callOption') as HTMLInputElement)?.checked ? 'Call Options' : 'Put Options'}</p>
+                <p className="font-bold">{isCallOption ? "Call Options" : "Put Options"}</p>
               </div>
             </div>
             {sharePrice && (
               <p className="mt-4 text-sm text-muted-foreground">
-                {sharePrice && parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value) < sharePrice ? 
-                  `Target price is ${((sharePrice - parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value)) / sharePrice * 100).toFixed(2)}% below current price` : 
-                  `Target price is ${((parseFloat((document.getElementById('targetPriceInput') as HTMLInputElement)?.value) - sharePrice) / sharePrice * 100).toFixed(2)}% above current price`}
+                {targetPrice < sharePrice ? 
+                  `Target price is ${((sharePrice - targetPrice) / sharePrice * 100).toFixed(2)}% below current price` : 
+                  `Target price is ${((targetPrice - sharePrice) / sharePrice * 100).toFixed(2)}% above current price`}
               </p>
             )}
           </div>
@@ -425,20 +394,21 @@ $50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
                     {results.map((result, index) => (
                       <tr 
                         key={index}
-                        className={`
-                          ${index === 0 ? 'bg-green-50 dark:bg-green-900/20 font-medium' : ''} 
-                          ${index % 2 === 1 && index !== 0 ? 'bg-muted/50' : ''}
-                        `}
+                        className={
+                          index === 0 
+                            ? "bg-green-50 dark:bg-green-900/20 font-medium" 
+                            : index % 2 === 1 ? "bg-muted/50" : ""
+                        }
                       >
                         <td className="p-3 border-b">${result.strike.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.currentPrice.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.intrinsicValue.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.timeValue.toFixed(2)}</td>
                         <td className="p-3 text-right border-b">${result.potentialValue.toFixed(2)}</td>
-                        <td className={`p-3 text-right border-b ${result.profit >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                        <td className={`p-3 text-right border-b ${result.profit >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
                           ${result.profit.toFixed(2)}
                         </td>
-                        <td className={`p-3 text-right border-b ${result.roi >= 0 ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                        <td className={`p-3 text-right border-b ${result.roi >= 0 ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}`}>
                           {result.roi.toFixed(2)}%
                         </td>
                         <td className="p-3 text-right border-b">${result.breakEven.toFixed(2)}</td>
@@ -456,11 +426,7 @@ $50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
             <div className="bg-green-50 dark:bg-green-900/10 p-4 rounded-lg border border-green-100 dark:border-green-800">
               <h4 className="font-bold text-green-700 dark:text-green-300 mb-2">Recommendation</h4>
               <p className="text-green-700 dark:text-green-300">
-                {results.length > 0 && (
-                  <>
-                    The <span className="font-bold">${results[0].strike.toFixed(2)} strike price option</span> at <span className="font-bold">${results[0].currentPrice.toFixed(2)}</span> offers the best potential ROI of <span className="font-bold">{results[0].roi.toFixed(2)}%</span> if the stock reaches your target price of ${(document.getElementById('targetPriceInput') as HTMLInputElement)?.value}.
-                  </>
-                )}
+                The <span className="font-bold">${results[0].strike.toFixed(2)} strike price option</span> at <span className="font-bold">${results[0].currentPrice.toFixed(2)}</span> offers the best potential ROI of <span className="font-bold">{results[0].roi.toFixed(2)}%</span> if the stock reaches your target price of ${targetPrice.toFixed(2)}.
               </p>
             </div>
           )}
@@ -488,7 +454,7 @@ $50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
       )}
       
       {/* Help Tab */}
-      {activeTab === 'HelpTab' && (
+      {activeTab === "HelpTab" && (
         <div className="space-y-8">
           <div>
             <h3 className="text-xl font-bold mb-4">How to Use This Calculator</h3>
@@ -555,18 +521,17 @@ $50            $49.99       -85.49%         0.00%       $0.00     $0.01`}
               <li>Copy the entire options chain including the share price at the top</li>
             </ol>
             <p className="mb-2">The calculator is designed to automatically detect data in this format:</p>
-            <pre className="bg-muted p-4 rounded-md font-mono text-sm">
+            <pre className="bg-muted p-4 rounded-md font-mono text-sm overflow-x-auto">
 {`Share price: $344.45
 
 Strike price    Breakeven    To breakeven    % Change    Change    Ask Price
 $90            —            —               —           —         —
 $80            $79.99       -76.78%         0.00%       $0.00     $0.01
-$70            $69.99       -79.68%         0.00%       $0.00     $0.01
-...`}
+$70            $69.99       -79.68%         0.00%       $0.00     $0.01`}
             </pre>
           </div>
         </div>
       )}
     </div>
-  )
+  );
 }

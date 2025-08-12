@@ -308,22 +308,22 @@ export default function CtrConfidenceClient() {
                     </tr>
                     <tr>
                       <td className="border px-3 py-2">1%</td>
-                      <td className="border px-3 py-2">≈ <strong>20</strong></td>
+                      <td className="border px-3 py-2">≈ <strong>81</strong></td>
                       <td className="border px-3 py-2">Still well below 5%; confidence comes quickly.</td>
                     </tr>
                     <tr>
                       <td className="border px-3 py-2">2%</td>
-                      <td className="border px-3 py-2">≈ <strong>60</strong></td>
+                      <td className="border px-3 py-2">≈ <strong>143</strong></td>
                       <td className="border px-3 py-2">Needs a bit more data but still modest.</td>
                     </tr>
                     <tr>
                       <td className="border px-3 py-2">3%</td>
-                      <td className="border px-3 py-2">≈ <strong>200</strong></td>
-                      <td className="border px-3 py-2">Around the “~100?” intuition—closer to 200 for comfort.</td>
+                      <td className="border px-3 py-2">≈ <strong>322</strong></td>
+                      <td className="border px-3 py-2">Needs around “~300" for comfort.</td>
                     </tr>
                     <tr>
                       <td className="border px-3 py-2">4%</td>
-                      <td className="border px-3 py-2">≈ <strong>1,040</strong></td>
+                      <td className="border px-3 py-2">≈ <strong>1,286</strong></td>
                       <td className="border px-3 py-2">Close to target → needs lots of impressions to be sure.</td>
                     </tr>
                   </tbody>

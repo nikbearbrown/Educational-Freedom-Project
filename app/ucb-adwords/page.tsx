@@ -13,7 +13,7 @@ export default function UCBPage() {
   return (
     <div className="container px-4 md:px-6 mx-auto py-12">
       <div className="max-w-4xl mx-auto">
-        {/* Hero Section */}
+        {/* ===== HERO SECTION ===== */}
         <div className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">The Application of Optimistic Bandit Algorithms (UCB) to Google Ads Keyword Removal</h1>
           <p className="text-xl text-muted-foreground mb-8">
@@ -31,8 +31,9 @@ export default function UCBPage() {
           </div>
         </div>
 
-        {/* Main Content */}
+        {/* ===== MAIN CONTENT ===== */}
         <div className="grid gap-12">
+          {/* ===== INTRODUCTION SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Introduction</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -50,6 +51,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== UCB ALGORITHM SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Understanding the Upper Confidence Bound (UCB) Algorithm</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -84,6 +86,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== APPLYING UCB SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Applying UCB to Google Ads Keyword Management</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -130,6 +133,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== IMPLEMENTATION SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Practical Implementation: A Step-by-Step Guide</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -180,6 +184,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== CASE STUDY 1 SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Case Study 1: UCB for Multiple Keywords</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -226,6 +231,7 @@ export default function UCBPage() {
             </div>
           </section>
           
+          {/* ===== CASE STUDY 2 SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Case Study 2: Keyword Evolution Over Time</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -305,86 +311,87 @@ export default function UCBPage() {
             </div>
           </section>
 
-
+          {/* ===== CASE STUDY 3 SECTION ===== */}
           <section>
-  <h2 className="text-3xl font-bold mb-6">Case Study 3: When Promising Keywords Fail to Deliver</h2>
-  <div className="prose prose-lg dark:prose-invert max-w-none">
-    <p>
-      Not all keywords with initial promise will succeed. This third case study demonstrates how the UCB approach also effectively identifies keywords that should be removed despite early positive signals.
-    </p>
-    
-    <div className="flex flex-col md:flex-row mt-8 mb-6 gap-8">
-      <div className="flex-1 border-t-4 border-green-500 pt-2">
-        <h3 className="text-xl font-bold mb-4">Day 1: Initial Assessment</h3>
-        <div className="p-6 bg-muted/50 rounded-lg">
-          <ul className="text-muted-foreground space-y-2">
-            <li>Observed CTR: 6.2%</li>
-            <li>Impressions: 32</li>
-            <li>Total account impressions: 5,000</li>
-            <li>Upper Bound CTR (c=2): 6.2% + 2×√(ln(5,000)/32) = 6.2% + 2×0.61 = 7.42%</li>
-            <li className="font-bold text-green-500">Decision: KEEP (7.42% &gt; 5%)</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div className="flex items-center justify-center text-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </div>
-      
-      <div className="flex-1 border-t-4 border-green-500 pt-2">
-        <h3 className="text-xl font-bold mb-4">Day 7: Progress Check</h3>
-        <div className="p-6 bg-muted/50 rounded-lg">
-          <ul className="text-muted-foreground space-y-2">
-            <li>Observed CTR: 5.1%</li>
-            <li>Impressions: 140</li>
-            <li>Total account impressions: 8,000</li>
-            <li>Upper Bound CTR (c=2): 5.1% + 2×√(ln(8,000)/140) = 5.1% + 2×0.30 = 5.70%</li>
-            <li className="font-bold text-green-500">Decision: KEEP (5.70% &gt; 5%)</li>
-          </ul>
-        </div>
-      </div>
-      
-      <div className="flex items-center justify-center text-primary">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
-          <path d="M5 12h14"></path>
-          <path d="m12 5 7 7-7 7"></path>
-        </svg>
-      </div>
-      
-      <div className="flex-1 border-t-4 border-red-500 pt-2">
-        <h3 className="text-xl font-bold mb-4">Day 14: Final Assessment</h3>
-        <div className="p-6 bg-muted/50 rounded-lg">
-          <ul className="text-muted-foreground space-y-2">
-            <li>Observed CTR: 4.2%</li>
-            <li>Impressions: 380</li>
-            <li>Total account impressions: 12,000</li>
-            <li>Upper Bound CTR (c=2): 4.2% + 2×√(ln(12,000)/380) = 4.2% + 2×0.18 = 4.56%</li>
-            <li className="font-bold text-red-500">Decision: REMOVE (4.56% &lt; 5%)</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    
-    <div className="bg-muted/30 p-6 rounded-lg my-8">
-      <h3 className="text-xl font-bold mb-4">Key Insights from Keyword Decline:</h3>
-      <ul className="space-y-2">
-        <li>The keyword started strong with a 6.2% CTR, well above the 5% target</li>
-        <li>By day 7, performance had declined but was still above threshold when including the confidence bound</li>
-        <li>As more impressions accumulated, the confidence interval narrowed significantly</li>
-        <li>The continuing performance decline coupled with the narrower confidence interval led to a final decision to remove</li>
-        <li>This demonstrates how the UCB approach protects against maintaining keywords that show initial promise but fail to maintain performance at scale</li>
-      </ul>
-    </div>
-    
-    <p>
-      This case study illustrates another key benefit of the UCB approach: it prevents overcommitment to keywords that show early promise but cannot sustain performance over time. As more data is collected and the confidence interval narrows, statistical evidence reveals the keyword's true performance level. A purely performance-based approach might have kept this keyword indefinitely based on its early success, while an approach using arbitrary thresholds might have removed it prematurely or kept it too long.
-    </p>
-  </div>
-</section>
+            <h2 className="text-3xl font-bold mb-6">Case Study 3: When Promising Keywords Fail to Deliver</h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p>
+                Not all keywords with initial promise will succeed. This third case study demonstrates how the UCB approach also effectively identifies keywords that should be removed despite early positive signals.
+              </p>
+              
+              <div className="flex flex-col md:flex-row mt-8 mb-6 gap-8">
+                <div className="flex-1 border-t-4 border-green-500 pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 1: Initial Assessment</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 6.2%</li>
+                      <li>Impressions: 32</li>
+                      <li>Total account impressions: 5,000</li>
+                      <li>Upper Bound CTR (c=2): 6.2% + 2×√(ln(5,000)/32) = 6.2% + 2×0.61 = 7.42%</li>
+                      <li className="font-bold text-green-500">Decision: KEEP (7.42% &gt; 5%)</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+                
+                <div className="flex-1 border-t-4 border-green-500 pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 7: Progress Check</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 5.1%</li>
+                      <li>Impressions: 140</li>
+                      <li>Total account impressions: 8,000</li>
+                      <li>Upper Bound CTR (c=2): 5.1% + 2×√(ln(8,000)/140) = 5.1% + 2×0.30 = 5.70%</li>
+                      <li className="font-bold text-green-500">Decision: KEEP (5.70% &gt; 5%)</li>
+                    </ul>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-center text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </div>
+                
+                <div className="flex-1 border-t-4 border-red-500 pt-2">
+                  <h3 className="text-xl font-bold mb-4">Day 14: Final Assessment</h3>
+                  <div className="p-6 bg-muted/50 rounded-lg">
+                    <ul className="text-muted-foreground space-y-2">
+                      <li>Observed CTR: 4.2%</li>
+                      <li>Impressions: 380</li>
+                      <li>Total account impressions: 12,000</li>
+                      <li>Upper Bound CTR (c=2): 4.2% + 2×√(ln(12,000)/380) = 4.2% + 2×0.18 = 4.56%</li>
+                      <li className="font-bold text-red-500">Decision: REMOVE (4.56% &lt; 5%)</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-muted/30 p-6 rounded-lg my-8">
+                <h3 className="text-xl font-bold mb-4">Key Insights from Keyword Decline:</h3>
+                <ul className="space-y-2">
+                  <li>The keyword started strong with a 6.2% CTR, well above the 5% target</li>
+                  <li>By day 7, performance had declined but was still above threshold when including the confidence bound</li>
+                  <li>As more impressions accumulated, the confidence interval narrowed significantly</li>
+                  <li>The continuing performance decline coupled with the narrower confidence interval led to a final decision to remove</li>
+                  <li>This demonstrates how the UCB approach protects against maintaining keywords that show initial promise but fail to maintain performance at scale</li>
+                </ul>
+              </div>
+              
+              <p>
+                This case study illustrates another key benefit of the UCB approach: it prevents overcommitment to keywords that show early promise but cannot sustain performance over time. As more data is collected and the confidence interval narrows, statistical evidence reveals the keyword's true performance level. A purely performance-based approach might have kept this keyword indefinitely based on its early success, while an approach using arbitrary thresholds might have removed it prematurely or kept it too long.
+              </p>
+            </div>
+          </section>
 
+          {/* ===== ADVANTAGES SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Advantages Over Traditional Methods</h2>
             <div className="grid md:grid-cols-2 gap-8">
@@ -425,6 +432,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== QUALITY SCORE SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Connection to Google's Quality Score</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -438,7 +446,7 @@ export default function UCBPage() {
             </div>
           </section>
           
-
+          {/* ===== ADVANCED SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Advanced Considerations</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -465,11 +473,88 @@ export default function UCBPage() {
             </div>
           </section>
 
-<section>
-  <h2 className="text-3xl font-bold mb-6">Addendum: Why UCB Principles Are Appropriate for Keyword Management</h2>
-  <!-- Add content later -->
-</section>
+          {/* ===== ADDENDUM SECTION ===== */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6">Addendum: Why UCB Principles Are Appropriate for Keyword Management</h2>
+            <div className="prose prose-lg dark:prose-invert max-w-none">
+              <p>
+                While the Upper Confidence Bound (UCB) algorithm was originally designed for selecting the best action in multi-armed bandit problems, its application to keyword removal decisions in Google Ads represents a thoughtful adaptation of its core statistical principles.
+              </p>
+              
+              <h3 className="text-xl font-bold mt-8 mb-4">The Traditional UCB vs. Our Adaptation</h3>
+              
+              <div className="grid md:grid-cols-2 gap-8 my-8">
+                <div className="p-6 bg-muted/50 rounded-lg">
+                  <h4 className="font-bold mb-4">Traditional UCB Application:</h4>
+                  <ul className="space-y-2">
+                    <li><span className="font-medium">Goal:</span> Select the best action to maximize rewards</li>
+                    <li><span className="font-medium">Formula:</span> A_t = argmax_a [ Q_t(a) + c√(ln t / N_t(a)) ]</li>
+                    <li><span className="font-medium">Use case:</span> Deciding which arm to pull next in a multi-armed bandit</li>
+                    <li><span className="font-medium">Optimization:</span> Maximizing cumulative reward</li>
+                  </ul>
+                </div>
+                
+                <div className="p-6 bg-muted/50 rounded-lg">
+                  <h4 className="font-bold mb-4">Our Keyword Management Adaptation:</h4>
+                  <ul className="space-y-2">
+                    <li><span className="font-medium">Goal:</span> Determine if keywords meet a minimum threshold</li>
+                    <li><span className="font-medium">Formula:</span> Remove if: CTR + c√(ln(total)/impressions) < 5%</li>
+                    <li><span className="font-medium">Use case:</span> Binary decision-making (keep or remove)</li>
+                    <li><span className="font-medium">Optimization:</span> Resource allocation within constraints</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <h3 className="text-xl font-bold mt-8 mb-4">Why This Adaptation Makes Sense</h3>
+              
+              <div className="grid md:grid-cols-3 gap-6 my-8">
+                <div className="p-6 border rounded-lg">
+                  <h4 className="font-bold mb-3">Efficient Resource Allocation</h4>
+                  <p className="text-muted-foreground">
+                    By removing keywords that statistically cannot meet the threshold, we redirect impressions to keywords that have a chance of meeting or exceeding the required 5% CTR, maximizing the effectiveness of limited ad grant resources.
+                  </p>
+                </div>
+                
+                <div className="p-6 border rounded-lg">
+                  <h4 className="font-bold mb-3">Statistical Rigor in Decision-Making</h4>
+                  <p className="text-muted-foreground">
+                    The confidence interval approach provides mathematical justification for keyword decisions, replacing arbitrary thresholds with statistically sound methods that account for sample size variance.
+                  </p>
+                </div>
+                
+                <div className="p-6 border rounded-lg">
+                  <h4 className="font-bold mb-3">Compliance with Grant Requirements</h4>
+                  <p className="text-muted-foreground">
+                    For Google Ad Grants recipients, maintaining the 5% account-wide CTR is not optional—it's required for continued access to the $10,000 monthly grant, making threshold-based decisions essential.
+                  </p>
+                </div>
+              </div>
+              
+              <p>
+                While we've adapted the UCB formula for a different purpose than its original intent, the core statistical principle remains the same: using confidence intervals that appropriately account for sample size when making decisions under uncertainty.
+              </p>
+              
+              <p>
+                In traditional UCB, the confidence interval represents "optimism in the face of uncertainty" to encourage exploration of under-sampled actions. In our adaptation, we're using this same statistical framework to determine whether we can be confident that a keyword cannot meet our threshold, even when giving it the benefit of the doubt.
+              </p>
+              
+              <p>
+                This approach strikes an appropriate balance between:
+              </p>
+              
+              <ul>
+                <li>Giving new or low-impression keywords a chance to prove themselves (avoiding false negatives)</li>
+                <li>Confidently removing keywords that statistically cannot meet requirements (avoiding false positives)</li>
+                <li>Becoming increasingly strict as more data is collected (adaptive thresholds)</li>
+              </ul>
+              
+              <p>
+                By applying these principles from the UCB algorithm, we can make statistically sound keyword management decisions that optimize the performance of Google Ads accounts, particularly for nonprofits navigating the strict requirements of the Google Ad Grants program.
+              </p>
+            </div>
+          </section>
 
+          {/* ===== CONCLUSION SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Conclusion</h2>
             <div className="prose prose-lg dark:prose-invert max-w-none">
@@ -493,6 +578,7 @@ export default function UCBPage() {
             </div>
           </section>
 
+          {/* ===== RESOURCES SECTION ===== */}
           <section>
             <h2 className="text-3xl font-bold mb-6">Further Resources</h2>
             <div className="flex flex-col sm:flex-row gap-4 flex-wrap">

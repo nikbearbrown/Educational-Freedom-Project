@@ -247,72 +247,97 @@ export default function CtrConfidenceClient() {
   </div>
 </div>
 
-{/* Ad Grants notes & practical thresholds */}
+{/* Ad Grants notes, equations & practical thresholds */}
 <div className="mt-6 bg-muted/20 border rounded p-4">
   <h3 className="font-semibold mb-2">For Google Ad Grants (non-profits): target CTR = 5%</h3>
-  <p className="text-sm text-muted-foreground mb-3">
-    Google Ad Grants requires an <em>account-wide</em> CTR of at least <strong>5%</strong>. A practical, fair rule is:
-    <em> remove a keyword only when the one-sided (1−α) upper confidence bound is below 5%</em>.
-    Below are rough “good enough n” guidelines using the <strong>Wilson</strong> upper bound at <code>α = 5%</code>.
+  <p className="text-sm text-muted-foreground mb-4">
+    Google Ad Grants requires an <em>account-wide</em> CTR of at least <strong>5%</strong>.
+    A practical, fair rule is: <em>remove a keyword only when the one-sided (1−α) upper confidence bound is below 5%</em>.
+    The formulas below give quick estimates for how many impressions you need before removing is statistically reasonable.
   </p>
 
-  <div className="overflow-x-auto">
-    <table className="table-auto border-collapse border border-gray-300 w-full text-sm">
-      <thead className="bg-muted/50">
-        <tr>
-          <th className="border px-3 py-2 text-left">Observed CTR (p̂)</th>
-          <th className="border px-3 py-2 text-left">Impressions needed so Wilson upper &lt; 5% (α=5%)</th>
-          <th className="border px-3 py-2 text-left">Notes</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td className="border px-3 py-2">0%</td>
-          <td className="border px-3 py-2">≈ <strong>52</strong></td>
-          <td className="border px-3 py-2">With 0 clicks, you don’t need many impressions to be confident it’s &lt;5%.</td>
-        </tr>
-        <tr>
-          <td className="border px-3 py-2">1%</td>
-          <td className="border px-3 py-2">≈ <strong>20</strong></td>
-          <td className="border px-3 py-2">Still well below 5%; confidence comes quickly.</td>
-        </tr>
-        <tr>
-          <td className="border px-3 py-2">2%</td>
-          <td className="border px-3 py-2">≈ <strong>60</strong></td>
-          <td className="border px-3 py-2">Needs a bit more data but still modest.</td>
-        </tr>
-        <tr>
-          <td className="border px-3 py-2">3%</td>
-          <td className="border px-3 py-2">≈ <strong>200</strong></td>
-          <td className="border px-3 py-2">Around the “~100?” intuition—closer to 200 for comfort.</td>
-        </tr>
-        <tr>
-          <td className="border px-3 py-2">4%</td>
-          <td className="border px-3 py-2">≈ <strong>1,040</strong></td>
-          <td className="border px-3 py-2">Close to target → needs lots of impressions to be sure.</td>
-        </tr>
-      </tbody>
-    </table>
+  {/* Equations + quick calculators */}
+  <div className="grid md:grid-cols-2 gap-4 mb-4">
+    <div className="bg-background/60 border rounded p-3">
+      <MathJax dynamic>{String.raw`
+        \[
+          \textbf{Wilson (one-sided)}:\quad
+          n \approx \frac{z^2\,\hat p(1-\hat p)}{\big(T-\hat p\big)^2}
+          \quad\text{with } z = \Phi^{-1}(1-\alpha)
+        \]
+      `}</MathJax>
+      <MathJax dynamic>{String.raw`
+        \[
+          \textbf{Hoeffding}:\quad
+          n \approx \frac{\ln(1/\alpha)}{2\,\big(T-\hat p\big)^2}
+        \]
+      `}</MathJax>
+
+      <div className="text-xs text-muted-foreground mt-2">
+        With your inputs: p̂ = <strong>{(100*phat).toFixed(2)}%</strong>,
+        α = <strong>{(100*alpha).toFixed(2)}%</strong>, target = <strong>{(100*T).toFixed(2)}%</strong>.<br/>
+        Wilson suggests about <strong>{isFinite(nNeededWilson) ? nNeededWilson : "—"}</strong> impressions;
+        Hoeffding suggests about <strong>{isFinite(nNeededHoeff) ? nNeededHoeff : "—"}</strong>. You currently have <strong>{n}</strong>.
+      </div>
+    </div>
+
+    {/* Practical threshold table */}
+    <div className="overflow-x-auto">
+      <table className="table-auto border-collapse border border-gray-300 w-full text-sm">
+        <thead className="bg-muted/50">
+          <tr>
+            <th className="border px-3 py-2 text-left">Observed CTR (p̂)</th>
+            <th className="border px-3 py-2 text-left">Impressions needed so Wilson upper &lt; 5% (α=5%)</th>
+            <th className="border px-3 py-2 text-left">Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td className="border px-3 py-2">0%</td>
+            <td className="border px-3 py-2">≈ <strong>52</strong></td>
+            <td className="border px-3 py-2">With 0 clicks, you don’t need many impressions to be confident it’s &lt;5%.</td>
+          </tr>
+          <tr>
+            <td className="border px-3 py-2">1%</td>
+            <td className="border px-3 py-2">≈ <strong>20</strong></td>
+            <td className="border px-3 py-2">Still well below 5%; confidence comes quickly.</td>
+          </tr>
+          <tr>
+            <td className="border px-3 py-2">2%</td>
+            <td className="border px-3 py-2">≈ <strong>60</strong></td>
+            <td className="border px-3 py-2">Needs a bit more data but still modest.</td>
+          </tr>
+          <tr>
+            <td className="border px-3 py-2">3%</td>
+            <td className="border px-3 py-2">≈ <strong>200</strong></td>
+            <td className="border px-3 py-2">Around the “~100?” intuition—closer to 200 for comfort.</td>
+          </tr>
+          <tr>
+            <td className="border px-3 py-2">4%</td>
+            <td className="border px-3 py-2">≈ <strong>1,040</strong></td>
+            <td className="border px-3 py-2">Close to target → needs lots of impressions to be sure.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 
-  <div className="mt-3 text-xs text-muted-foreground">
+  <div className="text-xs text-muted-foreground">
     <p className="mb-1">
-      <strong>Why these numbers?</strong> They’re from the Wilson one-sided upper bound with <code>α = 5%</code>
-      (z≈1.64), solving approximately for the smallest <code>n</code> where the upper bound drops below 5%.
+      <strong>Why these numbers?</strong> The table uses the Wilson one-sided upper bound with <code>α=5%</code> (z≈1.64),
+      solving approximately for the smallest <code>n</code> where the upper bound drops below 5%.
     </p>
     <p className="mb-1">
-      <strong>Hoeffding is much stricter</strong> (very conservative). For the same p̂, it needs roughly:
-      0%→~600, 1%→~940, 2%→~1,670, 3%→~3,750, 4%→~15,000 impressions before removing.
+      <strong>Hoeffding is more conservative</strong>. For the same p̂, it typically requires far more impressions
+      (because it doesn’t use p̂ in its width).
     </p>
     <p>
-      <strong>Tuning:</strong> Lowering <code>α</code> (e.g., from 5% to 2.5%) makes removal harder; raising it makes removal easier.
+      <strong>Tuning:</strong> Lowering <code>α</code> (e.g., 5% → 2.5%) makes removal harder; raising it makes removal easier.
       Always consider account-level CTR, not just keyword-level.
     </p>
   </div>
 </div>
 
-</div>
-</div>
 
     </MathJaxContext>
   );

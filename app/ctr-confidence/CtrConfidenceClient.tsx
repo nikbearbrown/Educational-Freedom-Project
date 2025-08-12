@@ -216,39 +216,106 @@ export default function CtrConfidenceClient() {
             </table>
           </div>
 
-          {/* Theory cheatsheet */}
-          <div className="mt-8 bg-muted/20 border rounded p-4">
-            <h3 className="font-semibold mb-2">What each method assumes</h3>
-            <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
-              <div>
-                <p className="font-medium mb-1">Hoeffding</p>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>No distribution assumptions (very safe)</li>
-                  <li>Wider bounds (conservative)</li>
-                  <li>Great for tiny sample sizes</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium mb-1">Wilson</p>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>Normal approximation to binomial</li>
-                  <li>Tighter bounds than Hoeffding</li>
-                  <li>Good once n ≳ 30</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium mb-1">UCB (bandit)</p>
-                <ul className="list-disc pl-4 space-y-1">
-                  <li>Not a CI; adds exploration bonus</li>
-                  <li>Keeps low-data keywords alive longer</li>
-                  <li>Useful when testing many keywords</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+{/* Theory cheatsheet */}
+<div className="mt-8 bg-muted/20 border rounded p-4">
+  <h3 className="font-semibold mb-2">What each method assumes</h3>
+  <div className="grid md:grid-cols-3 gap-4 text-sm text-muted-foreground">
+    <div>
+      <p className="font-medium mb-1">Hoeffding</p>
+      <ul className="list-disc pl-4 space-y-1">
+        <li>No distribution assumptions (very safe)</li>
+        <li>Wider bounds (conservative)</li>
+        <li>Great for tiny sample sizes</li>
+      </ul>
+    </div>
+    <div>
+      <p className="font-medium mb-1">Wilson</p>
+      <ul className="list-disc pl-4 space-y-1">
+        <li>Normal approximation to binomial</li>
+        <li>Tighter bounds than Hoeffding</li>
+        <li>Good once n ≳ 30</li>
+      </ul>
+    </div>
+    <div>
+      <p className="font-medium mb-1">UCB (bandit)</p>
+      <ul className="list-disc pl-4 space-y-1">
+        <li>Not a CI; adds exploration bonus</li>
+        <li>Keeps low-data keywords alive longer</li>
+        <li>Useful when testing many keywords</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-        </div>
-      </div>
+{/* Ad Grants notes & practical thresholds */}
+<div className="mt-6 bg-muted/20 border rounded p-4">
+  <h3 className="font-semibold mb-2">For Google Ad Grants (non-profits): target CTR = 5%</h3>
+  <p className="text-sm text-muted-foreground mb-3">
+    Google Ad Grants requires an <em>account-wide</em> CTR of at least <strong>5%</strong>. A practical, fair rule is:
+    <em> remove a keyword only when the one-sided (1−α) upper confidence bound is below 5%</em>.
+    Below are rough “good enough n” guidelines using the <strong>Wilson</strong> upper bound at <code>α = 5%</code>.
+  </p>
+
+  <div className="overflow-x-auto">
+    <table className="table-auto border-collapse border border-gray-300 w-full text-sm">
+      <thead className="bg-muted/50">
+        <tr>
+          <th className="border px-3 py-2 text-left">Observed CTR (p̂)</th>
+          <th className="border px-3 py-2 text-left">Impressions needed so Wilson upper &lt; 5% (α=5%)</th>
+          <th className="border px-3 py-2 text-left">Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td className="border px-3 py-2">0%</td>
+          <td className="border px-3 py-2">≈ <strong>52</strong></td>
+          <td className="border px-3 py-2">With 0 clicks, you don’t need many impressions to be confident it’s &lt;5%.</td>
+        </tr>
+        <tr>
+          <td className="border px-3 py-2">1%</td>
+          <td className="border px-3 py-2">≈ <strong>20</strong></td>
+          <td className="border px-3 py-2">Still well below 5%; confidence comes quickly.</td>
+        </tr>
+        <tr>
+          <td className="border px-3 py-2">2%</td>
+          <td className="border px-3 py-2">≈ <strong>60</strong></td>
+          <td className="border px-3 py-2">Needs a bit more data but still modest.</td>
+        </tr>
+        <tr>
+          <td className="border px-3 py-2">3%</td>
+          <td className="border px-3 py-2">≈ <strong>200</strong></td>
+          <td className="border px-3 py-2">Around the “~100?” intuition—closer to 200 for comfort.</td>
+        </tr>
+        <tr>
+          <td className="border px-3 py-2">4%</td>
+          <td className="border px-3 py-2">≈ <strong>1,040</strong></td>
+          <td className="border px-3 py-2">Close to target → needs lots of impressions to be sure.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div className="mt-3 text-xs text-muted-foreground">
+    <p className="mb-1">
+      <strong>Why these numbers?</strong> They’re from the Wilson one-sided upper bound with <code>α = 5%</code>
+      (z≈1.64), solving approximately for the smallest <code>n</code> where the upper bound drops below 5%.
+    </p>
+    <p className="mb-1">
+      <strong>Hoeffding is much stricter</strong> (very conservative). For the same p̂, it needs roughly:
+      0%→~600, 1%→~940, 2%→~1,670, 3%→~3,750, 4%→~15,000 impressions before removing.
+    </p>
+    <p>
+      <strong>Tuning:</strong> Lowering <code>α</code> (e.g., from 5% to 2.5%) makes removal harder; raising it makes removal easier.
+      Always consider account-level CTR, not just keyword-level.
+    </p>
+  </div>
+</div>
+
+</div>
+</div>
+
     </MathJaxContext>
   );
+
+
 }

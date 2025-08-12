@@ -1,3 +1,5 @@
+import PrimaryButton from "@/components/ui/primary-button"
+import SecondaryButton from "@/components/ui/secondary-button"
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {

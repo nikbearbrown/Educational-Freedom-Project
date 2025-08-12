@@ -465,7 +465,10 @@ export default function UCBPage() {
             </div>
           </section>
 
-
+<section>
+  <h2 className="text-3xl font-bold mb-6">Addendum: Why UCB Principles Are Appropriate for Keyword Management</h2>
+  <!-- Add content later -->
+</section>
 
           <section>
             <h2 className="text-3xl font-bold mb-6">Conclusion</h2>

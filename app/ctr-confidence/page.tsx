@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CTRConfidenceClient from "./CTRConfidenceClient";
+import CtrConfidenceClient from "./CtrConfidenceClient";
 
 export const metadata: Metadata = {
   title: "CTR Bounds & Confidence Intervals",
@@ -7,5 +7,5 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <CTRConfidenceClient />;
+  return <CtrConfidenceClient />;
 }

@@ -268,13 +268,13 @@ export default function CtrConfidenceClient() {
             {/* Equations + quick calculators */}
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <div className="bg-background/60 border rounded p-3">
-                <MathJax dynamic>{String.raw`
-                  \[
-                    \textbf{Wilson (one-sided)}:\quad
-                    n \approx \frac{z^2\,\hat p(1-\hat p)}{\big(T-\hat p\big)^2}
-                    \quad\text{with } z = \Phi^{-1}(1-\alpha)
-                  \]
-                `}</MathJax>
+<MathJax dynamic>{String.raw`
+  \[
+    \textbf{Wilson (one-sided)}:\quad
+    n \approx \frac{z^2\,\hat p(1-\hat p)}{\big(T-\hat p\big)^2}
+  \]
+`}</MathJax>
+
                 <MathJax dynamic>{String.raw`
                   \[
                     \textbf{Hoeffding}:\quad

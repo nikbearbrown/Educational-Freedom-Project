@@ -192,60 +192,7 @@ export default function ProfessorBearAIArtPage() {
                 </a>
               </div>
             </div>
-            
-            <div className="mt-6">
-              <h3 className="text-lg font-semibold mb-4">Humanitarians AI (501c3 Non-Profit)</h3>
-              <div className="grid gap-2">
-                <a 
-                  href="https://www.humanitarians.ai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://www.humanitarians.ai/
-                </a>
-                <a 
-                  href="https://music.apple.com/us/artist/humanitarians-ai/1781414009"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://music.apple.com/us/artist/humanitarians-ai/1781414009
-                </a>
-                <a 
-                  href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV
-                </a>
-                <a 
-                  href="https://www.youtube.com/@humanitariansai"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://www.youtube.com/@humanitariansai
-                </a>
-                <a 
-                  href="https://github.com/Humanitariansai/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://github.com/Humanitariansai/
-                </a>
-                <a 
-                  href="https://www.linkedin.com/company/105696953/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline"
-                >
-                  https://www.linkedin.com/company/105696953/
-                </a>
-              </div>
-            </div>
+          
           </section>
         </div>
       </div>

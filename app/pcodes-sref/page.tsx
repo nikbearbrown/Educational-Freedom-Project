@@ -3,25 +3,44 @@ import Link from "next/link";
 import PrimaryButton from "@/components/ui/primary-button";
 import SecondaryButton from "@/components/ui/secondary-button";
 
-export const metadata: Metadata = {
-  title: "Template Page",
-  description: "A template for creating new pages",
-};
+export default function ProfessorBearAIArtPage() {
+  // Custom button components to replace the imports
+  const PrimaryButton = ({ href, children }) => (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md font-medium transition-colors"
+    >
+      {children}
+    </a>
+  );
+  
+  const SecondaryButton = ({ href, children }) => (
+    <a 
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="inline-block border border-blue-600 text-blue-600 hover:bg-blue-600/10 px-6 py-3 rounded-md font-medium transition-colors"
+    >
+      {children}
+    </a>
+  );
 
-export default function TemplatePage() {
   return (
-    <div className="container px-4 md:px-6 mx-auto py-12">
+    <div className="container max-w-6xl mx-auto px-4 py-12">
       <div className="max-w-4xl mx-auto">
         {/* ===== HERO SECTION ===== */}
         <div className="mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Template Page Title</h1>
-          <p className="text-xl text-muted-foreground mb-8">
-            This is a template page that you can use as a starting point for creating new pages. It includes a hero section with a video, placeholder sections for content, and a resources section.
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">Professor Bear AI Art</h1>
+          <p className="text-xl text-gray-600 dark:text-gray-300 mb-8">
+            Learn to create stunning AI art with Midjourney using Style Reference (SREF) codes and 
+            Personalization profiles. Every video shares Midjourney codes for you to try.
           </p>
           <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/videoseries?si=caS7A9UMCFewuuRB&amp;list=PLgOGgHS58rB-sBjm4oEfMfFXcYZf89IDo"
+              src="https://www.youtube.com/embed/videoseries?si=Gj3VOZd07XDBp_Mp&amp;list=PLIS8mRE04MvpcgHBhR9PWx4hII8W2KeOH"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"
@@ -32,53 +51,92 @@ export default function TemplatePage() {
 
         {/* ===== MAIN CONTENT ===== */}
         <div className="grid gap-12">
-          {/* ===== PLACEHOLDER SECTION 1 ===== */}
+          {/* ===== SREF CODES SECTION ===== */}
           <section>
-            <h2 className="text-3xl font-bold mb-6">Section 1 Title</h2>
-            <div className="prose prose-lg dark:prose-invert max-w-none">
+            <h2 className="text-3xl font-bold mb-6">Style Reference (SREF) Codes</h2>
+            <div className="prose prose-lg max-w-none">
               <p>
-                This is a placeholder for your first section. You can replace this with actual content when creating a new page. Include paragraphs, lists, images, or any other content you need.
+                Style Reference is a way to capture the visual vibe of an existing image and apply it to your new Midjourney creations. 
+                It doesn't copy objects or people, just the overall style—like colors, medium, textures, or lighting.
               </p>
               
               <p>
-                You can add multiple paragraphs to provide detailed information. This template ensures consistent styling and layout across different pages.
+                Our YouTube playlist showcases hundreds of different SREF styles and codes you can use in your own Midjourney prompts.
+                Each video demonstrates a unique artistic style with the exact code you can try yourself.
               </p>
               
-              <ul>
-                <li>List item one</li>
-                <li>List item two</li>
-                <li>List item three</li>
-              </ul>
+              <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg my-6">
+                <h3 className="text-xl font-bold mb-2">Featured SREF Code</h3>
+                <p className="mb-2">
+                  Try this code in your next Midjourney prompt:
+                </p>
+                <code className="block p-3 bg-gray-200 dark:bg-gray-700 rounded text-lg mb-4">--p 84saqc</code>
+                <p className="text-gray-600 dark:text-gray-400">
+                  This code creates a style inspired by the works of Henri de Toulouse-Lautrec and Gustav Klimt.
+                </p>
+              </div>
             </div>
           </section>
 
-          {/* ===== PLACEHOLDER SECTION 2 ===== */}
+          {/* ===== ARTISTIC STYLES SECTION ===== */}
           <section>
-            <h2 className="text-3xl font-bold mb-6">Section 2 Title</h2>
-            <div className="prose prose-lg dark:prose-invert max-w-none">
+            <h2 className="text-3xl font-bold mb-6">Example Artistic Styles</h2>
+            <div className="prose prose-lg max-w-none">
               <p>
-                This is a placeholder for your second section. You can have as many sections as needed for your content. Each section is separated with appropriate spacing.
+                Below are just a few examples of the hundreds of artistic styles you can learn to create from our video series. 
+                Each video provides the exact SREF and personalization codes you need to recreate these styles.
               </p>
               
-              <p>
-                Consider using different content formats in different sections to keep your page visually interesting. Options include:
-              </p>
-              
-              <div className="grid md:grid-cols-2 gap-6 my-8">
-                <div className="p-6 bg-muted/50 rounded-lg">
-                  <h3 className="text-xl font-bold mb-4">Card Title 1</h3>
-                  <p className="text-muted-foreground">
-                    This is example card content. You can use cards to present information in a visually distinct way.
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8">
+                <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                  <h3 className="text-xl font-bold mb-4">Character Design Styles</h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    From stylized figures to fantasy creatures, learn how to create compelling character designs 
+                    with different artistic approaches. Our videos cover both 2D and 3D-looking character styles.
                   </p>
                 </div>
                 
-                <div className="p-6 bg-muted/50 rounded-lg">
-                  <h3 className="text-xl font-bold mb-4">Card Title 2</h3>
-                  <p className="text-muted-foreground">
-                    This is example card content. Cards work well for presenting related pieces of information side by side.
+                <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
+                  <h3 className="text-xl font-bold mb-4">Illustration Techniques</h3>
+                  <p className="text-gray-600 dark:text-gray-400">
+                    Discover codes for cartoon styles, graphic novel aesthetics, concept art approaches, 
+                    and many more illustration techniques to enhance your AI art creation.
                   </p>
                 </div>
               </div>
+              
+              <div className="my-8 text-center">
+                <h3 className="text-xl font-bold mb-4">Visit Our YouTube Playlist for 100+ Styles</h3>
+                <p className="mb-6">
+                  The examples on this page represent just a small selection of the hundreds of styles 
+                  available in our complete video series. Each video comes with the exact codes you need.
+                </p>
+                <a 
+                  href="https://www.youtube.com/playlist?list=PLIS8mRE04MvpcgHBhR9PWx4hII8W2KeOH"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-md font-medium transition-colors"
+                >
+                  Watch the Complete Series
+                </a>
+              </div>
+            </div>
+          </section>
+
+          {/* ===== PERSONALIZATION SECTION ===== */}
+          <section>
+            <h2 className="text-3xl font-bold mb-6">Personalization Profiles</h2>
+            <div className="prose prose-lg max-w-none">
+              <p>
+                Personalization acts like a style assistant for your image creations. By liking or ranking images and creating 
+                moodboards, Midjourney gets to know what kind of images you love and uses that information to generate images 
+                tailored to your personal tastes.
+              </p>
+              
+              <p>
+                Our videos show you how to effectively use both SREF codes and personalization profiles together to achieve 
+                stunning and unique artistic results that match your vision.
+              </p>
             </div>
           </section>
 
@@ -89,7 +147,7 @@ export default function TemplatePage() {
               <PrimaryButton href="https://github.com/nikbearbrown">
                 GitHub Repository
               </PrimaryButton>
-              <SecondaryButton href="https://youtube.com/playlist?list=PLgOGgHS58rB-sBjm4oEfMfFXcYZf89IDo&si=caS7A9UMCFewuuRB">
+              <SecondaryButton href="https://youtube.com/playlist?list=PLIS8mRE04MvpcgHBhR9PWx4hII8W2KeOH">
                 YouTube Playlist
               </SecondaryButton>
               <SecondaryButton href="https://www.nikbearbrown.com">
@@ -97,40 +155,94 @@ export default function TemplatePage() {
               </SecondaryButton>
             </div>
             
-            <div className="mt-8 text-center">
-              <h3 className="text-lg font-semibold mb-2">Connect with Nik Bear Brown</h3>
-              <div className="flex flex-wrap justify-center gap-4 mt-4">
+            <div className="mt-8">
+              <h3 className="text-lg font-semibold mb-4">Nik Bear Brown Links</h3>
+              <div className="grid gap-2">
                 <a 
-                  href="https://twitter.com/nikbearbrown"
+                  href="https://www.nikbearbrown.com/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
-                  Twitter
+                  https://www.nikbearbrown.com/
+                </a>
+                <a 
+                  href="https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6
+                </a>
+                <a 
+                  href="https://music.apple.com/us/artist/1779725275"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://music.apple.com/us/artist/1779725275
                 </a>
                 <a 
                   href="https://www.youtube.com/@nikbearbrown"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
-                  YouTube
+                  https://www.youtube.com/@nikbearbrown
                 </a>
+              </div>
+            </div>
+            
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold mb-4">Humanitarians AI (501c3 Non-Profit)</h3>
+              <div className="grid gap-2">
                 <a 
-                  href="https://www.nikbearbrown.com/"
+                  href="https://www.humanitarians.ai/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
-                  Website
+                  https://www.humanitarians.ai/
                 </a>
                 <a 
-                  href="https://www.linkedin.com/in/nikbearbrown/"
+                  href="https://music.apple.com/us/artist/humanitarians-ai/1781414009"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm text-primary hover:underline"
+                  className="text-blue-600 hover:underline"
                 >
-                  LinkedIn
+                  https://music.apple.com/us/artist/humanitarians-ai/1781414009
+                </a>
+                <a 
+                  href="https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://open.spotify.com/artist/3cj3R4pDpYQHaWx0MM2vFV
+                </a>
+                <a 
+                  href="https://www.youtube.com/@humanitariansai"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://www.youtube.com/@humanitariansai
+                </a>
+                <a 
+                  href="https://github.com/Humanitariansai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://github.com/Humanitariansai/
+                </a>
+                <a 
+                  href="https://www.linkedin.com/company/105696953/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 hover:underline"
+                >
+                  https://www.linkedin.com/company/105696953/
                 </a>
               </div>
             </div>

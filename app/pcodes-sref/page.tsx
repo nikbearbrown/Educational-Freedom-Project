@@ -40,7 +40,7 @@ export default function ProfessorBearAIArtPage() {
           <div className="relative w-full aspect-video rounded-lg overflow-hidden mb-8">
             <iframe
               className="absolute top-0 left-0 w-full h-full"
-              src="https://www.youtube.com/embed/videoseries?si=Gj3VOZd07XDBp_Mp&amp;list=PLIS8mRE04MvpcgHBhR9PWx4hII8W2KeOH"
+              src="https://www.youtube.com/embed/Kc9Qlsv7RxE?si=1quOfjUK7mcNKMHK"
               title="YouTube video player"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               referrerPolicy="strict-origin-when-cross-origin"

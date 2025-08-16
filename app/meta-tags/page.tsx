@@ -1,9 +1,12 @@
+"use client";
+
 /* app/suno-meta-tags-glossary/page.tsx */
 import type { Metadata } from "next";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import PrimaryButton from "@/components/ui/primary-button";
 import SecondaryButton from "@/components/ui/secondary-button";
+
 
 export const metadata: Metadata = {
   title: "Ultimate Suno Meta Tags Glossary",

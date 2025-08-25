@@ -34,7 +34,7 @@ export default function Home() {
               <div className="relative w-full aspect-video">
                 <iframe
                   className="absolute top-0 left-0 w-full h-full rounded-md"
-                  src="https://www.youtube.com/embed/krxIXJ_Damo?si=BOtrn0StTh54ZIrW"
+                  src="https://www.youtube.com/embed/aEjgD65h1mY?si=UX-tdS58VJ5WzIPn"
                   title="NikBearBrown.com Introduction"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen

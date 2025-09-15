@@ -44,6 +44,7 @@ export default function Header() {
     { name: "Mission", href: "/mission-statement" },
     { name: "Pillars", href: "/core-pillars" },
     { name: "Charter", href: "/charter" },
+    { name: "Events", href: instagramLink, external: true }
   ]
 
   return (
@@ -72,6 +73,8 @@ export default function Header() {
                   "text-sm font-medium transition-colors hover:text-foreground/80",
                   pathname === item.href ? "text-foreground" : "text-foreground/60",
                 )}
+                target={item.external ? "_blank" : "_self"}
+                rel={item.external ? "noopener noreferrer" : ""}
               >
                 {item.name}
               </Link>
@@ -113,9 +116,11 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     "text-base font-medium transition-colors hover:text-foreground/80",
-                    pathname === item.href ? "text-foreground" : "text-foreground/60",
+                    pathname === item.href && !item.external ? "text-foreground" : "text-foreground/60",
                   )}
                   onClick={() => setIsMenuOpen(false)}
+                  target={item.external ? "_blank" : "_self"}
+                  rel={item.external ? "noopener noreferrer" : ""}
                 >
                   {item.name}
                 </Link>

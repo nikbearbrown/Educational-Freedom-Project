@@ -17,15 +17,16 @@ export default function Header() {
   const [mounted, setMounted] = useState(false)
   const pathname = usePathname()
   const { theme } = useTheme()
-  const menuRef = useRef<HTMLDivElement>(null)
+  const menuRef = useRef(null)
+  const instagramLink = "https://www.instagram.com/edufreedomproj"
 
   useEffect(() => {
     setMounted(true)
   }, [])
 
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false)
       }
     }
@@ -40,18 +41,9 @@ export default function Header() {
   }, [isMenuOpen])
 
   const navigation = [
-    { name: "Art", href: "/art" },
-    { name: "Blog", href: "/blog" },
-    { name: "Books", href: "/books" },
-    { name: "Classes", href: "/classes" },
-    { name: "Consulting", href: "/consulting" },
-    { name: "Projects", href: "/projects" },
-  ]
-
-  const socialLinks = [
-    { name: "GitHub", href: "https://github.com/nikbearbrown" },
-    { name: "YouTube", href: "https://www.youtube.com/@NikBearBrown" },
-    { name: "Spotify", href: "https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6" },
+    { name: "Mission", href: "/mission-statement" },
+    { name: "Pillars", href: "/core-pillars" },
+    { name: "Charter", href: "/charter" },
   ]
 
   return (
@@ -61,8 +53,8 @@ export default function Header() {
           <Link href="/" className="flex items-center space-x-2">
             {mounted ? (
               <Image
-                src={theme === 'dark' ? '/svg-logos/NikBearBrown_white_logo.svg' : '/svg-logos/NikBearBrown_black_logo.svg'}
-                alt="NikBearBrown.com"
+                src={theme === 'dark' ? '/svg-logos/EFP_white_logo.svg' : '/svg-logos/EFP_black_logo.svg'}
+                alt="Educational Freedom Project"
                 width={240}
                 height={53}
                 className="h-12 w-auto"
@@ -89,13 +81,11 @@ export default function Header() {
 
         <div className="flex items-center gap-4">
           <div className="hidden lg:flex items-center gap-4">
-            {socialLinks.map((link) => (
-              <Link key={link.name} href={link.href} target="_blank" rel="noopener noreferrer">
-                <button className={cn(baseButtonStyles, headerButtonStyles)}>
-                  {link.name}
-                </button>
-              </Link>
-            ))}
+            <Link key="instagram" href={instagramLink} target="_blank" rel="noopener noreferrer">
+              <button className={cn(baseButtonStyles, headerButtonStyles)}>
+                Instagram
+              </button>
+            </Link>
           </div>
           <ThemeToggle />
           <button
@@ -131,18 +121,16 @@ export default function Header() {
                 </Link>
               ))}
               <div className="flex flex-col gap-4 mt-4">
-                {socialLinks.map((link) => (
-                  <Link 
-                    key={link.name}
-                    href={link.href}
-                    className="text-base font-medium"
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {link.name}
-                  </Link>
-                ))}
+                <Link 
+                  key="instagram-mobile"
+                  href={instagramLink}
+                  className="text-base font-medium"
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Instagram
+                </Link>
               </div>
             </nav>
           </div>

@@ -1,89 +1,35 @@
-# Nik Bear Brown Website
+[cite_start]The Educational Freedom Project (EFP) is a student-led organization dedicated to defending and advancing the "promise of higher education," which it sees as being threatened[cite: 1, 2, 3, 5, 6]. [cite_start]The organization aims to transform students' passion into tangible action to carry this promise forward[cite: 6].
 
-## Prerequisites
+---
 
-Before you begin, ensure you have the following installed on your system:
+## The Promise of Higher Education
 
-### Required Software
-- **Node.js and npm**
-  - Download from [Node.js official website](https://nodejs.org/)
-  - Choose the LTS (Long Term Support) version
-  - The installer includes both Node.js and npm
+[cite_start]According to the EFP, the promise of higher education is an aspirational vision for universities[cite: 9]. [cite_start]This promise includes universities being havens for **learning, teaching, expression, and opportunity**[cite: 10, 52]. [cite_start]The EFP states that this promise is under threat from both within universities and from government overreach[cite: 16, 25, 67].
 
-- **Git** (for version control)
-  - Download from [Git's official website](https://git-scm.com/downloads)
+### Internal Challenges
+The EFP identifies several internal issues within universities that are causing a drift from the "aspirational promise," including:
+* [cite_start]The rising cost of tuition and a decrease in accessibility[cite: 17, 59].
+* [cite_start]Students feeling unprepared for the workforce[cite: 17, 59].
+* [cite_start]The stifling of student expression due to strict rules and fear of "standing out"[cite: 18, 60].
+* [cite_start]Professors being overburdened, underpaid, and sidelined from administrative decisions[cite: 19, 61].
+* [cite_start]A decline in the "oasis of opportunity" that should define the university experience[cite: 20, 62].
 
-### System Requirements
-- Operating System: Windows, macOS, or Linux
-- RAM: At least 4GB recommended
-- Disk Space: At least 1GB free space
-- Internet connection for downloading packages
+### External Challenges
+[cite_start]The EFP also believes the promise of higher education is "under siege" by the current federal government's attacks, which it claims are an effort to centralize control through "intimidation, coercion, and censorship"[cite: 25, 26, 67, 68]. The organization cites the following as evidence of these attacks:
+* [cite_start]International students living in constant fear of speaking out[cite: 28, 70].
+* [cite_start]Professors' lives being uprooted by financial uncertainty imposed on universities[cite: 28, 70].
+* [cite_start]Cuts to life-saving research and financial aid[cite: 28, 70].
+* [cite_start]The enforcement of a "one way of understanding"[cite: 28, 70].
 
-### Installation by Operating System
+---
 
-#### Windows
-1. Download and run the Node.js installer from [Node.js website](https://nodejs.org/)
-2. Download and run the Git installer from [Git website](https://git-scm.com/downloads)
-3. Restart your computer after installation
-
-#### macOS
-```bash
-# Using Homebrew
-brew install node
-brew install git
-```
-
-#### Linux (Ubuntu/Debian)
-```bash
-sudo apt update
-sudo apt install nodejs npm
-sudo apt install git
-```
-
-### Verifying Installation
-After installation, verify that everything is set up correctly:
-```bash
-node --version
-npm --version
-git --version
-```
-
-## Getting Started
-
-First, install dependencies:
-
-```bash
-npm install --legacy-peer-deps
-```
-
-then, run the development server:
-
-```bash
-npm run dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-### Troubleshooting
-
-If you encounter any issues during installation:
-
-1. **npm install fails**
-   - Clear npm cache: `npm cache clean --force`
-   - Try using `--legacy-peer-deps` flag if there are dependency conflicts
-   - Ensure you're using a compatible Node.js version
-
-2. **Permission errors**
-   - Windows: Run terminal as administrator
-   - Mac/Linux: Use `sudo` for system-wide installations
-
-3. **Network issues**
-   - Check your internet connection
-   - If behind a proxy, configure npm accordingly
-   - Try using a different npm registry: `npm config set registry https://registry.npmjs.org/`
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Core Pillars and Goals
+The EFP has four core pillars that align with the promise of higher education:
+* [cite_start]**Learning**: The EFP believes learning should be accessible, inclusive, safe, and affordable[cite: 42, 43].
+* [cite_start]**Teaching**: The EFP pledges to fight for the independence of universities and the job security of professors, and to stand against political overreach in the classroom[cite: 44, 45].
+* [cite_start]**Expression**: The organization sees campuses as "sanctuaries for freedom of speech, assembly, and expression"[cite: 46, 47].
+* [cite_start]**Opportunity**: The EFP advocates for universities to be hubs of opportunity, providing students with skills for the workforce, and supporting research and upskilling[cite: 48]. 
+[cite_start]To achieve its mission, the EFP has three primary goals[cite: 36, 37, 38, 78, 79, 80]:
+1.  [cite_start]**Mobilize students** to protect universities from government attacks[cite: 37, 79].
+2.  [cite_start]**Build a long-lasting student advocacy infrastructure** across universities[cite: 37, 79].
+3.  [cite_start]**Implement reforms** that promote the four core pillars: teaching, learning, expression, and opportunity[cite: 38, 80].

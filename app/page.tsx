@@ -1,221 +1,146 @@
-import PrimaryButton from "@/components/ui/primary-button"
-import SecondaryButton from "@/components/ui/secondary-button"
-import { BookOpen, Palette, Music, Dumbbell, Code } from "lucide-react"
+"use client"
+
+import { useState, useEffect, useRef } from "react"
 import Link from "next/link"
+import Image from "next/image"
+import { usePathname } from "next/navigation"
+import { Menu, X } from "lucide-react"
+import { cn } from "@/lib/utils"
+import ThemeToggle from "@/components/ThemeToggle"
+import { useTheme } from "next-themes"
 
-export default function Home() {
+const baseButtonStyles = "inline-flex h-10 items-center justify-center rounded-md px-8 text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring"
+const headerButtonStyles = "bg-black text-white shadow hover:bg-gray-800 dark:border dark:border-input dark:bg-background dark:text-foreground dark:shadow-sm dark:hover:bg-accent dark:hover:text-accent-foreground"
+
+export default function Header() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const pathname = usePathname()
+  const { theme } = useTheme()
+  const menuRef = useRef(null)
+  const instagramLink = "https://www.instagram.com/edufreedomproj"
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setIsMenuOpen(false)
+      }
+    }
+
+    if (isMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [isMenuOpen])
+
+  const navigation = [
+    { name: "Mission", href: "/mission-statement" },
+    { name: "Pillars", href: "/core-pillars" },
+    { name: "Charter", href: "/charter" },
+    { name: "Events", href: instagramLink, external: true }
+  ]
+
   return (
-    <div className="flex flex-col w-full">
-      {/* Hero Section */}
-      <section className="w-full py-8 md:py-16 lg:py-20 xl:py-24">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="grid gap-6 lg:grid-cols-3 lg:gap-12 xl:grid-cols-3">
-            <div className="flex flex-col justify-center space-y-4 lg:col-span-1">
-              <div className="space-y-2">
-                <h1 className="text-3xl font-bold tracking-tighter sm:text-5xl xl:text-6xl/none">
-                  Nik Bear Brown
-                </h1>
-                <p className="max-w-[600px] text-muted-foreground md:text-xl">
-                  I teach, draw, code, and write songs. My work lives where
-                  curiosity and craft meet—using AI to help people learn, make,
-                  and do more with integrity.
-                </p>
-              </div>
-              <div className="flex flex-col gap-2 min-[400px]:flex-row">
-                <PrimaryButton href="/about">
-                  About Me
-                </PrimaryButton>
-                <SecondaryButton href="/contact">
-                  Contact
-                </SecondaryButton>
-              </div>
-            </div>
-            <div className="flex items-center justify-center lg:col-span-2">
-              <div className="relative w-full aspect-video">
-                <iframe
-                  className="absolute top-0 left-0 w-full h-full rounded-md"
-                  src="https://www.youtube.com/embed/aEjgD65h1mY?si=UX-tdS58VJ5WzIPn"
-                  title="NikBearBrown.com Introduction"
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                />
-              </div>
-            </div>
-          </div>
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container px-4 md:px-6 mx-auto flex h-16 items-center justify-between">
+        <div className="flex items-center gap-6 md:gap-10">
+          <Link href="/" className="flex items-center space-x-2">
+            {mounted ? (
+              <Image
+                src={theme === 'dark' ? '/svg-logos/EFP_white_logo.svg' : '/svg-logos/EFP_black_logo.svg'}
+                alt="Educational Freedom Project"
+                width={240}
+                height={53}
+                className="h-12 w-auto"
+              />
+            ) : (
+              <div className="h-12 w-60 bg-muted animate-pulse rounded" />
+            )}
+          </Link>
+          <nav className="hidden lg:flex gap-6">
+            {navigation.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={cn(
+                  "text-sm font-medium transition-colors hover:text-foreground/80",
+                  pathname === item.href ? "text-foreground" : "text-foreground/60",
+                )}
+                target={item.external ? "_blank" : "_self"}
+                rel={item.external ? "noopener noreferrer" : ""}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
         </div>
-      </section>
 
-      {/* Main Areas Section */}
-      <section className="w-full py-12 md:py-24 bg-muted">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="flex flex-col items-center justify-center space-y-4 text-center">
-            <div className="space-y-2">
-              <h2 className="text-3xl font-bold tracking-tighter md:text-4xl">My Work & Passions</h2>
-              <p className="text-muted-foreground max-w-[700px]">
-                These are the through-lines of my life: teaching, drawing, research, music,
-                building for social good, and staying healthy enough to keep going.
-              </p>
-            </div>
+        <div className="flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-4">
+            <Link key="instagram" href={instagramLink} target="_blank" rel="noopener noreferrer">
+              <button className={cn(baseButtonStyles, headerButtonStyles)}>
+                Instagram
+              </button>
+            </Link>
           </div>
+          <ThemeToggle />
+          <button
+            className="inline-flex h-10 w-10 items-center justify-center rounded-md text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring lg:hidden"
+            aria-label="Toggle menu"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+          >
+            {isMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+      </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            {/* Teaching & Workshops */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <BookOpen className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Teaching & Workshops</h3>
-              <p className="text-muted-foreground mb-4">
-                I teach AI, ML, and programming by making things with students.
-                We prototype, test, and learn out loud. I run sessions on prompt
-                engineering, agentic AI, and responsible deployment for classrooms
-                and teams.
-              </p>
-              <Link href="/classes" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Explore courses
-              </Link>
-            </div>
-
-            {/* Illustration */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Palette className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Illustration</h3>
-              <p className="text-muted-foreground mb-4">
-                I draw to think. From hand sketches to AI-assisted visuals, I build
-                storyboards, diagrams, and covers for classes, research, and nonprofit
-                projects. Pictures turn complex ideas into invitations.
-              </p>
-              <Link href="/art" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                View artwork
-              </Link>
-            </div>
-
-            {/* Music */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Music className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Music</h3>
-              <p className="text-muted-foreground mb-4">
-                I write songs and modern takes on public-domain tunes. Music keeps me honest
-                and curious. You’ll find narrative ballads and experiments that blur
-                folk traditions with digital craft.
-              </p>
-              <div className="flex flex-wrap gap-4">
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden">
+          <div 
+            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          <div ref={menuRef} className="fixed inset-x-0 top-16 z-50 mt-px bg-background border-b p-6 shadow-lg">
+            <nav className="flex flex-col space-y-4">
+              {navigation.map((item) => (
                 <Link
-                  href="https://open.spotify.com/artist/0hSpFCJodAYMP2cWK72zI6"
-                  target="_blank"
+                  key={item.name}
+                  href={item.href}
+                  className={cn(
+                    "text-base font-medium transition-colors hover:text-foreground/80",
+                    pathname === item.href && !item.external ? "text-foreground" : "text-foreground/60",
+                  )}
+                  onClick={() => setIsMenuOpen(false)}
+                  target={item.external ? "_blank" : "_self"}
+                  rel={item.external ? "noopener noreferrer" : ""}
+                >
+                  {item.name}
+                </Link>
+              ))}
+              <div className="flex flex-col gap-4 mt-4">
+                <Link 
+                  key="instagram-mobile"
+                  href={instagramLink}
+                  className="text-base font-medium"
+                  target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-sm font-medium underline underline-offset-4 hover:text-foreground"
+                  onClick={() => setIsMenuOpen(false)}
                 >
-                  Listen on Spotify
-                </Link>
-                <Link
-                  href="/music"
-                  className="text-sm font-medium underline underline-offset-4 hover:text-foreground"
-                >
-                  Project notes
+                  Instagram
                 </Link>
               </div>
-            </div>
-
-            {/* Research & Writing */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Code className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Research & Writing</h3>
-              <p className="text-muted-foreground mb-4">
-                I publish on AI, design, and computational biology. I also write
-                books about AI in creative practice and storytelling. Research
-                is how I test ideas; writing is how I share them.
-              </p>
-              <Link href="/research" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Read more
-              </Link>
-            </div>
-
-            {/* Fitness */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4 flex space-x-2">
-                <Dumbbell className="h-10 w-10" />
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="40"
-                  height="40"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-10 w-10"
-                >
-                  <path d="M12 2a5 5 0 0 0-5 5c0 2 2 4 5 4s5-2 5-4a5 5 0 0 0-5-5z" />
-                  <path d="M20 17.5c0 2.485-4 4.5-8 4.5s-8-2.015-8-4.5S8 13 12 13s8 2.015 8 4.5z" />
-                  <path d="M12 13v9" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold mb-2">Fitness & Wellness</h3>
-              <p className="text-muted-foreground mb-4">
-                Former wrestler with a passion for CrossFit, yoga, and maintaining
-                a balanced lifestyle. Committed to physical and mental wellness as
-                a foundation for creativity and productivity.
-              </p>
-              <Link href="/blog" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Read my fitness journey
-              </Link>
-            </div>
-
-            {/* Nonprofit */}
-            <div className="border p-8 rounded-lg bg-card hover:shadow-lg transition-shadow">
-              <div className="mb-4">
-                <Code className="h-10 w-10" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Humanitarians AI</h3>
-              <p className="text-muted-foreground mb-4">
-                Founder of Humanitarians AI, a 501(c)(3) nonprofit dedicated to
-                developing ethical AI solutions for education, healthcare, and
-                social impact through research and mentorship.
-              </p>
-              <Link href="/projects" className="text-sm font-medium underline underline-offset-4 hover:text-foreground">
-                Explore our projects
-              </Link>
-            </div>
+            </nav>
           </div>
         </div>
-      </section>
-
-      {/* Connect Section */}
-      <section className="w-full py-12 md:py-24 bg-muted">
-        <div className="container px-4 md:px-6 mx-auto">
-          <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-            <div className="mb-4 text-sm font-medium">CONNECT WITH ME</div>
-            <h2 className="text-3xl font-bold tracking-tighter md:text-5xl mb-6">Let's Collaborate</h2>
-            <p className="text-muted-foreground mb-8 max-w-2xl">
-              Whether you're interested in AI education, music collaboration, art projects,
-              or nonprofit initiatives, I'm always open to connecting with like-minded
-              individuals and organizations.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <PrimaryButton href="/consulting">
-                Work with Me
-              </PrimaryButton>
-              <SecondaryButton href="/contact">
-                Get in Touch
-              </SecondaryButton>
-              <SecondaryButton href="https://www.youtube.com/@nikbearbrown" target="_blank" rel="noopener noreferrer">
-                YouTube
-              </SecondaryButton>
-              <SecondaryButton href="https://github.com/nikbearbrown" target="_blank" rel="noopener noreferrer">
-                GitHub
-              </SecondaryButton>
-            </div>
-          </div>
-        </div>
-      </section>
-    </div>
+      )}
+    </header>
   )
 }
